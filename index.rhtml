@@ -1,0 +1,98 @@
+<title>Nazareth Knot</title>
+<%
+
+require './helpers.rb'
+
+size = 500
+thickness = 15
+thicknessDia = thickness * Math.sqrt(2)
+n = 8
+m = 2
+angles = symmetry(n)
+angle = angles[1]
+circle_ratio = 0.25
+
+radius1 = 160
+
+ring1 = angles.map{|r| p(0,radius1).rotate2d(r)}
+
+ring1A, ring1B = [-1,1].map do |sign|
+  ring1.zip(angles).map do |(p, r)|
+    p.tranlsate2d(p(sign * thicknessDia/2, 0).rotate2d(r + sign * angle/2))
+  end
+end
+
+ring1B.rotate!
+
+outer_square_edges = ring1A.zip(ring1B).map do |pair|
+  pair[0].rotate2d(Math::PI/2, avg(pair))
+end
+
+square_triplets = ring1A.zip(outer_square_edges,ring1B)
+
+square_paths = (0...m).map do |k|
+  square_triplets.select.with_index{|_,i| (i+k) % m == 0}.map(&:reverse).flatten
+end
+
+ciricle_ring = ring1.map { |p| p.scale2d(1.1) }
+
+in_square_points = ring1A.zip(ring1B).map do |pair|
+  avg(pair)
+end
+
+circle_touchpoints = [ciricle_ring, ciricle_ring.rotate].map do |ring|
+  ring.zip(in_square_points).map do |ps|
+    ps.first*circle_ratio + ps.last*(1 - circle_ratio)
+  end
+end
+
+ring1D = circle_touchpoints.first.zip(circle_touchpoints.last).flatten
+
+circle_radii_points = [ciricle_ring.first, circle_touchpoints.first.first, in_square_points.first]
+circle_radii = circle_radii_points.each_cons(2).map do |(a, b)|
+  a.distance2d(b)
+end
+
+%>
+<h1>Nazareth Knot <%= Time.now.to_s %></h1>
+
+<style>
+  svg { height: 80%; border: 1px #999 solid; }
+  path { stroke-width: <%= thickness %>px; fill: none; }
+  .a { stroke: #999; }
+  .b { stroke: #f90; }
+  .c { stroke: #308; }
+  .d { stroke: #090; }
+  <% case thickness
+     when  1...10 #  5 %>
+    .a.top, .b.top { stroke-dasharray: 0,30,40,110,40,40,55,147; }
+    .c.top { stroke-dasharray: 40,122; stroke-dashoffset: 12; }
+  <% when 10...17 # 15 %>
+    .a.top, .b.top { stroke-dasharray: 0,20,40,110,40,35,55,148; }
+    .c.top { stroke-dasharray: 65,100; stroke-dashoffset: 36; }
+  <% else         # 20 %>
+    .a.top, .b.top { stroke-dasharray: 0,20,40,100,40,30,65,146; }
+    .c.top { stroke-dasharray: 66.666,100; stroke-dashoffset: 39; }
+  <% end %>
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <% square_paths.zip('a'...'z').each do |(points, letter)| %>
+      <path id="path-<%= letter %>" d="M <%= points.map(&:to2d_s).join(' L ') %> Z" />
+    <% end %>
+    <% [1,0].zip('c'...'z').each do |(offset, letter)| %>
+      <path id="path-<%= letter %>" d="M <%= ring1D.first.to2d_s + ring1D.rotate.map.with_index do |p, i|
+        radius = circle_radii[(i+1) % 2]
+        " A #{radius} #{radius} 0 #{(i+offset) % 2} #{(i+offset) % 2} #{p.to2d_s}"
+      end.join %> Z" />
+    <% end %>
+  </defs>
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-b" class="b bottom" />
+  <use xlink:href="#path-c" class="c bottom" />
+  <use xlink:href="#path-d" class="d bottom" />
+  <use xlink:href="#path-c" class="c top" />
+  <use xlink:href="#path-a" class="a top" />
+  <use xlink:href="#path-b" class="b top" />
+</svg>
