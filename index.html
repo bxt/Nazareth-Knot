@@ -1,17 +1,19 @@
 <title>Nazareth Knot</title>
 
-<h1>Nazareth Knot 2016-05-05 21:34:19 +0200</h1>
+<h1>Nazareth Knot 2016-05-05 22:42:49 +0200</h1>
 
 <style>
   svg { height: 80%; border: 1px #999 solid; }
-  path { stroke-width: 15px; fill: none; }
+  .top, .bottom { stroke-width: 15px; fill: none; }
   .a { stroke: #999; }
   .b { stroke: #f90; }
   .c { stroke: #308; }
   .d { stroke: #090; }
-      .a.top, .b.top { stroke-dasharray: 0,20,40,110,40,35,55,148; }
-    .c.top { stroke-dasharray: 65,100; stroke-dashoffset: 36; }
-  
+  .white { stroke-width: 20px; fill: none; stroke: #fff; }
+  .a.top, .b.top { stroke-dasharray: 0,20,40,110,40,35,55,55,30,63; }
+  .c.top { stroke-dasharray: 64,47,31.55,23; stroke-dashoffset: 36; }
+  .a.top.white, .b.top.white { stroke-dasharray: 0,21,38,112,38,37,53,57,28,64; }
+  .c.top.white { stroke-dasharray: 63.5,48,30.55,23.53; stroke-dashoffset: 36; }
 </style>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
@@ -29,9 +31,14 @@
   </defs>
   <use xlink:href="#path-a" class="a bottom" />
   <use xlink:href="#path-b" class="b bottom" />
+  <use xlink:href="#path-c" class="c bottom white" />
   <use xlink:href="#path-c" class="c bottom" />
+  <use xlink:href="#path-d" class="d bottom white" />
   <use xlink:href="#path-d" class="d bottom" />
+  <use xlink:href="#path-c" class="c top white" />
   <use xlink:href="#path-c" class="c top" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-b" class="b top white" />
   <use xlink:href="#path-a" class="a top" />
   <use xlink:href="#path-b" class="b top" />
 </svg>
