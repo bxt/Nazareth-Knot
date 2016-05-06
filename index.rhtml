@@ -14,12 +14,13 @@ m = 2
 angles = symmetry(n)
 angle = angles[1]
 circle_ratio = 0.25
+minus_plus = [-1, 1]
 
 radius1 = 160
 
 ring1 = angles.map{|r| p(0,radius1).rotate2d(r)}
 
-ring1A, ring1B = [-1,1].map do |sign|
+ring1A, ring1B = minus_plus.map do |sign|
   ring1.zip(angles).map do |(p, r)|
     p.tranlsate2d(p(sign * thicknessDia/2, 0).rotate2d(r + sign * angle/2))
   end
@@ -53,8 +54,17 @@ ring1D = circle_touchpoints.first.zip(circle_touchpoints.last).flatten
 
 circle_radii_points = [ciricle_ring.first, circle_touchpoints.first.first, in_square_points.first]
 circle_radii = circle_radii_points.each_cons(2).map do |(a, b)|
-  a.distance2d(b)
+  a.distance2d(b).round(3)
 end
+
+radius2 = 35
+radius2_distance = circle_radii.min
+
+ring2A = minus_plus.repeated_permutation(2).to_a.values_at(0, 1, 3, 2).map do |(x, y)|
+  p(x*radius2, y*radius2_distance).rotate2d(angle/2)
+end
+
+ring2B = ring2A.map{ |p| p.rotate2d(Math::PI/2) }
 
 %>
 <div id="content">
@@ -68,16 +78,19 @@ end
   body, h1 { font-weight: 100; }
   #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
   svg { max-height: 100%; max-width: 100%; }
+  /* .bottom { opacity: 0.6; } */
   .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
   .a { stroke: #999; }
   .b { stroke: #f90; }
-  .c { stroke: #408; }
-  .d { stroke: #090; }
+  .c, .e { stroke: #408; }
+  .d, .f { stroke: #090; }
   .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
   .a.top, .b.top { stroke-dasharray: 0,20,40,110,40,35,55,55,30,63; }
   .c.top { stroke-dasharray: 64,47,31.55,23; stroke-dashoffset: 36; }
   .a.top.white, .b.top.white { stroke-dasharray: 0,21,38,112,38,37,53,57,28,64; }
   .c.top.white { stroke-dasharray: 63.5,48,30.55,23.53; stroke-dashoffset: 36; }
+  .e.top { stroke-dasharray: 29,94; stroke-dashoffset: -56; }
+  .e.top.white { stroke-dasharray: 27,96; stroke-dashoffset: -57; }
 </style>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
@@ -90,6 +103,10 @@ end
         radius = circle_radii[(i+1) % 2]
         " A #{radius} #{radius} 0 #{(i+offset) % 2} #{(i+offset) % 2} #{p.to2d_s}"
       end.join %> Z" />
+    <% end %>
+    <% [ring2A, ring2B].zip('e'...'z').each do |(points, letter)| %>
+      <% ps, r = [points.map(&:to2d_s), radius2_distance] %>
+      <path id="path-<%= letter %>" d="M <%= ps.each_slice(2).map{ |o| o.join(" A #{r} #{r} 0 0 0 ") }.join(' L ') %> Z" />
     <% end %>
   </defs>
   <use xlink:href="#path-a" class="a bottom" />
@@ -104,4 +121,9 @@ end
   <use xlink:href="#path-b" class="b top white" />
   <use xlink:href="#path-a" class="a top" />
   <use xlink:href="#path-b" class="b top" />
+  <use xlink:href="#path-e" class="e bottom" />
+  <use xlink:href="#path-f" class="f bottom white" />
+  <use xlink:href="#path-f" class="f bottom" />
+  <use xlink:href="#path-e" class="e top white" />
+  <use xlink:href="#path-e" class="e top" />
 </svg>
