@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .top, .bottom { stroke-width: 15px; fill: none; }
+      .a { stroke: rgb(153, 153, 153); }
+      .b { stroke: rgb(255, 153, 0); }
+      .c, .e { stroke: rgb(68, 0, 136); }
+      .d, .f { stroke: rgb(0, 153, 0); }
+      .white { stroke-width: 20px; fill: none; stroke: rgb(255, 255, 255); }
+      .a.top, .b.top { stroke-dasharray: 0, 20, 40, 110, 40, 35, 55, 55, 30, 63; }
+      .c.top { stroke-dasharray: 64, 47, 31.55, 23; stroke-dashoffset: 36; }
+      .a.top.white, .b.top.white { stroke-dasharray: 0, 21, 38, 112, 38, 37, 53, 57, 28, 64; }
+      .c.top.white { stroke-dasharray: 63.5, 48, 30.55, 23.53; stroke-dashoffset: 36; }
+      .e.top { stroke-dasharray: 29, 94; stroke-dashoffset: -56; }
+      .e.top.white { stroke-dasharray: 27, 96; stroke-dashoffset: -57; }
+    ]]></style>
+    <path id="path-a" d="M -109.078 122.936 L -80.0 193.137 L -9.799 164.059 L -122.936 -109.078 L -193.137 -80.0 L -164.059 -9.799 L 109.078 -122.936 L 80.0 -193.137 L 9.799 -164.059 L 122.936 109.078 L 193.137 80.0 L 164.059 9.799 Z"/>
+    <path id="path-b" d="M -164.059 9.799 L -193.137 80.0 L -122.936 109.078 L -9.799 -164.059 L -80.0 -193.137 L -109.078 -122.936 L 164.059 -9.799 L 193.137 -80.0 L 122.936 -109.078 L 9.799 164.059 L 80.0 193.137 L 109.078 122.936 Z"/>
+    <path id="path-c" d="M -44.579 151.623 A 16.936 16.936 0 1 1 -75.692 138.736 A 50.809 50.809 0 0 0 -138.736 75.692 A 16.936 16.936 0 1 1 -151.623 44.579 A 50.809 50.809 0 0 0 -151.623 -44.579 A 16.936 16.936 0 1 1 -138.736 -75.692 A 50.809 50.809 0 0 0 -75.692 -138.736 A 16.936 16.936 0 1 1 -44.579 -151.623 A 50.809 50.809 0 0 0 44.579 -151.623 A 16.936 16.936 0 1 1 75.692 -138.736 A 50.809 50.809 0 0 0 138.736 -75.692 A 16.936 16.936 0 1 1 151.623 -44.579 A 50.809 50.809 0 0 0 151.623 44.579 A 16.936 16.936 0 1 1 138.736 75.692 A 50.809 50.809 0 0 0 75.692 138.736 A 16.936 16.936 0 1 1 44.579 151.623 A 50.809 50.809 0 0 0 -44.579 151.623 Z"/>
+    <path id="path-d" d="M -44.579 151.623 A 16.936 16.936 0 0 0 -75.692 138.736 A 50.809 50.809 0 1 1 -138.736 75.692 A 16.936 16.936 0 0 0 -151.623 44.579 A 50.809 50.809 0 1 1 -151.623 -44.579 A 16.936 16.936 0 0 0 -138.736 -75.692 A 50.809 50.809 0 1 1 -75.692 -138.736 A 16.936 16.936 0 0 0 -44.579 -151.623 A 50.809 50.809 0 1 1 44.579 -151.623 A 16.936 16.936 0 0 0 75.692 -138.736 A 50.809 50.809 0 1 1 138.736 -75.692 A 16.936 16.936 0 0 0 151.623 -44.579 A 50.809 50.809 0 1 1 151.623 44.579 A 16.936 16.936 0 0 0 138.736 75.692 A 50.809 50.809 0 1 1 75.692 138.736 A 16.936 16.936 0 0 0 44.579 151.623 A 50.809 50.809 0 1 1 -44.579 151.623 Z"/>
+    <path id="path-e" d="M -25.855 -29.041 A 16.936 16.936 0 0 0 -38.817 2.253 L 25.855 29.041 A 16.936 16.936 0 0 0 38.817 -2.253 Z"/>
+    <path id="path-f" d="M 29.041 -25.855 A 16.936 16.936 0 0 0 -2.253 -38.817 L -29.041 25.855 A 16.936 16.936 0 0 0 2.253 38.817 Z"/>
+  </defs>
+  <use xlink:href="#path-a" class="a bottom"/>
+  <use xlink:href="#path-b" class="b bottom"/>
+  <use xlink:href="#path-c" class="c bottom white"/>
+  <use xlink:href="#path-c" class="c bottom"/>
+  <use xlink:href="#path-d" class="d bottom white"/>
+  <use xlink:href="#path-d" class="d bottom"/>
+  <use xlink:href="#path-c" class="c top white"/>
+  <use xlink:href="#path-c" class="c top"/>
+  <use xlink:href="#path-a" class="a top white"/>
+  <use xlink:href="#path-b" class="b top white"/>
+  <use xlink:href="#path-a" class="a top"/>
+  <use xlink:href="#path-b" class="b top"/>
+  <use xlink:href="#path-e" class="e bottom"/>
+  <use xlink:href="#path-f" class="f bottom white"/>
+  <use xlink:href="#path-f" class="f bottom"/>
+  <use xlink:href="#path-e" class="e top white"/>
+  <use xlink:href="#path-e" class="e top"/>
+</svg>
