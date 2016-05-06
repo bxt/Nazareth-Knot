@@ -15,34 +15,33 @@ angles = symmetry(n)
 angle = angles[1]
 circle_ratio = 0.25
 minus_plus = [-1, 1]
+right_angle = Math::PI/2
 
 radius1 = 160
 
-ring1 = angles.map{|r| p(0,radius1).rotate2d(r)}
+ring1 = angles.map{ |r| p(0, radius1).rotate2d(r) }
 
 ring1A, ring1B = minus_plus.map do |sign|
   ring1.zip(angles).map do |(p, r)|
-    p.tranlsate2d(p(sign * thicknessDia/2, 0).rotate2d(r + sign * angle/2))
+    p.tranlsate2d(p(sign*thicknessDia/2, 0).rotate2d(r + sign*angle/2))
   end
 end
 
 ring1B.rotate!
 
 outer_square_edges = ring1A.zip(ring1B).map do |pair|
-  pair[0].rotate2d(Math::PI/2, avg(pair))
+  pair.first.rotate2d(right_angle, avg(pair))
 end
 
-square_triplets = ring1A.zip(outer_square_edges,ring1B)
+square_triplets = ring1A.zip(outer_square_edges, ring1B).map(&:reverse)
 
 square_paths = (0...m).map do |k|
-  square_triplets.select.with_index{|_,i| (i+k) % m == 0}.map(&:reverse).flatten
+  square_triplets.select.with_index{ |_, i| (i+k) % m == 0 }.flatten
 end
 
 ciricle_ring = ring1.map { |p| p.scale2d(1.1) }
 
-in_square_points = ring1A.zip(ring1B).map do |pair|
-  avg(pair)
-end
+in_square_points = ring1A.zip(ring1B).map{ |pair| avg(pair) }
 
 circle_touchpoints = [ciricle_ring, ciricle_ring.rotate].map do |ring|
   ring.zip(in_square_points).map do |ps|
@@ -64,7 +63,7 @@ ring2A = minus_plus.repeated_permutation(2).to_a.values_at(0, 1, 3, 2).map do |(
   p(x*radius2, y*radius2_distance).rotate2d(angle/2)
 end
 
-ring2B = ring2A.map{ |p| p.rotate2d(Math::PI/2) }
+ring2B = ring2A.map{ |p| p.rotate2d(right_angle) }
 
 %>
 <div id="content">
@@ -99,14 +98,18 @@ ring2B = ring2A.map{ |p| p.rotate2d(Math::PI/2) }
       <path id="path-<%= letter %>" d="M <%= points.map(&:to2d_s).join(' L ') %> Z" />
     <% end %>
     <% [1,0].zip('c'...'z').each do |(offset, letter)| %>
-      <path id="path-<%= letter %>" d="M <%= ring1D.first.to2d_s + ring1D.rotate.map.with_index do |p, i|
-        radius = circle_radii[(i+1) % 2]
-        " A #{radius} #{radius} 0 #{(i+offset) % 2} #{(i+offset) % 2} #{p.to2d_s}"
-      end.join %> Z" />
+      <path id="path-<%= letter %>" d="M <%= ring1D.first.to2d_s %><%=
+        ring1D.rotate.map.with_index do |p, i|
+          radius = circle_radii[(i+1) % 2]
+          " A #{radius} #{radius} 0 #{(i + offset)%2} #{(i + offset)%2} #{p.to2d_s}"
+        end.join
+      %> Z" />
     <% end %>
     <% [ring2A, ring2B].zip('e'...'z').each do |(points, letter)| %>
-      <% ps, r = [points.map(&:to2d_s), radius2_distance] %>
-      <path id="path-<%= letter %>" d="M <%= ps.each_slice(2).map{ |o| o.join(" A #{r} #{r} 0 0 0 ") }.join(' L ') %> Z" />
+      <% ps = points.map(&:to2d_s); r = radius2_distance %>
+      <path id="path-<%= letter %>" d="M <%=
+        ps.each_slice(2).map{ |o| o.join(" A #{r} #{r} 0 0 0 ") }.join(' L ')
+      %> Z" />
     <% end %>
   </defs>
   <use xlink:href="#path-a" class="a bottom" />
