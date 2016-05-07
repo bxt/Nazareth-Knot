@@ -1,0 +1,59 @@
+<title>Ravello Switch Knot</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%
+
+require './helpers.rb'
+
+size = 500
+thickness = 25
+thicknessDia = thickness * Math.sqrt(2)
+right_angle = Math::PI/2
+
+s1 = 50
+s0 = s1 * Math.tan(Math::PI/8)
+s2 = s1 + 2*s0
+s3 = s2 + 2*s0
+s4 = s3 + s1
+
+base_chain = [p(s0,s1), p(s3,s1), p(s4,0), p(s3,-s1), p(s0,-s1), p(-s0,-s2), p(-s1,-s2), p(-s2,-s1), p(-s2,-s0)]
+
+base_commands = [' L ', " A #{s1} #{s1} 45 0 1 ", " A #{s1} #{s1} 45 0 1 ", ' L ', ' L ', ' L ', " A #{s2-s1} #{s2-s1} 0 0 0 ", ' L ']
+
+chain = (0...4).map do |step|
+  base_chain.zip(base_commands).map { |(p, c)| p.rotate2d(step * right_angle).to2d_s + (c || "") }.join
+end.join(' L ')
+
+stroke_dasharray = [40,43,238,58,44,68,73,58]
+stroke_dasharray_white = stroke_dasharray.map.with_index{|a,i| a-((i+1)%2-0.5)*4}
+
+%>
+<div id="content">
+<h1>Ravello Switch Knot</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
+
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+  /* .bottom { opacity: 0.6; } */
+  .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+  .a { stroke: #AE8ED8; }
+  .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+  .a.top { stroke-dasharray: <%= stroke_dasharray.join(',') %>; ; stroke-dashoffset: -10; }
+  .a.top.white { stroke-dasharray: <%= stroke_dasharray_white.join(',') %>; stroke-dashoffset: -11; }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <path id="path-a" d="M <%= chain %> Z" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
+</svg>
