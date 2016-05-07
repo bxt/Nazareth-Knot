@@ -8,19 +8,17 @@ require './helpers.rb'
 
 size = 500
 thickness = 25
-thicknessDia = thickness * Math.sqrt(2)
-right_angle = Math::PI/2
+angle = -Math::PI*0.75
 
 s1 = 50
 s0 = s1 * Math.tan(Math::PI/8)
 s2 = s1 + 2*s0
 
 base_chain = [p(s0,s1), p(s2,s1), p(s2,-s1)]
-
 base_commands = [' L ', " A #{s1} #{s1} 0 0 0 "]
 
 chain = (0...8).map do |step|
-  base_chain.zip(base_commands).map { |(p, c)| p.rotate2d(-step * right_angle * 1.5).to2d_s + (c || "") }.join
+  base_chain.zip(base_commands).map { |(p, c)| p.rotate2d(step * angle).to2d_s + (c || "") }.join
 end.join(' L ')
 
 %>
