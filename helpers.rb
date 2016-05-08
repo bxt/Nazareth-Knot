@@ -82,10 +82,6 @@ def symmetry(n)
   (0...n).map{|i| i/n.to_f*Math::PI*2}
 end
 
-def closed(xs)
-  xs + [xs[0]]
-end
-
 def avg(xs)
   xs.reduce(&:+) / xs.length.to_f
 end
