@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot" xmlns="http://www.w3.org/2000/svg">
-  <defs xmlns="http://www.w3.org/1999/xhtml">
+  <defs>
     <style type="text/css"><![CDATA[
       .top, .bottom { stroke-width: 25px; fill: none; }
       .a { stroke: rgb(174, 142, 216); }
