@@ -55,6 +55,29 @@ class Matrix
 
 end
 
+class StrokeDash
+  def initialize(offset, *steps)
+    @offset = offset
+    @steps = steps
+  end
+
+  def css
+    css_properties(@steps, @offset)
+  end
+
+  def css_small
+    css_properties(@steps.map.with_index{ |a, i| a + (i.odd? ? 2 : -2) }, @offset - 1)
+  end
+
+  private
+
+  def css_properties array, offset
+    result = "stroke-dasharray: #{array.join(',')};"
+    result += " stroke-dashoffset: #{offset};" unless offset == 0
+    result
+  end
+end
+
 def symmetry(n)
   (0...n).map{|i| i/n.to_f*Math::PI*2}
 end

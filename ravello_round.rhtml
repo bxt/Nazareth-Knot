@@ -21,6 +21,8 @@ chain = (0...8).map do |step|
   base_chain.zip(base_commands).map { |(p, c)| p.rotate2d(step * angle).to2d_s + (c || "") }.join
 end.join(' L ')
 
+stroke_dashes = StrokeDash.new(-10,40,99,99,60.48)
+
 %>
 <div id="content">
 <h1>Ravello Round Knot</h1>
@@ -37,7 +39,7 @@ end.join(' L ')
   .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
   .top { stroke: #E09989; }
   .bottom { stroke: #E8E1D3; }
-  .top { stroke-dasharray: 40,99,99,60.48; ; stroke-dashoffset: -10; }
+  .top { <%= stroke_dashes.css %> }
 </style>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">

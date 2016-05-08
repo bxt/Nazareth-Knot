@@ -24,8 +24,7 @@ chain = (0...4).map do |step|
   base_chain.zip(base_commands).map { |(p, c)| p.rotate2d(step * right_angle).to2d_s + (c || "") }.join
 end.join(' L ')
 
-stroke_dasharray = [40,43,238,58,44,68,73,58]
-stroke_dasharray_white = stroke_dasharray.map.with_index{ |a, i| a + 4*(i%2 - 0.5) }
+stroke_dashes = StrokeDash.new(-10,40,43,238,58,44,68,73,58)
 
 %>
 <div id="content">
@@ -44,8 +43,8 @@ stroke_dasharray_white = stroke_dasharray.map.with_index{ |a, i| a + 4*(i%2 - 0.
   .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
   .a { stroke: #AE8ED8; }
   .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
-  .a.top { stroke-dasharray: <%= stroke_dasharray.join(',') %>; ; stroke-dashoffset: -10; }
-  .a.top.white { stroke-dasharray: <%= stroke_dasharray_white.join(',') %>; stroke-dashoffset: -11; }
+  .a.top { <%= stroke_dashes.css %> }
+  .a.top.white { <%= stroke_dashes.css_small %> }
 </style>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
