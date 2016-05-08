@@ -89,3 +89,24 @@ end
 def avg(xs)
   xs.reduce(&:+) / xs.length.to_f
 end
+
+def page_intro(title)
+  puts <<-HTML.gsub(/^ {4}/, '')
+    <title>#{title}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * { padding: 0; margin: 0; }
+      body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+      body, h1 { font-weight: 100; }
+      a { opacity: 0.7; }
+      #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+      svg { max-height: 100%; max-width: 100%; }
+    </style>
+    <div id="content">
+    <h1>#{title}</h1>
+    <p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+    </div>
+  HTML
+end

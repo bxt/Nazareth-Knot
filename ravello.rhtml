@@ -1,7 +1,3 @@
-<title>Ravello Switch Knot</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <%
 
 require './helpers.rb'
@@ -26,29 +22,19 @@ end.join(' L ')
 
 stroke_dashes = StrokeDash.new(-10,40,43,238,58,44,68,73,58)
 
+page_intro("Ravello Switch Knot")
+
 %>
-<div id="content">
-<h1>Ravello Switch Knot</h1>
-<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
-</div>
-
-<style>
-  * { padding: 0; margin: 0; }
-  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
-  body, h1 { font-weight: 100; }
-  a { opacity: 0.7; }
-  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
-  svg { max-height: 100%; max-width: 100%; }
-  /* .bottom { opacity: 0.6; } */
-  .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
-  .a { stroke: #AE8ED8; }
-  .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
-  .a.top { <%= stroke_dashes.css %> }
-  .a.top.white { <%= stroke_dashes.css_small %> }
-</style>
-
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a { stroke: #AE8ED8; }
+      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+      .a.top { <%= stroke_dashes.css %> }
+      .a.top.white { <%= stroke_dashes.css_small %> }
+    </style>
     <path id="path-a" d="M <%= chain %> Z" />
   </defs>
   <use xlink:href="#path-a" class="a bottom white" />

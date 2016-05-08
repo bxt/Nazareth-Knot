@@ -2,12 +2,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<div id="content">
-<h1>Ravello Round Knot</h1>
-<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
-</div>
-
 <style>
   * { padding: 0; margin: 0; }
   body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
@@ -15,14 +9,20 @@
   a { opacity: 0.7; }
   #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
   svg { max-height: 100%; max-width: 100%; }
-  .top, .bottom { stroke-width: 25px; fill: none; }
-  .top { stroke: #E09989; }
-  .bottom { stroke: #E8E1D3; }
-  .top { stroke-dasharray: 40,99,99,60.48; stroke-dashoffset: -10; }
 </style>
+<div id="content">
+<h1>Ravello Round Knot</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
   <defs>
+    <style>
+      .top, .bottom { stroke-width: 25px; fill: none; }
+      .top { stroke: #E09989; }
+      .bottom { stroke: #E8E1D3; }
+      .top { stroke-dasharray: 40,99,99,60.48; stroke-dashoffset: -10; }
+    </style>
     <path id="path-a" d="M 20.711 50.0 L 91.421 50.0 A 50 50 0 0 0 91.421 -50.0 L 20.711 -50.0 L -29.289 -100.0 A 50 50 0 0 0 -100.0 -29.289 L -50.0 20.711 L -50.0 91.421 A 50 50 0 0 0 50.0 91.421 L 50.0 20.711 L 100.0 -29.289 A 50 50 0 0 0 29.289 -100.0 L -20.711 -50.0 L -91.421 -50.0 A 50 50 0 0 0 -91.421 50.0 L -20.711 50.0 L 29.289 100.0 A 50 50 0 0 0 100.0 29.289 L 50.0 -20.711 L 50.0 -91.421 A 50 50 0 0 0 -50.0 -91.421 L -50.0 -20.711 L -100.0 29.289 A 50 50 0 0 0 -29.289 100.0 Z" />
   </defs>
   <use xlink:href="#path-a" class="bottom" />

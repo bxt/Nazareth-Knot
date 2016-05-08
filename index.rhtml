@@ -1,7 +1,3 @@
-<title>Nazareth Knot</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <%
 
 require './helpers.rb'
@@ -70,38 +66,28 @@ stroke_c = StrokeDash.new(-29,64,126,34.55,43)
 stroke_d = StrokeDash.new(0,25,133)
 stroke_e = StrokeDash.new(-56,29,94)
 
+page_intro("Nazareth Knot")
+
 %>
-<div id="content">
-<h1>Nazareth Knot</h1>
-<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
-</div>
-
-<style>
-  * { padding: 0; margin: 0; }
-  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
-  a { opacity: 0.7; }
-  body, h1 { font-weight: 100; }
-  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
-  svg { max-height: 100%; max-width: 100%; }
-  /* .bottom { opacity: 0.6; } */
-  .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
-  .a { stroke: #999; }
-  .b { stroke: #f90; }
-  .d, .e { stroke: #408; }
-  .c, .f { stroke: #090; }
-  .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
-  .a.top, .b.top { <%= stroke_ab.css %> }
-  .c.top { <%= stroke_c.css %> }
-  .a.top.white, .b.top.white { <%= stroke_ab.css_small %> }
-  .c.top.white { <%= stroke_c.css_small %> }
-  .d.top { <%= stroke_d.css %> }
-  .d.top.white { <%= stroke_d.css_small %> }
-  .e.top { <%= stroke_e.css %> }
-  .e.top.white { <%= stroke_e.css_small %> }
-</style>
-
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a { stroke: #999; }
+      .b { stroke: #f90; }
+      .d, .e { stroke: #408; }
+      .c, .f { stroke: #090; }
+      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+      .a.top, .b.top { <%= stroke_ab.css %> }
+      .c.top { <%= stroke_c.css %> }
+      .a.top.white, .b.top.white { <%= stroke_ab.css_small %> }
+      .c.top.white { <%= stroke_c.css_small %> }
+      .d.top { <%= stroke_d.css %> }
+      .d.top.white { <%= stroke_d.css_small %> }
+      .e.top { <%= stroke_e.css %> }
+      .e.top.white { <%= stroke_e.css_small %> }
+    </style>
     <% square_paths.zip('a'...'z').each do |(points, letter)| %>
       <path id="path-<%= letter %>" d="M <%= points.map(&:to2d_s).join(' L ') %> Z" />
     <% end %>
