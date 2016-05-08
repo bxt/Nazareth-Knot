@@ -33,7 +33,7 @@ page_intro("Ravello Switch Knot")
       .a { stroke: #AE8ED8; }
       .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
       .a.top { <%= stroke_dashes.css %> }
-      .a.top.white { <%= stroke_dashes.css_small %> }
+      .a.top.white { <%= stroke_dashes.css(2) %> }
     </style>
     <path id="path-a" d="M <%= chain %> Z" />
   </defs>

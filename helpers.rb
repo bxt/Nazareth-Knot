@@ -61,12 +61,8 @@ class StrokeDash
     @steps = steps
   end
 
-  def css
-    css_properties(@steps, @offset)
-  end
-
-  def css_small
-    css_properties(@steps.map.with_index{ |a, i| a + (i.odd? ? 2 : -2) }, @offset - 1)
+  def css(shrink_by=0)
+    css_properties(@steps.map.with_index{ |a, i| a + (i.odd? ? 1 : -1)*shrink_by }, @offset - shrink_by/2)
   end
 
   private

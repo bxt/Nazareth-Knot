@@ -81,12 +81,12 @@ page_intro("Nazareth Knot")
       .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
       .a.top, .b.top { <%= stroke_ab.css %> }
       .c.top { <%= stroke_c.css %> }
-      .a.top.white, .b.top.white { <%= stroke_ab.css_small %> }
-      .c.top.white { <%= stroke_c.css_small %> }
+      .a.top.white, .b.top.white { <%= stroke_ab.css(2) %> }
+      .c.top.white { <%= stroke_c.css(2) %> }
       .d.top { <%= stroke_d.css %> }
-      .d.top.white { <%= stroke_d.css_small %> }
+      .d.top.white { <%= stroke_d.css(2) %> }
       .e.top { <%= stroke_e.css %> }
-      .e.top.white { <%= stroke_e.css_small %> }
+      .e.top.white { <%= stroke_e.css(2) %> }
     </style>
     <% square_paths.zip('a'...'z').each do |(points, letter)| %>
       <path id="path-<%= letter %>" d="M <%= points.map(&:to2d_s).join(' L ') %> Z" />
