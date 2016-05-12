@@ -40,3 +40,15 @@ Author: [Bernhard Häussner](http://bernhardhaeussner.de).
 [sketchbook]: http://bernhardhaeussner.de/upl/Ravello%20Switch.png
 [ravello.html]: http://bxt.github.io/Nazareth-Knot/ravello.html
 [ravello_round.html]: http://bxt.github.io/Nazareth-Knot/ravello_round.html
+
+# Even More Knots
+
+Since I already build the tools, I created even more knot. Also I started
+calulating the `stroke-dasharray`s instead of just guessing them. I used some
+complex trigonometric calculations but in the end it allowed me to
+algorithmically create whole knots including overlaps instead of just the paths.
+You should check them out:
+
+* [Generic Knot (n=6)](http://bxt.github.io/Nazareth-Knot/generic.html)
+* [Tri Knot](http://bxt.github.io/Nazareth-Knot/tri.html)
+* [TriCircle Knot](http://bxt.github.io/Nazareth-Knot/tricircle.html)
