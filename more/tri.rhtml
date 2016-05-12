@@ -1,0 +1,50 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+thickness = 20
+r = 150
+n = 3
+s = symmetry(n)
+
+ring = s.map { |angle| p(0, -r).rotate2d(angle) }
+ring.unshift(ring[-1])
+
+r1 = (r*0.5*Math.sqrt(3)).round(3)
+chain_a = ring.map(&:to2d_s).join(" A #{r1} #{r1} 0 0 0 ")
+
+sixth = r1*Math::PI/6
+stroke_dashes = StrokeDash.new(-sixth,2*sixth,4*sixth)
+
+r2 = (r*0.25*(Math.sqrt(3) + 1)).round(3)
+half = r2 * Math::PI
+stroke_dashes_circle = StrokeDash.new(-0.5*half,half/3,half/3)
+
+page_intro("Tri Knot", :black)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a, .b { stroke: #CDD88E; }
+      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+      .a.top { <%= stroke_dashes.css %> }
+      .a.top.white { <%= stroke_dashes.css(2) %> }
+      .b.top { <%= stroke_dashes_circle.css %> }
+      .b.top.white { <%= stroke_dashes_circle.css(2) %> }
+    </style>
+    <path id="path-a" d="M <%= chain_a %> Z" />
+    <circle id="path-b" cx="0" cy="0" r="<%= r2 %>" />
+  </defs>
+  <use xlink:href="#path-b" class="b bottom white" />
+  <use xlink:href="#path-b" class="b bottom" />
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
+  <use xlink:href="#path-b" class="b top white" />
+  <use xlink:href="#path-b" class="b top" />
+</svg>
