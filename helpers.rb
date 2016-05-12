@@ -69,7 +69,7 @@ class StrokeDash
 
   def css_properties(array, offset, precision=3)
     result = "stroke-dasharray: #{array.map{ |a| '%g' % a.round(precision) }.join(',')};"
-    result += " stroke-dashoffset: #{offset.round(precision)};" unless offset == 0
+    result += " stroke-dashoffset: #{'%g' % offset.round(precision)};" unless offset == 0
     result
   end
 end
