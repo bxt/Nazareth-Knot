@@ -1,0 +1,41 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+thickness = 20
+r = 150
+n = 3
+s = symmetry(n)
+
+ring = s.map { |angle| p(0, -r).rotate2d(angle) }
+
+chain_a = ring.map(&:to2d_s).join(" L ")
+
+r2 = (r*0.25*(Math.sqrt(3) + 1)).round(3)
+half = r2 * Math::PI
+stroke_dashes = StrokeDash.new(-0.5*half,half/3,half/3)
+
+page_intro("TriCircle Knot", :black)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a, .b { stroke: #EAB554; }
+      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #000; }
+      .b.top { <%= stroke_dashes.css %> }
+      .b.top.white { <%= stroke_dashes.css(2) %> }
+    </style>
+    <path id="path-a" d="M <%= chain_a %> Z" />
+    <circle id="path-b" cx="0" cy="0" r="<%= r2 %>" />
+  </defs>
+  <use xlink:href="#path-b" class="b bottom white" />
+  <use xlink:href="#path-b" class="b bottom" />
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-b" class="b top white" />
+  <use xlink:href="#path-b" class="b top" />
+</svg>

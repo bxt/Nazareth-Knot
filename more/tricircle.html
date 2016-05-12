@@ -1,0 +1,37 @@
+<title>TriCircle Knot</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #000; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>TriCircle Knot</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+  <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: 20px; fill: none; }
+      .a, .b { stroke: #EAB554; }
+      .white { stroke-width: 25px; fill: none; stroke: #000; }
+      .b.top { stroke-dasharray: 107.287,107.287; stroke-dashoffset: -160.931; }
+      .b.top.white { stroke-dasharray: 105.287,109.287; stroke-dashoffset: -161.931; }
+    </style>
+    <path id="path-a" d="M 0 -150 L 129.904 75 L -129.904 75 Z" />
+    <circle id="path-b" cx="0" cy="0" r="102.452" />
+  </defs>
+  <use xlink:href="#path-b" class="b bottom white" />
+  <use xlink:href="#path-b" class="b bottom" />
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-b" class="b top white" />
+  <use xlink:href="#path-b" class="b top" />
+</svg>

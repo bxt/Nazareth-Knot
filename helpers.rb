@@ -82,7 +82,7 @@ def avg(xs)
   xs.reduce(&:+) / xs.length.to_f
 end
 
-def page_intro(title)
+def page_intro(title, theme=:white)
   puts <<-HTML.gsub(/^ {4}/, '')
     <title>#{title}</title>
     <meta charset="UTF-8">
@@ -90,7 +90,7 @@ def page_intro(title)
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       * { padding: 0; margin: 0; }
-      body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+      body { background: ##{:white.eql?(theme) ? "fff" : "000"}; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
       body, h1 { font-weight: 100; }
       a { opacity: 0.7; }
       #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
