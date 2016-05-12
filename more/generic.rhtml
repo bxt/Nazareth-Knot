@@ -1,0 +1,52 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+thickness = 40 # 30
+r = 150
+n = 6
+s = symmetry(n)
+angle = s[1]
+angle2 = (0.5 - 2.0/n)*Math::PI # star angle
+
+ring = s.map { |angle| p(0, -r).rotate2d(angle).to2d_s }
+
+both = [:even?, :odd?].map do |predicate|
+  ring.select.with_index{ |_,i| i.send(predicate) }
+end
+
+chain = if n.even?
+  both.map{ |ps| ps.join(' L ') }.join(' Z M ')
+else
+  both.flatten.join(' L ')
+end
+
+# Trigonometry FTW!
+l0 = r*Math.sin(angle) # half arm
+l1 = r*Math.tan(angle/2)*Math.cos(angle) # mid to intersection
+l2 = thickness/2/Math.tan(angle2) # star overhead
+l3 = (thickness*Math.tan(angle2) + thickness/Math.cos(angle2))/2 # intersection overhead
+l4 = (l0-l1-l2-l3)/2 # half free room
+stroke_dashes = StrokeDash.new(*([-l2-l4, l4+l3+l1, l0+l2+l4].map{ |x| x.round(3) }))
+
+page_intro("Generic Knot n=#{n}")
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a { stroke: #8ED8B9; }
+      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+      .a.top { <%= stroke_dashes.css %> }
+      .a.top.white { <%= stroke_dashes.css(2) %> }
+    </style>
+    <path id="path-a" d="M <%= chain %> Z" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
+</svg>
