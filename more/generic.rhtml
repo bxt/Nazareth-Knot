@@ -8,7 +8,7 @@ r = 150
 n = 6
 s = symmetry(n)
 angle = s[1]
-angle2 = (0.5 - 2.0/n)*Math::PI # star angle
+star_angle = (0.5 - 2.0/n)*Math::PI
 
 ring = s.map { |angle| p(0, -r).rotate2d(angle).to2d_s }
 
@@ -23,12 +23,15 @@ else
 end
 
 # Trigonometry FTW!
-l0 = r*Math.sin(angle) # half arm
-l1 = r*Math.tan(angle/2)*Math.cos(angle) # mid to intersection
-l2 = thickness/2/Math.tan(angle2) # star overhead
-l3 = (thickness*Math.tan(angle2) + thickness/Math.cos(angle2))/2 # intersection overhead
-l4 = (l0-l1-l2-l3)/2 # half free room
-stroke_dashes = StrokeDash.new(-l2-l4, l4+l3+l1, l0+l2+l4)
+half_arm = r*Math.sin(angle)
+mid_to_intersection = r*Math.tan(angle/2)*Math.cos(angle)
+star_overhead = thickness/2/Math.tan(star_angle)
+intersection_overhead = (thickness*Math.tan(star_angle) + thickness/Math.cos(star_angle))/2
+half_free_room = (half_arm-mid_to_intersection-star_overhead-intersection_overhead)/2
+stroke_dashes = StrokeDash.new(
+  -star_overhead-half_free_room,
+  half_free_room+intersection_overhead+mid_to_intersection,
+  half_arm+star_overhead+half_free_room)
 
 page_intro("Generic Knot n=#{n}")
 

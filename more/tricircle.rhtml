@@ -7,14 +7,15 @@ thickness = 20
 r = 150
 n = 3
 s = symmetry(n)
+sqrt3 = Math.sqrt(3)
 
 ring = s.map { |angle| p(0, -r).rotate2d(angle) }
 
 chain_a = ring.map(&:to2d_s).join(" L ")
 
-r2 = (r*0.25*(Math.sqrt(3) + 1)).round(3)
-half = r2 * Math::PI
-stroke_dashes = StrokeDash.new(-0.5*half,half/3,half/3)
+r_circle = (r*0.25*(sqrt3 + 1)).round(3)
+half = r_circle * Math::PI
+stroke_dashes = StrokeDash.new(-0.5*half, half/3, half/3)
 
 page_intro("TriCircle Knot", :black)
 
@@ -30,7 +31,7 @@ page_intro("TriCircle Knot", :black)
       .b.top.white { <%= stroke_dashes.css(2) %> }
     </style>
     <path id="path-a" d="M <%= chain_a %> Z" />
-    <circle id="path-b" cx="0" cy="0" r="<%= r2 %>" />
+    <circle id="path-b" cx="0" cy="0" r="<%= r_circle %>" />
   </defs>
   <use xlink:href="#path-b" class="b bottom white" />
   <use xlink:href="#path-b" class="b bottom" />

@@ -7,19 +7,20 @@ thickness = 20
 r = 150
 n = 3
 s = symmetry(n)
+sqrt3 = Math.sqrt(3)
 
 ring = s.map { |angle| p(0, -r).rotate2d(angle) }
 ring.unshift(ring[-1])
 
-r1 = (r*0.5*Math.sqrt(3)).round(3)
-chain_a = ring.map(&:to2d_s).join(" A #{r1} #{r1} 0 0 0 ")
+r_ring = (r*0.5*sqrt3).round(3)
+chain_a = ring.map(&:to2d_s).join(" A #{r_ring} #{r_ring} 0 0 0 ")
 
-sixth = r1*Math::PI/6
+sixth = r_ring*Math::PI/6
 stroke_dashes = StrokeDash.new(-sixth,2*sixth,4*sixth)
 
-r2 = (r*0.25*(Math.sqrt(3) + 1)).round(3)
-half = r2 * Math::PI
-stroke_dashes_circle = StrokeDash.new(-0.5*half,half/3,half/3)
+r_circle = (r*0.25*(sqrt3 + 1)).round(3)
+half = r_circle * Math::PI
+stroke_dashes_circle = StrokeDash.new(-0.5*half, half/3, half/3)
 
 page_intro("Tri Knot")
 
@@ -37,7 +38,7 @@ page_intro("Tri Knot")
       .b.top.white { <%= stroke_dashes_circle.css(2) %> }
     </style>
     <path id="path-a" d="M <%= chain_a %> Z" />
-    <circle id="path-b" cx="0" cy="0" r="<%= r2 %>" />
+    <circle id="path-b" cx="0" cy="0" r="<%= r_circle %>" />
   </defs>
   <use xlink:href="#path-b" class="b bottom white" />
   <use xlink:href="#path-b" class="b bottom" />
