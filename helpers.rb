@@ -50,7 +50,7 @@ class Matrix
   end
 
   def to2d_s(precision=3)
-    "#{x.round(precision)} #{y.round(precision)}"
+    "#{'%g' % x.round(precision)} #{'%g' % y.round(precision)}"
   end
 
 end
