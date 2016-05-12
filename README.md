@@ -49,6 +49,6 @@ complex trigonometric calculations but in the end it allowed me to
 algorithmically create whole knots including overlaps instead of just the paths.
 You should check them out:
 
-* [Generic Knot (n=6)](http://bxt.github.io/Nazareth-Knot/generic.html)
-* [Tri Knot](http://bxt.github.io/Nazareth-Knot/tri.html)
-* [TriCircle Knot](http://bxt.github.io/Nazareth-Knot/tricircle.html)
+* [Generic Knot (n=6)](http://bxt.github.io/Nazareth-Knot/more/generic.html)
+* [Tri Knot](http://bxt.github.io/Nazareth-Knot/more/tri.html)
+* [TriCircle Knot](http://bxt.github.io/Nazareth-Knot/more/tricircle.html)
