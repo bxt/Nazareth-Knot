@@ -28,7 +28,7 @@ l1 = r*Math.tan(angle/2)*Math.cos(angle) # mid to intersection
 l2 = thickness/2/Math.tan(angle2) # star overhead
 l3 = (thickness*Math.tan(angle2) + thickness/Math.cos(angle2))/2 # intersection overhead
 l4 = (l0-l1-l2-l3)/2 # half free room
-stroke_dashes = StrokeDash.new(*([-l2-l4, l4+l3+l1, l0+l2+l4].map{ |x| x.round(3) }))
+stroke_dashes = StrokeDash.new(-l2-l4, l4+l3+l1, l0+l2+l4)
 
 page_intro("Generic Knot n=#{n}")
 
