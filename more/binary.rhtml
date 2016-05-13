@@ -1,0 +1,25 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+thickness = 20
+n = 10
+
+radii = (0..n).map{ |i| (i + 0.5)*thickness }
+
+page_intro("Binary")
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      .a, .b { stroke-width: <%= thickness + 0.1 %>px; fill: none; }
+      .a { stroke: #000; }
+      .b { stroke: #900; }
+    </style>
+  </defs>
+  <% radii.each.with_index do |r, i| %>
+    <circle class="a" style="<%= StrokeDash.new(0, r*2*Math::PI/(2**i)).css(0, 5) %>" cx="0" cy="0" r="<%= r %>" />
+  <% end %>
+</svg>
