@@ -61,13 +61,13 @@ class StrokeDash
     @steps = steps
   end
 
-  def css(shrink_by=0)
-    css_properties(@steps.map.with_index{ |a, i| a + (i.odd? ? 1 : -1)*shrink_by }, @offset - shrink_by/2)
+  def css(shrink_by=0, precision=3)
+    css_properties(@steps.map.with_index{ |a, i| a + (i.odd? ? 1 : -1)*shrink_by }, @offset - shrink_by/2, precision)
   end
 
   private
 
-  def css_properties(array, offset, precision=3)
+  def css_properties(array, offset, precision)
     result = "stroke-dasharray: #{array.map{ |a| '%g' % a.round(precision) }.join(',')};"
     result += " stroke-dashoffset: #{'%g' % offset.round(precision)};" unless offset == 0
     result
