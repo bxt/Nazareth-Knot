@@ -1,0 +1,38 @@
+<%
+
+require_relative '../helpers.rb'
+
+colors = ["f90","408","090"] #,"09f","900","009","480","f09","90f"]
+
+size = 500
+r1 = 100
+r2 = 200
+n = colors.length
+r3 = (r1 + r2)*0.5
+angle = 2*Math::PI/n
+
+chain = [p(-r1, 0).to2d_s, "A #{r3} #{r3} 0 0 1", p(r2, 0).to2d_s,
+  "A #{r2} #{r2} 0 0 1", p(r2, 0).rotate2d(angle).to2d_s, "A #{r3} #{r3} 0 0 0",
+  p(-r1, 0).rotate2d(angle).to2d_s, "A #{r1} #{r1} 0 0 0", p(-r1, 0).to2d_s].join
+
+page_intro("Colorcircle")
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <% colors.each.with_index do |color, i| %>
+      <radialGradient id="gradient<%= i %>" cx="0.5" cy="0.5" r="0.5" fx="0.75" fy="0.1">
+        <stop offset="0%" stop-color="<%= darken_color(color, 1) %>"/>
+        <stop offset="60%" stop-color="<%= darken_color(color, 0.96) %>"/>
+        <stop offset="100%" stop-color="<%= darken_color(color, 0.8) %>"/>
+      </linearGradient>
+    <% end %>
+    <style>
+      .form { stroke: none; }
+    </style>
+    <path id="the-form" d="M <%= chain %> Z" />
+  </defs>
+  <% n.times.each do |i| %>
+    <use xlink:href="#the-form" class="form" fill="url(#gradient<%= i %>)" transform="rotate(<%= '%g' % (i*360/n.to_f) %>)" />
+  <% end %>
+</svg>

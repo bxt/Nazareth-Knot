@@ -1,0 +1,51 @@
+<title>Colorcircle</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Colorcircle</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+  <defs>
+    
+      <radialGradient id="gradient0" cx="0.5" cy="0.5" r="0.5" fx="0.75" fy="0.1">
+        <stop offset="0%" stop-color="#ff9900"/>
+        <stop offset="60%" stop-color="#f59300"/>
+        <stop offset="100%" stop-color="#cc7a00"/>
+      </linearGradient>
+    
+      <radialGradient id="gradient1" cx="0.5" cy="0.5" r="0.5" fx="0.75" fy="0.1">
+        <stop offset="0%" stop-color="#440088"/>
+        <stop offset="60%" stop-color="#410083"/>
+        <stop offset="100%" stop-color="#36006d"/>
+      </linearGradient>
+    
+      <radialGradient id="gradient2" cx="0.5" cy="0.5" r="0.5" fx="0.75" fy="0.1">
+        <stop offset="0%" stop-color="#009900"/>
+        <stop offset="60%" stop-color="#009300"/>
+        <stop offset="100%" stop-color="#007a00"/>
+      </linearGradient>
+    
+    <style>
+      .form { stroke: none; }
+    </style>
+    <path id="the-form" d="M -100 0A 150.0 150.0 0 0 1200 0A 200 200 0 0 1-100 173.205A 150.0 150.0 0 0 050 -86.603A 100 100 0 0 0-100 0 Z" />
+  </defs>
+  
+    <use xlink:href="#the-form" class="form" fill="url(#gradient0)" transform="rotate(0)" />
+  
+    <use xlink:href="#the-form" class="form" fill="url(#gradient1)" transform="rotate(120)" />
+  
+    <use xlink:href="#the-form" class="form" fill="url(#gradient2)" transform="rotate(240)" />
+  
+</svg>
