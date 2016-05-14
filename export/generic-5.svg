@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+  <defs>
+    <style>
+      .top, .bottom { stroke-width: 40px; fill: none; }
+      .a { stroke: #8ED8B9; }
+      .white { stroke-width: 45px; fill: none; stroke: #fff; }
+      .a.top { stroke-dasharray: 71.155,214.162; stroke-dashoffset: -71.504; }
+      .a.top.white { stroke-dasharray: 69.155,216.162; stroke-dashoffset: -72.504; }
+    </style>
+    <path id="path-a" d="M 0 -150 L 88.168 121.353 L -142.658 -46.353 L 142.658 -46.353 L -88.168 121.353 Z" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
+</svg>
