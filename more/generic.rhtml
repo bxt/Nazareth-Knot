@@ -28,10 +28,11 @@ mid_to_intersection = r*Math.tan(angle/2)*Math.cos(angle)
 star_overhead = thickness/2/Math.tan(star_angle)
 intersection_overhead = (thickness*Math.tan(star_angle) + thickness/Math.cos(star_angle))/2
 half_free_room = (half_arm-mid_to_intersection-star_overhead-intersection_overhead)/2
-stroke_dashes = StrokeDash.new(
-  -star_overhead-half_free_room,
-  half_free_room+intersection_overhead+mid_to_intersection,
-  half_arm+star_overhead+half_free_room)
+
+stroke_offset = -star_overhead - half_free_room
+stroke_filled = half_free_room + intersection_overhead + mid_to_intersection
+stroke_empty  = half_arm + star_overhead + half_free_room
+stroke_dashes = StrokeDash.new(stroke_offset, stroke_filled, stroke_empty)
 
 page_intro("Generic Knot n=#{n}")
 
