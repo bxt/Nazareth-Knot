@@ -102,3 +102,19 @@ def page_intro(title, theme=:white)
     </div>
   HTML
 end
+
+def darken_color(hex_color, amount)
+  transform_color(hex_color) do |rgb|
+    rgb.map { |c| c * amount }
+  end
+end
+
+def transform_color(hex_color)
+  rgb_in = if m = hex_color.match(/#?(\h\h)(\h\h)(\h\h)/)
+    m.to_a.drop(1).map(&:hex)
+  elsif m = hex_color.match(/#?(\h\h\h)/)
+    m[1].chars.map{ |c| (c + c).hex }
+  end
+  rgb_out = yield(rgb_in)
+  "#%02x%02x%02x" % rgb_out.map(&:round)
+end
