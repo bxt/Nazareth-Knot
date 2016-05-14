@@ -1,0 +1,33 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+r1 = 100 # 0
+r2 = 200 # 500
+n = 10
+r3 = (r1 + r2)*0.5
+angle = 2*Math::PI/n
+
+chain = [p(-r1, 0).to2d_s, "A #{r3} #{r3} 0 0 1", p(r2, 0).to2d_s,
+  "A #{r2} #{r2} 0 0 1", p(r2, 0).rotate2d(angle/2).to2d_s, "A #{r3} #{r3} 0 0 0",
+  p(-r1, 0).rotate2d(angle/2).to2d_s, "A #{r1} #{r1} 0 0 0", p(-r1, 0).to2d_s].join
+
+page_intro("Wheel")
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      .form { stroke: none; }
+      g { animation:spin 8s linear infinite; fill: #f00; }
+      @keyframes spin { 50% { fill: #fa0; } 100% { transform:rotate(-360deg); } }
+    </style>
+    <path id="the-form" d="M <%= chain %> Z" />
+  </defs>
+  <g>
+    <% n.times.each do |i| %>
+      <use xlink:href="#the-form" class="form" transform="rotate(<%= '%g' % (i*360/n.to_f) %>)" />
+    <% end %>
+  </g>
+</svg>
