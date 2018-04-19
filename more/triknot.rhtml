@@ -9,15 +9,13 @@ FAC_CN = 0.5
 size = 500
 thickness = 40
 r = 80
-n = 3
-s = symmetry(n)
-angle = s[1]
-
+N = 3
+s = symmetry(N)
 ring = s.map { |angle| p(0, -r).rotate2d(angle) }
 
 def spreads(x)
   point, next_point = x
-  a1 = (-150/180.0)*Math::PI # next -> outer around p
+  a1 = -(1 - (N-2)/(2.0*N)) * Math::PI # next -> outer around p
   a2 = (-60/180.0)*Math::PI
   outer = next_point.rotate2d(a1, point)
   mid = avg([point, outer])
