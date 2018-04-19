@@ -2,52 +2,76 @@
 
 require_relative '../helpers.rb'
 
+FAC_HZ = 0.1
+FAC_SP = 0.1
+FAC_CN = 0.5
+
 size = 500
-thickness = 5 # 30
-r = 150
+thickness = 40
+r = 80
 n = 3
-a1 = (45/180.0)*Math::PI
-w_120ma1 = (120/180.0)*Math::PI - a1
 s = symmetry(n)
 angle = s[1]
-star_angle = (0.5 - 2.0/n)*Math::PI # ???
 
 ring = s.map { |angle| p(0, -r).rotate2d(angle) }
 
-triplets = (ring + ring.take(2)).each_cons(3).to_a
+def spreads(x)
+  point, next_point = x
+  a1 = (-150/180.0)*Math::PI # next -> outer around p
+  a2 = (-60/180.0)*Math::PI
+  outer = next_point.rotate2d(a1, point)
+  mid = avg([point, outer])
+  t1 = outer.rotate2d(a2, point)
+  t2 = outer.rotate2d(-a2, point)
+  hz1 = (1-FAC_HZ)*t1 + FAC_HZ*mid
+  hz2 = (1-FAC_HZ)*t2 + FAC_HZ*mid
+  o1inner = FAC_SP*outer + (1-FAC_SP)/2*point + (1-FAC_SP)/2*t1
+  o2inner = FAC_SP*outer + 0.4*point + (1-FAC_SP)/2*t2
+  o1outer = (1-FAC_SP)/2*outer + FAC_SP*point + (1-FAC_SP)/2*t1
+  o2outer = (1-FAC_SP)/2*outer + FAC_SP*point + (1-FAC_SP)/2*t2
+  counter1 = o2inner.rotate2d(Math::PI, point)*(1-FAC_CN) + point*FAC_CN
+  counter2 = o1inner.rotate2d(Math::PI, point)*(1-FAC_CN) + point*FAC_CN
+  {
+    point: point,
+    mid: mid,
+    outer: outer,
+    hz1: hz1,
+    hz2: hz2,
+    o1inner: o1inner,
+    o2inner: o2inner,
+    o1outer: o1outer,
+    o2outer: o2outer,
+    counter1: counter1,
+    counter2: counter2,
+  }
+end
+
+spreads = (ring + ring.take(1)).each_cons(2).map(&method(:spreads))
+
+triplets = (spreads + spreads.take(2)).each_cons(3).to_a
 
 ordered_triplets = triplets.each_with_index.sort_by do |x, i|
   i.odd? ? 1 : 0
 end.map(&:first)
 
 chain = ordered_triplets.map do |triplet|
-  a, b, c = triplet
-  d, e = triplet.each_cons(2).map(&method(:avg))
-  r1 = a.distance2d(d)/2/Math.sin(a1)
-  r2 = e.distance2d(d)/2/Math.sin(w_120ma1)
+  s = triplet.map do |spread|
+    spread.map do |k, p|
+      [k, p.to2d_s]
+    end.to_h
+  end
   [
-    a.to2d_s,
-    "A #{r1} #{r1} 0 0 0",
-    d.to2d_s,
-    "A #{r2} #{r2} 0 1 1",
-    e.to2d_s,
-    "A #{r1} #{r1} 0 0 0",
-    c.to2d_s,
+    s[0][:outer],
+    "C #{s[0][:o1outer]} #{s[0][:o1inner]} #{s[0][:point]}",
+    #"L #{s[1][:mid]}",
+    "C #{s[0][:counter2]} #{s[1][:hz1]} #{s[1][:mid]}",
+    "C #{s[1][:hz2]} #{s[2][:counter1]} #{s[2][:point]}",
+    "C #{s[2][:o2inner]} #{s[2][:o2outer]} #{s[2][:outer]}",
   ].join(' ')
 end.join(' L ')
 
 
-# Trigonometry FTW!
-half_arm = r*Math.sin(angle)
-mid_to_intersection = r*Math.tan(angle/2)*Math.cos(angle)
-star_overhead = thickness/2/Math.tan(star_angle)
-intersection_overhead = (thickness*Math.tan(star_angle) + thickness/Math.cos(star_angle))/2
-half_free_room = (half_arm-mid_to_intersection-star_overhead-intersection_overhead)/2
-
-stroke_offset = -star_overhead - half_free_room
-stroke_filled = half_free_room + intersection_overhead + mid_to_intersection
-stroke_empty  = half_arm + star_overhead + half_free_room
-stroke_dashes = StrokeDash.new(stroke_offset, stroke_filled, stroke_empty)
+stroke_dashes = StrokeDash.new(-30,102,71,98,96,96,98,71,162)
 
 page_intro("Triknot", :white, 'April 2018')
 
