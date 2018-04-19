@@ -1,0 +1,71 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+thickness = 5 # 30
+r = 150
+n = 3
+a1 = (45/180.0)*Math::PI
+w_120ma1 = (120/180.0)*Math::PI - a1
+s = symmetry(n)
+angle = s[1]
+star_angle = (0.5 - 2.0/n)*Math::PI # ???
+
+ring = s.map { |angle| p(0, -r).rotate2d(angle) }
+
+triplets = (ring + ring.take(2)).each_cons(3).to_a
+
+ordered_triplets = triplets.each_with_index.sort_by do |x, i|
+  i.odd? ? 1 : 0
+end.map(&:first)
+
+chain = ordered_triplets.map do |triplet|
+  a, b, c = triplet
+  d, e = triplet.each_cons(2).map(&method(:avg))
+  r1 = a.distance2d(d)/2/Math.sin(a1)
+  r2 = e.distance2d(d)/2/Math.sin(w_120ma1)
+  [
+    a.to2d_s,
+    "A #{r1} #{r1} 0 0 0",
+    d.to2d_s,
+    "A #{r2} #{r2} 0 1 1",
+    e.to2d_s,
+    "A #{r1} #{r1} 0 0 0",
+    c.to2d_s,
+  ].join(' ')
+end.join(' L ')
+
+
+# Trigonometry FTW!
+half_arm = r*Math.sin(angle)
+mid_to_intersection = r*Math.tan(angle/2)*Math.cos(angle)
+star_overhead = thickness/2/Math.tan(star_angle)
+intersection_overhead = (thickness*Math.tan(star_angle) + thickness/Math.cos(star_angle))/2
+half_free_room = (half_arm-mid_to_intersection-star_overhead-intersection_overhead)/2
+
+stroke_offset = -star_overhead - half_free_room
+stroke_filled = half_free_room + intersection_overhead + mid_to_intersection
+stroke_empty  = half_arm + star_overhead + half_free_room
+stroke_dashes = StrokeDash.new(stroke_offset, stroke_filled, stroke_empty)
+
+page_intro("Triknot", :white, 'April 2018')
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a { stroke: #8ED8B9; }
+      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+      .a.top { <%= stroke_dashes.css %> }
+      .a.top.white { <%= stroke_dashes.css(2) %> }
+    </style>
+    <path id="path-a" d="M <%= chain %> Z" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
+</svg>

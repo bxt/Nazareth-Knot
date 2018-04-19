@@ -1,0 +1,34 @@
+<title>Triknot</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Triknot</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, April 2018.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+  <defs>
+    <style>
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: 5px; fill: none; }
+      .a { stroke: #8ED8B9; }
+      .white { stroke-width: 10px; fill: none; stroke: #fff; }
+      .a.top { stroke-dasharray: 2.454,257.354; stroke-dashoffset: -127.45; }
+      .a.top.white { stroke-dasharray: 0.454,259.354; stroke-dashoffset: -128.45; }
+    </style>
+    <path id="path-a" d="M 0 -150 A 91.85586535436919 91.85586535436919 0 0 0 64.952 -37.5 A 67.24316041260404 67.24316041260404 0 1 1 0 75 A 91.85586535436919 91.85586535436919 0 0 0 -129.904 75 L -129.904 75 A 91.85586535436919 91.85586535436919 0 0 0 -64.952 -37.5 A 67.24316041260403 67.24316041260403 0 1 1 64.952 -37.5 A 91.85586535436919 91.85586535436919 0 0 0 129.904 75 L 129.904 75 A 91.85586535436919 91.85586535436919 0 0 0 0 75 A 67.24316041260403 67.24316041260403 0 1 1 -64.952 -37.5 A 91.85586535436919 91.85586535436919 0 0 0 0 -150 Z" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
+</svg>
