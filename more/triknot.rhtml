@@ -7,11 +7,12 @@ FAC_SP = 0.1
 FAC_CN = 0.5
 
 size = 500
+yOffset = 50
 thickness = 40
 r = 80
 N = 3
 s = symmetry(N)
-ring = s.map { |angle| p(0, -r).rotate2d(angle) }
+ring = s.map { |angle| p(0, -r).rotate2d(angle).tranlsate2d(p(0, yOffset)) }
 
 def spreads(x)
   point, next_point = x
@@ -61,7 +62,6 @@ chain = ordered_triplets.map do |triplet|
   [
     s[0][:outer],
     "C #{s[0][:o1outer]} #{s[0][:o1inner]} #{s[0][:point]}",
-    #"L #{s[1][:mid]}",
     "C #{s[0][:counter2]} #{s[1][:hz1]} #{s[1][:mid]}",
     "C #{s[1][:hz2]} #{s[2][:counter1]} #{s[2][:point]}",
     "C #{s[2][:o2inner]} #{s[2][:o2outer]} #{s[2][:outer]}",
@@ -77,10 +77,12 @@ page_intro("Triknot", :white, 'April 2018')
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
     <style>
+      body { background: #000; }
       /* .bottom { opacity: 0.6; } */
       .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
-      .a { stroke: #8ED8B9; }
-      .white { stroke-width: <%= thickness+5 %>px; fill: none; stroke: #fff; }
+      .a { stroke: #000; }
+      .white { stroke-width: <%= thickness+10 %>px; fill: none; stroke: #fa0; animation:pulse 1s linear infinite; }
+      @keyframes pulse { 50% { stroke: #100; } }
       .a.top { <%= stroke_dashes.css %> }
       .a.top.white { <%= stroke_dashes.css(2) %> }
     </style>
