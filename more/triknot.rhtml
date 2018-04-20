@@ -27,7 +27,7 @@ def spreads(x)
   hz1 = (1-FAC_HZ)*t1 + FAC_HZ*mid
   hz2 = (1-FAC_HZ)*t2 + FAC_HZ*mid
   o1inner = FAC_SP*outer + (1-FAC_SP)/2*point + (1-FAC_SP)/2*t1
-  o2inner = FAC_SP*outer + 0.4*point + (1-FAC_SP)/2*t2
+  o2inner = FAC_SP*outer + (1-FAC_SP)/2*point + (1-FAC_SP)/2*t2
   o1outer = (1-FAC_SP)/2*outer + FAC_SP*point + (1-FAC_SP)/2*t1
   o2outer = (1-FAC_SP)/2*outer + FAC_SP*point + (1-FAC_SP)/2*t2
   counter1 = o2inner.rotate2d(Math::PI, point)*(1-FAC_CN) + point*FAC_CN
