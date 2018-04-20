@@ -13,6 +13,14 @@ class Matrix
     Matrix[ [1, 0, x], [0, 1, y], [0, 0, 1] ]
   end
 
+  def self.reflection2d(r)
+    Matrix[ [Math.cos(2*r), Math.sin(2*r), 0], [Math.sin(2*r), -Math.cos(2*r), 0], [0, 0, 1] ]
+  end
+
+  def self.reflection2dp(p1, p2)
+    p1.to_tranlsation2d*reflection2d(p1.angle2d(p2))*(-p1).to_tranlsation2d
+  end
+
   def self.scale2d(factor)
     Matrix[ [factor, 0, 0], [0, factor, 0], [0, 0, 1] ]
   end
@@ -47,6 +55,11 @@ class Matrix
 
   def distance2d(other)
     (self-other).column(0).magnitude
+  end
+
+  def angle2d(other)
+    diff = (other-self)
+    Math.atan2(diff.y, diff.x)
   end
 
   def to2d_s(precision=3)
