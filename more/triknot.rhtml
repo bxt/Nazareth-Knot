@@ -66,6 +66,7 @@ chain = ordered_triplets.map do |triplet|
   ].join(' ')
 end.join(' L ')
 
+chain.gsub!(/ (-?[0-9.]+ -?[0-9.]+) L \1 /, ' \1 ')
 
 stroke_dashes = StrokeDash.new(-30,102,71,98,96,96,98,71,162)
 
