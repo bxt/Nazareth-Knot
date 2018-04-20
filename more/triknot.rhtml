@@ -16,25 +16,28 @@ N = 3
 s = symmetry(N)
 ring = s.map { |angle| p(0, -r).rotate2d(angle).tranlsate2d(p(0, yOffset)) }
 
-class Spread < Struct.new(:point, :mid, :outer, :hz1, :hz2, :o1inner, :o2inner, :o1outer, :o2outer, :counter1, :counter2)
-  def initialize(x)
-    point, next_point = x
+class Spread < Struct.new(:point, :mid, :outer, :hz1, :o1inner, :o1outer, :counter2, :hz2, :o2inner, :o2outer, :counter1)
+  def initialize(arg)
+    point, next_point = arg
+
+    next_to_outer = -(1 - (N-2)/(2.0*N)) * Math::PI
+    triangle_angle = (-1/3.0)*Math::PI
     fac_sp_2 = (1-FAC_SP)/2
-    a1 = -(1 - (N-2)/(2.0*N)) * Math::PI # next -> outer around p
-    a2 = (-60/180.0)*Math::PI
-    outer = next_point.rotate2d(a1, point)
+
+    outer = next_point.rotate2d(next_to_outer, point)
     mid = avg([point, outer])
-    t1 = outer.rotate2d(a2, point)
-    t2 = outer.rotate2d(-a2, point)
-    hz1 = (1-FAC_HZ)*t1 + FAC_HZ*mid
-    hz2 = (1-FAC_HZ)*t2 + FAC_HZ*mid
-    o1inner = FAC_SP*outer + fac_sp_2*point + fac_sp_2*t1
-    o2inner = FAC_SP*outer + fac_sp_2*point + fac_sp_2*t2
-    o1outer = fac_sp_2*outer + FAC_SP*point + fac_sp_2*t1
-    o2outer = fac_sp_2*outer + FAC_SP*point + fac_sp_2*t2
-    counter1 = o2inner.rotate2d(Math::PI, point)*(1-FAC_CN) + point*FAC_CN
-    counter2 = o1inner.rotate2d(Math::PI, point)*(1-FAC_CN) + point*FAC_CN
-    super(point, mid, outer, hz1, hz2, o1inner, o2inner, o1outer, o2outer, counter1, counter2)
+
+    triangle = outer.rotate2d(triangle_angle, point)
+    horizontal = (1-FAC_HZ)*triangle + FAC_HZ*mid
+    o_inner = FAC_SP*outer + fac_sp_2*point + fac_sp_2*triangle
+    o_outer = fac_sp_2*outer + FAC_SP*point + fac_sp_2*triangle
+    counter = o_inner.rotate2d(Math::PI, point)*(1 - FAC_CN) + point*FAC_CN
+
+    orignal = [horizontal, o_inner, o_outer, counter]
+    reflection = Matrix.reflection2dp(outer, point)
+    reflected = orignal.map { |p| reflection*p }
+
+    super(point, mid, outer, *orignal, *reflected)
   end
 
   def to_2d_s_h
