@@ -43,7 +43,7 @@ Author: [Bernhard Häussner](http://bernhardhaeussner.de).
 
 # Even More Knots
 
-Since I already build the tools, I created even more knot. Also I started
+Since I already build the tools, I created even more knots. Also I started
 calulating the `stroke-dasharray`s instead of just guessing them. I used some
 complex trigonometric calculations but in the end it allowed me to
 algorithmically create whole knots including overlaps instead of just the paths.
@@ -52,3 +52,10 @@ You should check them out:
 * [Generic Knot (n=6)](http://bxt.github.io/Nazareth-Knot/more/generic.html)
 * [Tri Knot](http://bxt.github.io/Nazareth-Knot/more/tri.html)
 * [TriCircle Knot](http://bxt.github.io/Nazareth-Knot/more/tricircle.html)
+
+And for fun I created even more stuff:
+
+* [Binary circle](http://bxt.github.io/Nazareth-Knot/more/binary.html)
+* [Color circle](http://bxt.github.io/Nazareth-Knot/more/colorcircle.html)
+* [TriKnot](http://bxt.github.io/Nazareth-Knot/more/triknot.html)
+* [Wheel](http://bxt.github.io/Nazareth-Knot/more/wheel.html)
