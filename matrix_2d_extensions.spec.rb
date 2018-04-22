@@ -1,4 +1,4 @@
-require './helpers'
+require './matrix_2d_extensions'
 
 EPS = 0.000001
 
@@ -41,7 +41,8 @@ describe 'Matrix' do
       expect(p(0,0).angle2d(p(0,-1))).to(eq(-Math::PI/2))
       expect(p(0,0).angle2d(p(0,-4))).to(eq(-Math::PI/2))
       expect(p(0,3).angle2d(p(0,-4))).to(eq(-Math::PI/2))
-      expect(p(10.45,3.45).angle2d(p(10.45,-4.45))).to(eq(-Math::PI/2))
+      expect(p(10.45,3.45).angle2d(p(10.45,-4.45))).to(eq(-
+        Math::PI/2))
 
       expect(p(0,0).angle2d(p(1,1))).to(be_within(EPS).of(Math::PI/4))
       expect(p(0,0).angle2d(p(4,4))).to(be_within(EPS).of(Math::PI/4))
