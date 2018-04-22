@@ -6,7 +6,7 @@ RSpec::Matchers.define :be_like_really_close_to do |expected|
   match do |actual|
     actual.row_count == expected.row_count &&
     actual.column_count == expected.column_count &&
-    (actual-expected).each.reduce(&:+) < EPS
+    (actual-expected).each.reduce(&:+).abs < EPS
   end
 end
 
