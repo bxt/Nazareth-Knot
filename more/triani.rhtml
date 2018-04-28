@@ -91,7 +91,7 @@ end
     <style>
       .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
       .a { stroke: #627; }
-      .white { stroke-width: <%= thickness+stroke %>px; fill: none; stroke: #fff; stroke: rgba(255, 0, 0, 0.3); }
+      .white { stroke-width: <%= thickness+stroke %>px; fill: none; stroke: #fff; }
       .top { <%= stroke_dashes.css %> }
       .top.white { <%= stroke_dashes.css(2) %> }
 
@@ -128,6 +128,9 @@ end
         100% { opacity: 0; }
       }
     </style>
+    <filter id="blurMe">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
     <path id="path-a" d="M <%= chain %> Z" />
     <path id="path-b" d="M 15 0 L 0 -5 L 0 5 Z" />
     <mask id="cut-off">
@@ -135,22 +138,22 @@ end
       <use xlink:href="#path-a" class="top" stroke="white" fill="none" />
     </mask>
   </defs>
-  <g style="opacity: 0;">
+  <g>
     <% A_COUNT.times do |i| %>
       <% percentage = i.to_f/A_COUNT %>
       <% delay = '%gs' % (percentage*A_DUR).round(3) %>
-      <% opacity = '%g' % ((percentage*B_COUNT) % 1).round(3) %>
-      <% style = "animation-delay: -#{delay}; opacity: 1;" %>
+      <% opacity = (percentage*B_COUNT) % 1 %>
+      <% style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};" %>
       <use xlink:href="#path-b" class="b path" style="<%= style %>" />
     <% end %>
   </g>
-  <use xlink:href="#path-a" class="top white" />
-  <g ><%# mask="url(#cut-off)" %>
+  <use xlink:href="#path-a" class="top white" filter="url(#blurMe)" />
+  <g>
     <% A_COUNT.times do |i| %>
       <% percentage = i.to_f/A_COUNT %>
       <% delay = '%gs' % (percentage*A_DUR).round(3) %>
-      <% opacity = '%g' % ((percentage*B_COUNT) % 1).round(3) %>
-      <% style = "animation-delay: -#{delay}; opacity: 1;" %>
+      <% opacity = (percentage*B_COUNT) % 1 %>
+      <% style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};" %>
       <use xlink:href="#path-b" class="b path hider" style="<%= style %>" />
     <% end %>
   </g>
