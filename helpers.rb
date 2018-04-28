@@ -50,7 +50,13 @@ end
 
 def darken_color(hex_color, amount)
   transform_color(hex_color) do |rgb|
-    rgb.map { |c| c * amount }
+    rgb.map { |c| c*amount }
+  end
+end
+
+def lighten_color(hex_color, amount)
+  transform_color(hex_color) do |rgb|
+    rgb.map { |c| 255 - (255 - c)*amount }
   end
 end
 

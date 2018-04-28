@@ -75,3 +75,27 @@ describe 'darken_color' do
     end
   end
 end
+
+describe 'lighten_color' do
+  context 'when amount is zero' do
+    it 'transforms everything to white' do
+      expect(lighten_color('#000000', 0)).to eq('#ffffff')
+      expect(lighten_color('#123456', 0)).to eq('#ffffff')
+      expect(lighten_color('#ffffff', 0)).to eq('#ffffff')
+    end
+  end
+  context 'when amount is one' do
+    it 'keeps the color unchanged' do
+      expect(lighten_color('#000000', 1)).to eq('#000000')
+      expect(lighten_color('#123456', 1)).to eq('#123456')
+      expect(lighten_color('#ffffff', 1)).to eq('#ffffff')
+    end
+  end
+  context 'when amount is 0.5' do
+    it 'returns the color in between the input and white' do
+      expect(lighten_color('#000000', 0.5)).to eq('#808080')
+      expect(lighten_color('#123456', 0.5)).to eq('#899aab')
+      expect(lighten_color('#ffffff', 0.5)).to eq('#ffffff')
+    end
+  end
+end
