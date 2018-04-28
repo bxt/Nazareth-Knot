@@ -18,12 +18,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
   <defs>
     <style>
-      .a {
-        fill: #627;
-      }
+      .top, .bottom { stroke-width: 40px; fill: none; }
+      .a { stroke: #627; }
+      .white { stroke-width: 50px; fill: none; stroke: #fff; }
+      .top { stroke-dasharray: 102,71,98,96,96,98,71,162; stroke-dashoffset: -30; }
+      .top.white { stroke-dasharray: 100,73,96,98,94,100,69,164; stroke-dashoffset: -31; }
 
-      .white {
-        fill: #fff;
+      .b {
+        fill: #627;
       }
 
       .path {
@@ -36,2808 +38,2418 @@
         to { offset-distance: 100%; }
       }
     </style>
-    <path id="path-a" d="M 15 0 L 0 -5 L 0 5 Z" />
-    <path id="path-b" d="M 20 -10 L 0 -10 L 0 10 L 20 10 Z" />
+    <path id="path-a" d="M 0 -168.564 C -54 -123.531 -54 -75.033 0 -30 C 27 -7.483 183.282 31.11 129.282 124.641 C 75.282 218.172 -36.282 102.124 -69.282 90 C -135.282 65.751 -177.282 90 -189.282 159.282 C -123.282 183.531 -81.282 159.282 -69.282 90 C -63.282 55.359 -108 -99.282 0 -99.282 C 108 -99.282 63.282 55.359 69.282 90 C 81.282 159.282 123.282 183.531 189.282 159.282 C 177.282 90 135.282 65.751 69.282 90 C 36.282 102.124 -75.282 218.172 -129.282 124.641 C -183.282 31.11 -27 -7.483 0 -30 C 54 -75.033 54 -123.531 0 -168.564 Z" />
+    <path id="path-b" d="M 15 0 L 0 -5 L 0 5 Z" />
+    <mask id="cut-off">
+      <rect id="bg" x="-250" y="-250" width="500" height="500" fill="black"/>
+      <use xlink:href="#path-a" class="top" stroke="white" fill="none" />
+    </mask>
   </defs>
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0.15s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0.3s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0.45s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0.6s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0.75s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -0.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -0.9s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.05s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.2s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.35s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.5s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.65s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.8s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -1.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -1.95s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -2.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -2.1s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -2.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -2.25s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -2.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -2.4s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -2.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -2.55s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -2.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -2.7s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -2.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -2.85s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3.15s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3.3s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3.45s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3.6s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3.75s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -3.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -3.9s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.05s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.2s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.35s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.5s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.65s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.8s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -4.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -4.95s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -5.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -5.1s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -5.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -5.25s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -5.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -5.4s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -5.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -5.55s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -5.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -5.7s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -5.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -5.85s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6.15s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6.3s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6.45s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6.6s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6.75s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -6.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -6.9s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.05s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.2s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.35s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.5s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.65s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.8s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -7.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -7.95s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -8.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -8.1s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -8.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -8.25s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -8.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -8.4s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -8.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -8.55s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -8.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -8.7s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -8.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -8.85s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9.15s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9.3s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9.45s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9.6s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9.75s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -9.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -9.9s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.05s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.2s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.35s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.5s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.65s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.8s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -10.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -10.95s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -11.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -11.1s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -11.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -11.25s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -11.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -11.4s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -11.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -11.55s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -11.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -11.7s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -11.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -11.85s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12.15s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12.3s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12.45s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12.6s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12.75s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -12.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -12.9s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.05s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.2s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.35s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.5s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.65s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.8s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -13.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -13.95s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -14.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -14.1s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -14.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -14.25s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -14.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -14.4s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -14.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -14.55s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -14.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -14.7s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -14.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -14.85s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15.15s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15.3s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15.45s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15.6s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15.75s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -15.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -15.9s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.05s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.2s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.35s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.5s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.65s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.8s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -16.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -16.95s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -17.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -17.1s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -17.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -17.25s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -17.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -17.4s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -17.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -17.55s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -17.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -17.7s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -17.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -17.85s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18.15s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18.3s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18.45s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18.6s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18.75s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -18.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -18.9s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.05s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.2s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.35s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.5s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.65s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.8s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -19.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -19.95s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -20.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -20.1s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -20.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -20.25s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -20.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -20.4s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -20.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -20.55s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -20.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -20.7s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -20.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -20.85s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21.15s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21.3s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21.45s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21.6s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21.75s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -21.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -21.9s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.05s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.2s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.35s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.5s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.65s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.8s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -22.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -22.95s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -23.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -23.1s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -23.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -23.25s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -23.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -23.4s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -23.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -23.55s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -23.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -23.7s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -23.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -23.85s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24.15s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24.3s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24.45s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24.6s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24.75s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -24.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -24.9s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.05s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.2s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.35s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.5s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.65s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.8s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -25.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -25.95s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -26.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -26.1s; opacity: 0.88;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -26.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -26.25s; opacity: 0;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -26.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -26.4s; opacity: 0.12;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -26.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -26.55s; opacity: 0.24;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -26.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -26.7s; opacity: 0.36;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -26.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -26.85s; opacity: 0.48;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27s; opacity: 0.6;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27.15s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27.15s; opacity: 0.72;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27.3s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27.3s; opacity: 0.84;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27.45s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27.45s; opacity: 0.96;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27.6s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27.6s; opacity: 0.08;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27.75s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27.75s; opacity: 0.2;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -27.9s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -27.9s; opacity: 0.32;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.05s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.05s; opacity: 0.44;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.2s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.2s; opacity: 0.56;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.35s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.35s; opacity: 0.68;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.5s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.5s; opacity: 0.8;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.65s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.65s; opacity: 0.92;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.8s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.8s; opacity: 0.04;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -28.95s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -28.95s; opacity: 0.16;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -29.1s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -29.1s; opacity: 0.28;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -29.25s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -29.25s; opacity: 0.4;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -29.4s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -29.4s; opacity: 0.52;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -29.55s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -29.55s; opacity: 0.64;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -29.7s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -29.7s; opacity: 0.76;"
-    />
-  
-    
-    
-    
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -29.85s;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -29.85s; opacity: 0.88;"
-    />
-  
+  <g>
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.15s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.3s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.45s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.6s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.75s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.9s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.05s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.2s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.35s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.5s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.65s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.8s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.95s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.1s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.25s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.4s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.55s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.7s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.85s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.15s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.3s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.45s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.6s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.75s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.9s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.05s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.2s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.35s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.5s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.65s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.8s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.95s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.1s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.25s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.4s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.55s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.7s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.85s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.15s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.3s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.45s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.6s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.75s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.9s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.05s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.2s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.35s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.5s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.65s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.8s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.95s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.1s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.25s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.4s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.55s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.7s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.85s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.15s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.3s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.45s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.6s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.75s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.9s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.05s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.2s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.35s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.5s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.65s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.8s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.95s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.1s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.25s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.4s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.55s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.7s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.85s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.15s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.3s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.45s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.6s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.75s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.9s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.05s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.2s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.35s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.5s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.65s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.8s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.95s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.1s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.25s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.4s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.55s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.7s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.85s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.15s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.3s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.45s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.6s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.75s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.9s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.05s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.2s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.35s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.5s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.65s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.8s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.95s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.1s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.25s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.4s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.55s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.7s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.85s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.15s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.3s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.45s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.6s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.75s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.9s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.05s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.2s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.35s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.5s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.65s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.8s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.95s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.1s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.25s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.4s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.55s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.7s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.85s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.15s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.3s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.45s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.6s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.75s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.9s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.05s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.2s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.35s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.5s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.65s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.8s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.95s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.1s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.25s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.4s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.55s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.7s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.85s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.15s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.3s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.45s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.6s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.75s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.9s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.05s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.2s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.35s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.5s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.65s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.8s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.95s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.1s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.25s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.4s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.55s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.7s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.85s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.15s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.3s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.45s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.6s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.75s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.9s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.05s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.2s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.35s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.5s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.65s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.8s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.95s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.1s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.25s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.4s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.55s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.7s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.85s; opacity: 0.88;" />
+    
+  </g>
+  <use xlink:href="#path-a" class="top white" />
+  <g mask="url(#cut-off)">
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.15s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.3s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.45s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.6s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.75s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -0.9s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.05s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.2s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.35s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.5s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.65s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.8s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -1.95s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.1s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.25s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.4s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.55s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.7s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -2.85s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.15s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.3s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.45s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.6s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.75s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -3.9s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.05s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.2s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.35s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.5s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.65s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.8s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -4.95s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.1s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.25s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.4s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.55s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.7s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -5.85s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.15s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.3s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.45s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.6s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.75s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -6.9s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.05s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.2s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.35s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.5s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.65s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.8s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -7.95s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.1s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.25s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.4s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.55s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.7s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -8.85s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.15s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.3s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.45s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.6s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.75s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -9.9s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.05s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.2s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.35s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.5s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.65s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.8s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -10.95s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.1s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.25s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.4s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.55s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.7s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -11.85s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.15s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.3s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.45s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.6s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.75s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -12.9s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.05s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.2s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.35s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.5s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.65s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.8s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -13.95s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.1s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.25s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.4s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.55s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.7s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -14.85s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.15s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.3s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.45s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.6s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.75s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -15.9s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.05s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.2s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.35s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.5s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.65s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.8s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -16.95s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.1s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.25s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.4s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.55s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.7s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -17.85s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.15s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.3s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.45s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.6s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.75s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -18.9s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.05s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.2s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.35s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.5s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.65s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.8s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -19.95s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.1s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.25s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.4s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.55s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.7s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -20.85s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.15s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.3s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.45s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.6s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.75s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -21.9s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.05s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.2s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.35s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.5s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.65s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.8s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -22.95s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.1s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.25s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.4s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.55s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.7s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -23.85s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.15s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.3s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.45s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.6s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.75s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -24.9s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.05s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.2s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.35s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.5s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.65s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.8s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -25.95s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.1s; opacity: 0.88;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.25s; opacity: 0;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.4s; opacity: 0.12;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.55s; opacity: 0.24;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.7s; opacity: 0.36;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -26.85s; opacity: 0.48;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27s; opacity: 0.6;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.15s; opacity: 0.72;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.3s; opacity: 0.84;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.45s; opacity: 0.96;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.6s; opacity: 0.08;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.75s; opacity: 0.2;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -27.9s; opacity: 0.32;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.05s; opacity: 0.44;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.2s; opacity: 0.56;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.35s; opacity: 0.68;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.5s; opacity: 0.8;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.65s; opacity: 0.92;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.8s; opacity: 0.04;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -28.95s; opacity: 0.16;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.1s; opacity: 0.28;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.25s; opacity: 0.4;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.4s; opacity: 0.52;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.55s; opacity: 0.64;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.7s; opacity: 0.76;" />
+    
+      
+      
+      
+      
+      <use xlink:href="#path-b" class="b path" style="animation-delay: -29.85s; opacity: 0.88;" />
+    
+  </g>
 </svg>

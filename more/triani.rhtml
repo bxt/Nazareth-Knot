@@ -69,6 +69,8 @@ end.join(' L ')
 
 chain.gsub!(/ (-?[0-9.]+ -?[0-9.]+) L \1 /, ' \1 ')
 
+stroke_dashes = StrokeDash.new(-30,102,71,98,96,96,98,71,162)
+
 page_intro("Triani", :white, 'May 2018')
 
 A_COUNT = 200
@@ -79,12 +81,14 @@ A_DUR = 30
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
     <style>
-      .a {
-        fill: #627;
-      }
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
+      .a { stroke: #627; }
+      .white { stroke-width: <%= thickness+stroke %>px; fill: none; stroke: #fff; }
+      .top { <%= stroke_dashes.css %> }
+      .top.white { <%= stroke_dashes.css(2) %> }
 
-      .white {
-        fill: #fff;
+      .b {
+        fill: #627;
       }
 
       .path {
@@ -97,22 +101,30 @@ A_DUR = 30
         to { offset-distance: 100%; }
       }
     </style>
-    <path id="path-a" d="M 15 0 L 0 -5 L 0 5 Z" />
-    <path id="path-b" d="M 20 -10 L 0 -10 L 0 10 L 20 10 Z" />
+    <path id="path-a" d="M <%= chain %> Z" />
+    <path id="path-b" d="M 15 0 L 0 -5 L 0 5 Z" />
+    <mask id="cut-off">
+      <rect id="bg" x="<%= -size/2 %>" y="<%= -size/2 %>" width="<%= size %>" height="<%= size %>" fill="black"/>
+      <use xlink:href="#path-a" class="top" stroke="white" fill="none" />
+    </mask>
   </defs>
-  <% A_COUNT.times do |i| %>
-    <% percentage = i.to_f/A_COUNT %>
-    <% delay = '%gs' % (percentage*A_DUR).round(3) %>
-    <% opacity = '%g' % ((percentage*B_COUNT) % 1).round(3) %>
-    <use
-      xlink:href="#path-b"
-      class="white path"
-      style="animation-delay: -<%= delay %>;"
-    />
-    <use
-      xlink:href="#path-a"
-      class="a path"
-      style="animation-delay: -<%= delay %>; opacity: <%= opacity %>;"
-    />
-  <% end %>
+  <g>
+    <% A_COUNT.times do |i| %>
+      <% percentage = i.to_f/A_COUNT %>
+      <% delay = '%gs' % (percentage*A_DUR).round(3) %>
+      <% opacity = '%g' % ((percentage*B_COUNT) % 1).round(3) %>
+      <% style = "animation-delay: -#{delay}; opacity: #{opacity};" %>
+      <use xlink:href="#path-b" class="b path" style="<%= style %>" />
+    <% end %>
+  </g>
+  <use xlink:href="#path-a" class="top white" />
+  <g mask="url(#cut-off)">
+    <% A_COUNT.times do |i| %>
+      <% percentage = i.to_f/A_COUNT %>
+      <% delay = '%gs' % (percentage*A_DUR).round(3) %>
+      <% opacity = '%g' % ((percentage*B_COUNT) % 1).round(3) %>
+      <% style = "animation-delay: -#{delay}; opacity: #{opacity};" %>
+      <use xlink:href="#path-b" class="b path" style="<%= style %>" />
+    <% end %>
+  </g>
 </svg>
