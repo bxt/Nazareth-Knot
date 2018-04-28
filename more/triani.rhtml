@@ -89,14 +89,11 @@ end
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
     <style>
-      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
-      .a { stroke: #627; }
-      .white { stroke-width: <%= thickness+stroke %>px; fill: none; stroke: #fff; }
-      .top { <%= stroke_dashes.css %> }
-      .top.white { <%= stroke_dashes.css(2) %> }
-
-      .b {
-        fill: #627;
+      .white {
+        stroke-width: <%= thickness+stroke %>px;
+        fill: none;
+        stroke: #fff;
+        <%= stroke_dashes.css(2) %>
       }
 
       .path {
@@ -115,12 +112,15 @@ end
 
       @keyframes hideani {
         0% { opacity: 1; }
-        <% STROKE_MULTIPLIER.times do |stroke| %>
-          <% stroke_percentage = stroke.to_f/STROKE_MULTIPLIER %>
-          <% cumsum(stroke_dasharray).each_with_index do |dash, index| %>
-            <% flag = (index+1) % 2 %>
-            <% galf = 1 - flag %>
-            <% percentage = dash.to_f/stroke_dasharray.sum/STROKE_MULTIPLIER + stroke_percentage - stroke_dashaoffset.to_f/stroke_dasharray.sum/STROKE_MULTIPLIER %>
+        <% STROKE_MULTIPLIER.times do |stroke|
+          stroke_percentage = stroke.to_f/STROKE_MULTIPLIER
+          offset_percentage = stroke_dashaoffset.to_f/stroke_dasharray.sum/STROKE_MULTIPLIER
+          cumsum(stroke_dasharray).each_with_index do |dash, index|
+            flag = (index+1) % 2
+            galf = 1 - flag
+            dash_percentage = dash.to_f/stroke_dasharray.sum/STROKE_MULTIPLIER
+            percentage = dash_percentage + stroke_percentage - offset_percentage
+          %>
             <%= '%g' % ((percentage*100 - 0.25 - 0.5*galf).round(2)) %>% { opacity: <%= flag %>; }
             <%= '%g' % ((percentage*100 + 0.25 - 0.5*galf).round(2)) %>% { opacity: <%= galf %>; }
           <% end %>
@@ -133,28 +133,20 @@ end
     </filter>
     <path id="path-a" d="M <%= chain %> Z" />
     <path id="path-b" d="M 15 0 L 0 -5 L 0 5 Z" />
-    <mask id="cut-off">
-      <rect id="bg" x="<%= -size/2 %>" y="<%= -size/2 %>" width="<%= size %>" height="<%= size %>" fill="black"/>
-      <use xlink:href="#path-a" class="top" stroke="white" fill="none" />
-    </mask>
   </defs>
-  <g>
-    <% A_COUNT.times do |i| %>
-      <% percentage = i.to_f/A_COUNT %>
-      <% delay = '%gs' % (percentage*A_DUR).round(3) %>
-      <% opacity = (percentage*B_COUNT) % 1 %>
-      <% style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};" %>
-      <use xlink:href="#path-b" class="b path" style="<%= style %>" />
+  <% 2.times do |k| %>
+    <% if k == 1 %>
+      <use xlink:href="#path-a" class="white" filter="url(#blurMe)" />
     <% end %>
-  </g>
-  <use xlink:href="#path-a" class="top white" filter="url(#blurMe)" />
-  <g>
-    <% A_COUNT.times do |i| %>
-      <% percentage = i.to_f/A_COUNT %>
-      <% delay = '%gs' % (percentage*A_DUR).round(3) %>
-      <% opacity = (percentage*B_COUNT) % 1 %>
-      <% style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};" %>
-      <use xlink:href="#path-b" class="b path hider" style="<%= style %>" />
-    <% end %>
-  </g>
+    <g>
+      <% A_COUNT.times do |i|
+        percentage = i.to_f/A_COUNT
+        delay = '%gs' % (percentage*A_DUR).round(3)
+        opacity = (percentage*B_COUNT) % 1
+        style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};"
+      %>
+        <use xlink:href="#path-b" class="path<%= k == 1 ? ' hider' : '' %>" style="<%= style %>" />
+      <% end %>
+    </g>
+  <% end %>
 </svg>
