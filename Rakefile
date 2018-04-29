@@ -12,3 +12,16 @@ task html: source_files.ext(".html")
 rule ".html" => ".rhtml" do |t|
   sh "erb #{t.source} &> #{t.name}"
 end
+
+
+begin
+  require 'rspec/core/rake_task'
+
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.pattern = "**{,/*/**}/*_spec.rb"
+  end
+
+  task default: %w[spec html]
+rescue LoadError
+  # no rspec available
+end
