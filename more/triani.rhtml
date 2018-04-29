@@ -29,6 +29,24 @@ particles = A_COUNT.times.map do |i|
   [opacity, style]
 end.sort.map { |x,y| y }
 
+hideani_fmt = '%g%% { opacity: %d; }'
+offset_percentage = triknot.stroke_dashaoffset.to_f/triknot.stroke_dasharray.sum/STROKE_MULTIPLIER
+
+hideani_steps = STROKE_MULTIPLIER.times.flat_map do |stroke|
+  stroke_percentage = stroke.to_f/STROKE_MULTIPLIER
+  cumsum(triknot.stroke_dasharray).each_with_index.flat_map do |dash, index|
+    flag = (index+1) % 2
+    galf = 1 - flag
+    dash_percentage = dash.to_f/triknot.stroke_dasharray.sum/STROKE_MULTIPLIER
+    percentage = dash_percentage + stroke_percentage - offset_percentage
+    adjusted_percentage = percentage*100 - 0.5*galf
+    [
+      hideani_fmt % [(adjusted_percentage - 0.25).round(2), flag],
+      hideani_fmt % [(adjusted_percentage + 0.25).round(2), galf],
+    ]
+  end
+end[0...-2]
+
 %>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
@@ -56,19 +74,7 @@ end.sort.map { |x,y| y }
 
       @keyframes hideani {
         0% { opacity: 1; }
-        <% STROKE_MULTIPLIER.times do |stroke|
-          stroke_percentage = stroke.to_f/STROKE_MULTIPLIER
-          offset_percentage = triknot.stroke_dashaoffset.to_f/triknot.stroke_dasharray.sum/STROKE_MULTIPLIER
-          cumsum(triknot.stroke_dasharray).each_with_index do |dash, index|
-            flag = (index+1) % 2
-            galf = 1 - flag
-            dash_percentage = dash.to_f/triknot.stroke_dasharray.sum/STROKE_MULTIPLIER
-            percentage = dash_percentage + stroke_percentage - offset_percentage
-          %>
-            <%= '%g' % ((percentage*100 - 0.25 - 0.5*galf).round(2)) %>% { opacity: <%= flag %>; }
-            <%= '%g' % ((percentage*100 + 0.25 - 0.5*galf).round(2)) %>% { opacity: <%= galf %>; }
-          <% end %>
-        <% end %>
+        <%= hideani_steps.join("\n" + ' ' * 8) %>
         100% { opacity: 0; }
       }
     </style>
@@ -79,7 +85,7 @@ end.sort.map { |x,y| y }
     <path id="path-b" d="M 15 0 L 0 -5 L 0 5 Z" />
   </defs>
   <% 2.times do |k| %>
-    <% if k == 1 %>
+    <% unless k.zero? %>
       <use xlink:href="#path-a" class="white" filter="url(#blurMe)" />
     <% end %>
     <g>
