@@ -10,6 +10,17 @@ RSpec::Matchers.define :be_like_really_close_to do |expected|
   end
 end
 
+points = [
+  p(0,0),
+  p(1,2),
+  p(-4234,-223423),
+  p(231,-123),
+  p(-213,345),
+  p(234.789,68.4456),
+]
+
+scalars = [0, 1, -1, -1324, 5768, 0.5, 0.001, 345.6745, -245.4352]
+
 describe 'p' do
   it 'creates matrices like [[x, y, 0]]' do
     expect(p(0,0)).to(be_like_really_close_to(Matrix[[0], [0], [1]]))
@@ -190,9 +201,11 @@ describe 'Matrix' do
   end
 
   describe '.scale2d' do
-    [0, 0.5, 6, 49056.3634].each do |factor|
-      it "returns a scale matrix for factor #{factor}" do
-        expect(Matrix.scale2d(factor)).to(be_like_really_close_to(Matrix[[factor, 0, 0],[0, factor, 0],[0, 0, 1]]))
+    context "returns a scale matrix" do
+      scalars.each do |factor|
+        it "for factor #{factor}" do
+          expect(Matrix.scale2d(factor)).to(be_like_really_close_to(Matrix[[factor, 0, 0],[0, factor, 0],[0, 0, 1]]))
+        end
       end
     end
 
@@ -213,44 +226,174 @@ describe 'Matrix' do
   end
 
   describe '#x' do
-    xit '' do
-      raise 'TODO'
+    it 'returns back the first argument to p' do
+      scalars.each do |x|
+        scalars.each do |y|
+          expect(p(x,y).x).to(be_within(EPS).of(x))
+        end
+      end
     end
   end
 
   describe '#y' do
-    xit '' do
-      raise 'TODO'
+    it 'returns back the second argument to p' do
+      scalars.each do |x|
+        scalars.each do |y|
+          expect(p(x,y).y).to(be_within(EPS).of(y))
+        end
+      end
     end
   end
 
   describe '#to_tranlsation2d' do
-    xit '' do
-      raise 'TODO'
+    it 'returns the indentity matrix for p(0, 0)' do
+      expect(p(0, 0).to_tranlsation2d).to(be_like_really_close_to(Matrix.identity(3)))
+    end
+    it 'returns a translation matrix' do
+      expect(p(3, 4).to_tranlsation2d).to(be_like_really_close_to(Matrix[[1, 0, 0],[0, 1, 0],[3, 4, 1]]))
     end
   end
 
   describe '#tranlsate2d' do
-    xit '' do
-      raise 'TODO'
+    it 'basically sums up points' do
+      expect(p(0, 0).tranlsate2d(p(0, 0))).to(be_like_really_close_to(p(0, 0)))
+      expect(p(3, 2).tranlsate2d(p(7, 11))).to(be_like_really_close_to(p(10, 13)))
+      expect(p(-435.905, 543.43).tranlsate2d(p(345.43, -487.456))).to(be_like_really_close_to(p(-90.475, 55.974)))
     end
   end
 
   describe '#rotate2d' do
-    xit '' do
-      raise 'TODO'
+    context "without center" do
+      context 'rotation by 0 is identity' do
+        points.each do |point|
+          it "for #{point}" do
+            expect(point.rotate2d(0)).to(be_like_really_close_to(point))
+          end
+        end
+      end
+      context 'p(0,0) is not changed' do
+        scalars.each do |angle|
+          it "for #{angle}" do
+            expect(p(0, 0).rotate2d(angle)).to(be_like_really_close_to(p(0, 0)))
+          end
+        end
+      end
+      it 'rotates correctly' do
+        expect(p(3, 4).rotate2d(Math::PI)).to(be_like_really_close_to(p(-3, -4)))
+      end
+    end
+    context "with center" do
+      points.each do |center|
+        context "set to #{center}" do
+          context 'rotation by 0 is identity' do
+            points.each do |point|
+              it "for #{point}" do
+                expect(point.rotate2d(0, center)).to(be_like_really_close_to(point))
+              end
+            end
+          end
+          context 'rotation around itself is identity' do
+            points.each do |point|
+              context "for point #{point}" do
+                scalars.each do |angle|
+                  it "for #{angle}" do
+                    expect(point.rotate2d(angle, point)).to(be_like_really_close_to(point))
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+    it 'rotates correctly' do
+      expect(p(3, 4).rotate2d(Math::PI, p(7, 9))).to(be_like_really_close_to(p(11, 14)))
+      expect(p(2, 1).rotate2d(Math::PI/6.0, p(1, 1))).to(be_like_really_close_to(p(Math.sqrt(3)/2 + 1, 1.5)))
     end
   end
 
   describe '#scale2d' do
-    xit '' do
-      raise 'TODO'
+    context "without center" do
+      context 'scaling by 0 leads to p(0, 0)' do
+        points.each do |point|
+          it "for #{point}" do
+            expect(point.scale2d(0)).to(be_like_really_close_to(p(0, 0)))
+          end
+        end
+      end
+      context 'scaling by 1 is identity' do
+        points.each do |point|
+          it "for #{point}" do
+            expect(point.scale2d(1)).to(be_like_really_close_to(point))
+          end
+        end
+      end
+      context 'p(0, 0) is not changed' do
+        scalars.each do |factor|
+          it "for #{factor}" do
+            expect(p(0, 0).scale2d(factor)).to(be_like_really_close_to(p(0, 0)))
+          end
+        end
+      end
+      it 'scales up points, duh' do
+        expect(p(3, 2).scale2d(2)).to(be_like_really_close_to(p(6, 4)))
+        expect(p(3, 2).scale2d(0.5)).to(be_like_really_close_to(p(1.5, 1)))
+      end
+    end
+    context "with center" do
+      points.each do |center|
+        context "set to #{center}" do
+          context "scaling by 0 leads to center" do
+            points.each do |point|
+              it "for #{point}" do
+                expect(point.scale2d(0, center)).to(be_like_really_close_to(center))
+              end
+            end
+          end
+          context 'scaling by 1 is identity' do
+            points.each do |point|
+              it "for #{point}" do
+                expect(point.scale2d(1, center)).to(be_like_really_close_to(point))
+              end
+            end
+          end
+          context 'center is not changed' do
+            scalars.each do |factor|
+              it "for #{factor}" do
+                expect(center.scale2d(factor, center)).to(be_like_really_close_to(center))
+              end
+            end
+          end
+        end
+      end
+      it 'scales up points, duh' do
+        expect(p(0, 0).scale2d(3, p(1,1))).to(be_like_really_close_to(p(-2, -2)))
+        expect(p(3, 2).scale2d(2, p(0, 0))).to(be_like_really_close_to(p(6, 4)))
+        expect(p(3, 2).scale2d(0.5, p(9, 9))).to(be_like_really_close_to(p(6, 5.5)))
+      end
     end
   end
 
   describe '#distance2d' do
-    xit '' do
-      raise 'TODO'
+    it 'returns the disctance betweend two points' do
+      expect(p(0, 0).distance2d(p(1, 0))).to(be_within(EPS).of(1))
+      expect(p(0, 0).distance2d(p(0, 1))).to(be_within(EPS).of(1))
+      expect(p(0, 0).distance2d(p(-1, 0))).to(be_within(EPS).of(1))
+      expect(p(0, 0).distance2d(p(0, -1))).to(be_within(EPS).of(1))
+      expect(p(0, 0).distance2d(p(3, 4))).to(be_within(EPS).of(5))
+      expect(p(0, 0).distance2d(p(-3, 4))).to(be_within(EPS).of(5))
+      expect(p(0, 0).distance2d(p(3, -4))).to(be_within(EPS).of(5))
+      expect(p(0, 0).distance2d(p(-3, -4))).to(be_within(EPS).of(5))
+      expect(p(3, 2).distance2d(p(6, 6))).to(be_within(EPS).of(5))
+      expect(p(3, 2).distance2d(p(7, 5))).to(be_within(EPS).of(5))
+      expect(p(3, 2).distance2d(p(-1, -1))).to(be_within(EPS).of(5))
+    end
+    context 'distance to itself is 0' do
+      points.each do |point|
+        it "for #{point}" do
+          expect(point.distance2d(point)).to(be_within(EPS).of(0))
+        end
+      end
     end
   end
 end
