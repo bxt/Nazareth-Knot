@@ -1,0 +1,97 @@
+<%
+
+require_relative '../helpers.rb'
+require_relative './triknot.rb'
+
+size = 500
+
+triknot = Triknot.new
+
+stroke_dashes = StrokeDash.new(triknot.stroke_dashaoffset, *triknot.stroke_dasharray)
+
+page_intro("Triani orange", :black, 'May 2018')
+
+A_COUNT = 180
+B_COUNT = 60
+A_DUR = 30
+
+STROKE_MULTIPLIER = 3
+
+def cumsum(a)
+  a.inject([]) { |x, y| x + [(x.last || 0) + y] }
+end
+
+particles = A_COUNT.times.map do |i|
+  percentage = i.to_f/A_COUNT
+  delay = '%gs' % (percentage*A_DUR).round(3)
+  opacity = (percentage*B_COUNT) % 1
+  style = "animation-delay: -#{delay}; fill: #{darken_color('#f60', opacity)};"
+  [opacity, style]
+end.sort.map { |x,y| y }
+
+hideani_fmt = '%g%% { opacity: %d; }'
+offset_percentage = triknot.stroke_dashaoffset.to_f/triknot.stroke_dasharray.sum/STROKE_MULTIPLIER
+
+hideani_steps = STROKE_MULTIPLIER.times.flat_map do |stroke|
+  stroke_percentage = stroke.to_f/STROKE_MULTIPLIER
+  cumsum(triknot.stroke_dasharray).each_with_index.flat_map do |dash, index|
+    flag = (index+1) % 2
+    galf = 1 - flag
+    dash_percentage = dash.to_f/triknot.stroke_dasharray.sum/STROKE_MULTIPLIER
+    percentage = dash_percentage + stroke_percentage - offset_percentage
+    adjusted_percentage = percentage*100 - 0.5*galf
+    [
+      hideani_fmt % [(adjusted_percentage - 0.25).round(2), flag],
+      hideani_fmt % [(adjusted_percentage + 0.25).round(2), galf],
+    ]
+  end
+end[0...-2]
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      .white {
+        stroke-width: 30px;
+        fill: none;
+        stroke: #000;
+        <%= stroke_dashes.css(2) %>
+      }
+
+      .path {
+        offset-path: path('<%= triknot.chain %>');
+        animation: runani <%= A_DUR %>s linear infinite;
+      }
+
+      .hider {
+        animation: hideani <%= A_DUR %>s linear infinite, runani <%= A_DUR %>s linear infinite;
+      }
+
+      @keyframes runani {
+        0% { offset-distance: 0; }
+        to { offset-distance: 100%; }
+      }
+
+      @keyframes hideani {
+        0% { opacity: 1; }
+        <%= hideani_steps.join("\n" + ' ' * 8) %>
+        100% { opacity: 0; }
+      }
+    </style>
+    <filter id="blurMe">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+    <path id="path-a" d="<%= triknot.chain %>" />
+    <path id="path-b" d="M 15 0 L 0 -5 L 0 5 Z" />
+  </defs>
+  <% 2.times do |k| %>
+    <% unless k.zero? %>
+      <use xlink:href="#path-a" class="white" filter="url(#blurMe)" />
+    <% end %>
+    <g>
+      <% particles.each do |style| %>
+        <use xlink:href="#path-b" class="path<%= k == 1 ? ' hider' : '' %>" style="<%= style %>" />
+      <% end %>
+    </g>
+  <% end %>
+</svg>
