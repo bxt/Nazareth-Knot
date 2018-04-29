@@ -21,6 +21,14 @@ def cumsum(a)
   a.inject([]) { |x, y| x + [(x.last || 0) + y] }
 end
 
+particles = A_COUNT.times.map do |i|
+  percentage = i.to_f/A_COUNT
+  delay = '%gs' % (percentage*A_DUR).round(3)
+  opacity = (percentage*B_COUNT) % 1
+  style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};"
+  [opacity, style]
+end.sort.map { |x,y| y }
+
 %>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
@@ -75,12 +83,7 @@ end
       <use xlink:href="#path-a" class="white" filter="url(#blurMe)" />
     <% end %>
     <g>
-      <% A_COUNT.times do |i|
-        percentage = i.to_f/A_COUNT
-        delay = '%gs' % (percentage*A_DUR).round(3)
-        opacity = (percentage*B_COUNT) % 1
-        style = "animation-delay: -#{delay}; fill: #{lighten_color('#627', opacity)};"
-      %>
+      <% particles.each do |style| %>
         <use xlink:href="#path-b" class="path<%= k == 1 ? ' hider' : '' %>" style="<%= style %>" />
       <% end %>
     </g>
