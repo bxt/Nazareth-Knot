@@ -59,3 +59,5 @@ And for fun I created even more stuff:
 * [Color circle](http://bxt.github.io/Nazareth-Knot/more/colorcircle.html)
 * [TriKnot](http://bxt.github.io/Nazareth-Knot/more/triknot.html)
 * [Wheel](http://bxt.github.io/Nazareth-Knot/more/wheel.html)
+* [TriAni](http://bxt.github.io/Nazareth-Knot/more/triani.html)
+* [TriAni (orange variation)](http://bxt.github.io/Nazareth-Knot/more/triani_orange.html)
