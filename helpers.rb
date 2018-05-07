@@ -27,7 +27,8 @@ def avg(xs)
   xs.reduce(&:+) / xs.length.to_f
 end
 
-def page_intro(title, theme=:white, date='May 2016')
+def page_intro(title, theme=:white, date='May 2016', path)
+  gh = path ? "/blob/gh-pages/#{path}" : ''
   puts <<-HTML.gsub(/^ {4}/, '')
     <title>#{title}</title>
     <meta charset="UTF-8">
@@ -43,7 +44,7 @@ def page_intro(title, theme=:white, date='May 2016')
     </style>
     <div id="content">
     <h1>#{title}</h1>
-    <p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, #{date}.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+    <p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, #{date}.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot#{gh}">GitHub</a>.</p>
     </div>
   HTML
 end

@@ -1,0 +1,77 @@
+<title>Tanzhaus NRW #btconf</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Tanzhaus NRW #btconf</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2018.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot/blob/gh-pages/more/tanzhausnrw.rhtml">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+  <defs>
+    <style>
+      .form { stroke: none; fill: #999; }
+      .rot { animation: spin 8s linear infinite;  }
+      .even { animation: spineven 8s linear infinite; }
+      @keyframes spin { to { transform:rotate(-360deg); } }
+      @keyframes spineven { 0% { transform:rotate(90deg); } to { transform:rotate(450deg); } }
+    </style>
+  </defs>
+  
+    
+    <g class="rot even" style="transform-origin: 0 -126.0px;">
+      <circle
+        cx="-30"
+        cy="-126.0"
+        r="30"
+        class="form"
+      />
+      <circle
+        cx="30"
+        cy="-126.0"
+        r="30"
+        class="form"
+      />
+    </g>
+  
+    
+    <g class="rot odd" style="transform-origin: 0 -42.0px;">
+      <circle
+        cx="-30"
+        cy="-42.0"
+        r="30"
+        class="form"
+      />
+      <circle
+        cx="30"
+        cy="-42.0"
+        r="30"
+        class="form"
+      />
+    </g>
+  
+    
+    <g class="rot even" style="transform-origin: 0 42.0px;">
+      <circle
+        cx="-30"
+        cy="42.0"
+        r="30"
+        class="form"
+      />
+      <circle
+        cx="30"
+        cy="42.0"
+        r="30"
+        class="form"
+      />
+    </g>
+  
+</svg>
