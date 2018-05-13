@@ -61,3 +61,4 @@ And for fun I created even more stuff:
 * [Wheel](http://bxt.github.io/Nazareth-Knot/more/wheel.html)
 * [TriAni](http://bxt.github.io/Nazareth-Knot/more/triani.html)
 * [TriAni (orange variation)](http://bxt.github.io/Nazareth-Knot/more/triani_orange.html)
+* [BernAni](http://bxt.github.io/Nazareth-Knot/more/bernani.html)

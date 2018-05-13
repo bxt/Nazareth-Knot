@@ -1,0 +1,1235 @@
+<title>Bernani</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #000; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Bernani</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot/blob/gh-pages/May 2018">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-75 -75 150 150" id="knot">
+  <defs>
+    <style>
+
+      .path {
+        offset-path: path('m -51.084954,-29.510428 0,26.3984249 16.16015,0 c 6.44,0 9.51953,-2.31898 9.51953,-6.9589799 0,-3.4 -2.04062,-5.80125 -6.64062,-6.28125 l 0,-0.0391 c 4.08,-0.559995 5.96094,-2.920075 5.96094,-6.080075 0,-4.68 -3.20086,-6.99906 -9.88086,-7.03906 l -15.11914,0 z m 28.20312,0 0,26.3984249 22.40039016,0 0,-6.83984 -13.08008016,0 0,-3.1191399 10.1601602,0 0,-6.320305 -10.1601602,0 0,-3.2793 12.59961016,0 0,-6.83984 -21.91992016,0 z m 25.0781302,0 0,26.3984249 9.1191388,0 0,-8.7597599 2.56054,0 4.67969,8.7597599 10.1211,0 -6.24024,-9.7597599 c 3.16,-1.32 4.75977,-3.918825 4.75977,-7.798825 0,-5.88 -3.63969,-8.83985 -10.67969,-8.83984 l -14.3203088,0 z m 28.2031188,0 0,26.3984249 8.08008,0 0,-9.7988299 -0.16016,-5.441395 0.0801,0 1.43945,3.240225 6.32032,11.9999999 10.08008,0 0,-26.3984249 -8.08008,0 0,9.79882 0.16015,5.439455 -0.0801,0 -1.43946,-3.199215 -6.32031,-12.03906 -10.08008,0 z m -72.564449,6.39843 4.08008,0 c 1.68,0 2.48047,0.63992 2.48047,1.91992 0,1.28 -0.80047,1.91993 -2.48047,1.91993 l -4.08008,0 0,-3.83985 z m 53.480469,0.24024 3.32031,0 c 2.36,0 3.24023,0.6814 3.24023,2.4414 0,1.8 -0.88023,2.43946 -3.24023,2.43946 l -3.32031,0 0,-4.88086 z m -53.480469,9.839835 4.75976,0 c 1.68,0 2.48047,0.64086 2.48047,1.88086 0,1.3199999 -0.80047,1.9589799 -2.48047,1.9589799 l -4.75976,0 0,-3.8398399 z m -8.91992,12.19140993 0,26.39843007 9.32031,0 0,-9.83984 7.24023,0 0,9.83984 9.32032,0 0,-26.39843007 -9.32032,0 0,9.71874997 -7.24023,0 0,-9.71874997 -9.32031,0 z m 36.08203,0 -8.56055,26.39843007 9.28125,0 1.23828,-5.03906 7.1211002,0 1.19921,5.03906 9.519539,0 -8.599609,-26.39843007 -11.1992202,0 z m 21.4179692,0 0,26.39843007 9.1191398,0 0,-8.75976 2.56054,0 4.67969,8.75976 10.1211,0 -6.24024,-9.75976 c 3.16,-1.32 4.75977,-3.91883 4.75977,-7.7988301 0,-5.88 -3.63969,-8.83983997 -10.67969,-8.83983997 l -14.3203098,0 z m 28.2031198,0 0,26.39843007 12.95899,0 c 8.28,0 12.52148,-4.79921 12.52148,-13.19921 0,-8.4000001 -4.24148,-13.19922007 -12.52148,-13.19922007 l -12.95899,0 z m -19.08398,6.63866997 3.32031,0 c 2.36,0 3.24023,0.67945 3.24023,2.43945 0,1.8000001 -0.88023,2.4414101 -3.24023,2.4414101 l -3.32031,0 0,-4.8808601 z m 28.40429,0 2.32032,0 c 3.44,0 4.31836,2.04055 4.31836,6.5605501 0,4.52 -0.87836,6.56054 -4.31836,6.56054 l -2.32032,0 0,-13.1210901 z m -53.4609288,0.12109 0.11914,0 2.12109,8.7988301 -4.3613302,0 1.08008,-4.32031 1.0410202,-4.4785201 z');
+        animation: runani 100s linear infinite;
+      }
+
+      @keyframes runani {
+        0% { offset-distance: 0; }
+        to { offset-distance: 100%; }
+      }
+    </style>
+    <path id="path-b" d="M 2 0 L 0 -0.6 L 0 0.6 Z" />
+  </defs>
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -0s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -1.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -10s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -11.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -13.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -15s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -16.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -18.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -20s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -21.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -23.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -25s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -26.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -28.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -3.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -30s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -31.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -33.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -35s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -36.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -38.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -40s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -41.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -43.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -45s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -46.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -48.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -50s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -53.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -55s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -56.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -58.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -5s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -6.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -60s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -61.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -63.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -65s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -66.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -68.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -70s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -71.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -73.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -75s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -76.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -78.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -8.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -80s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -81.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -83.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -85s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -86.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -88.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -90s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -91.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -93.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -95s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -96.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -98.333s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -51.667s; fill: #332244;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -58.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -61.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -65.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -83.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -86.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -90.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -26.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -28.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -46.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -48.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -51.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -11.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -15.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -16.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -18.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -20.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -21.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -23.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -25.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -6.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -0.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -1.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -3.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -5.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -10.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -8.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -13.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -30.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -31.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -33.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -35.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -36.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -38.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -40.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -41.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -43.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -45.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -50.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -53.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -55.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -56.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -60.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -63.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -66.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -68.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -70.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -71.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -73.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -75.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -76.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -78.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -80.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -81.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -85.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -88.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -91.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -93.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -95.167s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -96.833s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -98.5s; fill: #47293d;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -53.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -57s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -68.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -72s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -75.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -78.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -82s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -93.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -97s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -12s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -13.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -15.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -22s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -23.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -28.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -30.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -32s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -33.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -35.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -37s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -38.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -40.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -42s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -43.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -45.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -47s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -50.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -2s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -0.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -10.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -3.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -5.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -7s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -8.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -17s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -18.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -20.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -25.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -27s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -48.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -52s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -55.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -58.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -60.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -62s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -63.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -65.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -67s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -70.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -73.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -77s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -80.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -83.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -85.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -87s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -88.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -90.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -92s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -95.333s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -98.667s; fill: #5c3036;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -35.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -37.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -38.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -52.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -53.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -57.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -60.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -63.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -67.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -70.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -72.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -73.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -75.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -77.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -78.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -82.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -85.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -88.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -92.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -95.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -97.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -98.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -17.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -18.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -20.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -10.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -3.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -5.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -7.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -8.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -0.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -2.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -12.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -13.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -15.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -22.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -23.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -25.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -27.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -28.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -30.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -32.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -33.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -40.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -42.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -43.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -45.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -47.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -48.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -50.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -55.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -58.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -62.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -65.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -68.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -80.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -83.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -87.167s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -90.5s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -93.833s; fill: #703630;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -24s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -25.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -27.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -29s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -30.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -32.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -42.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -44s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -45.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -47.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -49s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -52.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -55.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -57.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -59s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -60.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -62.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -64s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -65.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -67.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -69s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -70.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -74s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -77.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -80.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -82.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -84s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -85.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -87.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -89s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -90.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -92.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -94s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -95.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -99s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -9s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -4s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -5.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -0.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -2.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -10.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -12.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -14s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -15.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -17.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -19s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -20.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -22.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -7.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -34s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -35.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -37.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -39s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -40.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -50.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -54s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -72.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -75.667s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -79s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -97.333s; fill: #853d29;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -0.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -10.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -12.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -14.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -15.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -17.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -19.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -2.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -20.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -22.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -24.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -27.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -29.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -30.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -32.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -34.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -35.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -37.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -39.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -4.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -40.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -42.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -44.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -45.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -47.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -49.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -5.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -50.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -52.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -54.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -55.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -57.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -59.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -60.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -62.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -64.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -65.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -67.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -69.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -7.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -70.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -72.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -74.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -75.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -77.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -79.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -80.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -82.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -84.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -85.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -87.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -89.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -9.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -90.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -92.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -94.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -95.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -97.5s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -99.167s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -25.833s; fill: #994422;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -71s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -74.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -77.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -96s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -99.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -34.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -36s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -37.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -39.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -41s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -52.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -11s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -14.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -16s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -17.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -19.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -21s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -22.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -6s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -7.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -1s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -2.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -4.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -12.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -9.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -24.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -26s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -27.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -29.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -31s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -32.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -42.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -44.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -46s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -47.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -49.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -51s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -54.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -56s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -57.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -59.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -61s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -62.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -64.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -66s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -67.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -69.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -72.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -76s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -79.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -81s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -82.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -84.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -86s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -87.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -89.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -91s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -92.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -94.333s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -97.667s; fill: #ad4b1b;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -56.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -59.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -62.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -66.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -69.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -81.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -84.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -87.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -91.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -94.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -12.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -14.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -16.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -21.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -22.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -24.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -26.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -27.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -29.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -31.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -32.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -34.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -41.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -42.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -44.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -46.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -47.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -49.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -52.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -4.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -2.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -1.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -11.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -6.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -7.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -9.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -17.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -19.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -36.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -37.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -39.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -51.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -54.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -57.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -61.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -64.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -67.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -71.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -72.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -74.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -76.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -77.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -79.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -82.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -86.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -89.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -92.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -96.167s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -97.833s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -99.5s; fill: #c25214;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -48s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -49.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -51.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -54.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -58s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -59.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -61.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -63s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -64.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -66.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -69.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -73s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -76.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -79.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -83s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -84.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -86.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -88s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -89.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -91.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -94.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -98s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -18s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -19.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -26.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -11.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -3s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -8s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -9.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -1.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -4.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -6.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -13s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -14.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -16.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -21.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -23s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -24.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -28s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -29.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -31.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -33s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -34.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -36.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -38s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -39.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -41.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -43s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -44.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -46.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -53s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -56.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -68s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -71.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -74.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -78s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -81.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -93s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -96.333s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -99.667s; fill: #d6580e;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -24.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -29.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -31.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -33.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -34.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -36.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -38.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -39.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -41.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -43.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -44.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -53.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -54.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -56.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -58.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -61.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -64.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -68.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -69.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -71.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -73.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -74.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -76.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -78.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -79.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -81.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -83.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -86.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -89.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -93.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -94.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -96.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -98.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -99.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -13.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -9.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -1.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -4.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -3.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -11.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -14.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -16.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -18.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -19.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -21.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -23.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -26.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -6.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -8.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -28.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -46.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -48.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -49.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -51.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -59.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -63.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -66.5s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -84.833s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -88.167s; fill: #eb5f07;" />
+  
+    <use xlink:href="#path-b" class="path" style="animation-delay: -91.5s; fill: #eb5f07;" />
+  
+</svg>
