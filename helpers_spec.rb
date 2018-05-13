@@ -99,3 +99,27 @@ describe 'lighten_color' do
     end
   end
 end
+
+describe 'mix_color' do
+  context 'when amount is zero' do
+    it 'returns the second color' do
+      expect(mix_color('#000000', '#ffffff', 0.0)).to eq('#ffffff')
+      expect(mix_color('#ffffff', '#000000', 0.0)).to eq('#000000')
+      expect(mix_color('#123456', '#654321', 0.0)).to eq('#654321')
+    end
+  end
+  context 'when amount is one' do
+    it 'returns the first color' do
+      expect(mix_color('#000000', '#ffffff', 1.0)).to eq('#000000')
+      expect(mix_color('#ffffff', '#000000', 1.0)).to eq('#ffffff')
+      expect(mix_color('#123456', '#654321', 1.0)).to eq('#123456')
+    end
+  end
+  context 'when amount is 0.5' do
+    it 'returns the color in between the two given colors' do
+      expect(mix_color('#000000', '#ffffff', 0.5)).to eq('#808080')
+      expect(mix_color('#ffffff', '#000000', 0.5)).to eq('#808080')
+      expect(mix_color('#123456', '#654321', 0.5)).to eq('#3c3c3c')
+    end
+  end
+end

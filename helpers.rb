@@ -61,6 +61,16 @@ def lighten_color(hex_color, amount)
   end
 end
 
+def mix_color(hex_color_a, hex_color_b, amount)
+  transform_color(hex_color_a) do |rgb_a|
+    transform_color(hex_color_b) do |rgb_b|
+      break rgb_a.zip(rgb_b).map do |a, b|
+        a*(amount) + b*(1 - amount)
+      end
+    end
+  end
+end
+
 def transform_color(hex_color)
   rgb_in = if m = hex_color.match(/#?(\h\h)(\h\h)(\h\h)/)
     m.to_a.drop(1).map(&:hex)
