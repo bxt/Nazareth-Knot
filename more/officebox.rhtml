@@ -1,0 +1,52 @@
+<%
+
+require_relative '../helpers.rb'
+
+thickness = 20
+r = 150
+n = 6
+s = symmetry(n)
+r_small = r * (1/3.0) * (5/6.0)
+
+ring = s.map { |angle| p(0, r).rotate2d(angle) }
+ring_small = s.map { |angle| p(0, r_small).rotate2d(angle) }
+
+ortho = ring[1] + ring[2]
+
+p0 = p(0, 0)
+p1 = ring[0] - ring_small[0]
+p2 = ring[0] - ring_small[0] + ring_small[2]
+p3 = ring_small[1]
+p4 = ring[2] - ring_small[2] + ring_small[0]
+p5 = ring[2] - ring_small[2]
+
+base_chain = [p0, p1, p2, p3, p4, p5].map(&:to2d_s).join(" L ")
+
+page_intro("Officebox")
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
+  <defs>
+    <style>
+      .line { stroke-width: <%= thickness %>px; fill: none; }
+      .a { fill: #f44336; }
+      .b { fill: #ff7c00; }
+      .c { fill: #e91e63; }
+    </style>
+    <path id="le-path" d="M <%= base_chain %> Z" />
+    <g id="all-paths">
+      <use xlink:href="#le-path" class="a" transform="rotate(0)" />
+      <use xlink:href="#le-path" class="b" transform="rotate(120)" />
+      <use xlink:href="#le-path" class="c" transform="rotate(240)" />
+    </g>
+    <pattern id="officebox" x="0" y="0" width="<%= (-ortho.x).round(3) %>" height="<%= r %>" patternUnits="userSpaceOnUse">
+      <use xlink:href="#all-paths" transform="translate(<%= p(0,0).to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (p(0,0) + ring[5]).to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (p(0,0) + ring[4]).to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (p(0,0) + ring[0]).to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (p(0,0) + ring[5] + ring[5]).to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (p(0,0) + ring[5] + ring[4]).to2d_s %>)" />
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#officebox)"></rect>
+</svg>

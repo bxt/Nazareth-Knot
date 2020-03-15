@@ -1,0 +1,42 @@
+<title>Officebox</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Officebox</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
+  <defs>
+    <style>
+      .line { stroke-width: 20px; fill: none; }
+      .a { fill: #f44336; }
+      .b { fill: #ff7c00; }
+      .c { fill: #e91e63; }
+    </style>
+    <path id="le-path" d="M 0 0 L 0 108.333 L -36.084 87.5 L -36.084 20.833 L -93.819 -12.5 L -93.819 -54.167 Z" />
+    <g id="all-paths">
+      <use xlink:href="#le-path" class="a" transform="rotate(0)" />
+      <use xlink:href="#le-path" class="b" transform="rotate(120)" />
+      <use xlink:href="#le-path" class="c" transform="rotate(240)" />
+    </g>
+    <pattern id="officebox" x="0" y="0" width="259.808" height="150" patternUnits="userSpaceOnUse">
+      <use xlink:href="#all-paths" transform="translate(0 0)" />
+      <use xlink:href="#all-paths" transform="translate(129.904 75)" />
+      <use xlink:href="#all-paths" transform="translate(129.904 -75)" />
+      <use xlink:href="#all-paths" transform="translate(0 150)" />
+      <use xlink:href="#all-paths" transform="translate(259.808 150)" />
+      <use xlink:href="#all-paths" transform="translate(259.808 0)" />
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#officebox)"></rect>
+</svg>
