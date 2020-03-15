@@ -27,7 +27,7 @@ def avg(xs)
   xs.reduce(&:+) / xs.length.to_f
 end
 
-def page_intro(title, theme=:white, date='May 2016', path)
+def page_intro(title, theme=:white, date='May 2016', path=nil)
   gh = path ? "/blob/gh-pages/#{path}" : ''
   puts <<-HTML.gsub(/^ {4}/, '')
     <title>#{title}</title>
