@@ -4,7 +4,7 @@ require_relative '../helpers.rb'
 
 sqrt3 = Math.sqrt(3)
 size = 500
-thickness = 25
+thickness = 20
 thicknessDash = 2 / sqrt3 * thickness
 r = 100
 n = 6
@@ -25,7 +25,7 @@ end.join(" ")
 
 stroke_dashes = StrokeDash.new(-0.5*r_inner,1.25*r_inner,1.30*r_inner,0.7*r_inner, 99999)
 
-page_intro("Folded Hex") # , :black)
+page_intro("Folded Hex" , :black)
 
 %>
 <script type="text/javascript" src="https://livejs.com/live.js"></script>
@@ -34,9 +34,9 @@ page_intro("Folded Hex") # , :black)
     <style>
       /* <%= r_inner %> */
       /* .bottom { opacity: 0.6; } */
-      .top, .bottom { stroke-width: <%= thickness - 5 %>px; fill: none; }
+      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
       .a { stroke: #EAB554; }
-      .white { stroke-width: <%= thickness %>px; fill: none; stroke: #000; }
+      .white { stroke-width: <%= thickness + 5 %>px; fill: none; stroke: #000; }
       .a.top { <%= stroke_dashes.css() %> }
       .a.top.white { <%= stroke_dashes.css(4) %> }
     </style>
