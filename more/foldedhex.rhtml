@@ -4,12 +4,12 @@ require_relative '../helpers.rb'
 
 sqrt3 = Math.sqrt(3)
 size = 500
-thickness = 20
+thickness = 30
 thicknessDash = 2 / sqrt3 * thickness
-r = 5 * thicknessDash
+r = 100
 n = 6
 s = symmetry(n)
-r_inner = 3.5 * thicknessDash
+r_inner = 2.0/3 * (r - 2*thicknessDash) + 1.5*thicknessDash
 n_inner = 6
 s_inner = symmetry(n_inner)
 
