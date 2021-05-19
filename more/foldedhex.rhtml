@@ -1,0 +1,47 @@
+<%
+
+require_relative '../helpers.rb'
+
+sqrt3 = Math.sqrt(3)
+size = 500
+thickness = 20
+thicknessDash = 2 / sqrt3 * thickness
+r = 5 * thicknessDash
+n = 6
+s = symmetry(n)
+r_inner = 3.5 * thicknessDash
+n_inner = 6
+s_inner = symmetry(n_inner)
+
+chains = s.map do |angle|
+  mid = p(0, -r).rotate2d(angle)
+
+  ring = s_inner.map { |angle| p(0, -r_inner).rotate2d(angle) }
+
+  chain_a = ring.map{ |p| p.tranlsate2d(mid) }.map(&:to2d_s).join(" L ")
+
+  "M #{chain_a} Z"
+end.join(" ")
+
+stroke_dashes = StrokeDash.new(1,1)
+
+page_intro("Folded Hex") # , :black)
+
+%>
+<script type="text/javascript" src="https://livejs.com/live.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      /* <%= r_inner %> */
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: <%= thickness - 5 %>px; fill: none; }
+      .a, .b { stroke: #EAB554; }
+      .white { stroke-width: <%= thickness %>px; fill: none; stroke: #000; }
+      .b.top { <%= stroke_dashes.css %> }
+      .b.top.white { <%= stroke_dashes.css(2) %> }
+    </style>
+    <path id="path-a" d="<%= chains %>" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+</svg>

@@ -1,0 +1,34 @@
+<title>Folded Hex</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Folded Hex</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, May 2016.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot">GitHub</a>.</p>
+</div>
+
+<script type="text/javascript" src="https://livejs.com/live.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+  <defs>
+    <style>
+      /* 80.82903768654762 */
+      /* .bottom { opacity: 0.6; } */
+      .top, .bottom { stroke-width: 15px; fill: none; }
+      .a, .b { stroke: #EAB554; }
+      .white { stroke-width: 20px; fill: none; stroke: #000; }
+      .b.top { stroke-dasharray: 1; stroke-dashoffset: 1; }
+      .b.top.white { stroke-dasharray: -1; }
+    </style>
+    <path id="path-a" d="M 0 -196.299 L 70 -155.885 L 70 -75.056 L 0 -34.641 L -70 -75.056 L -70 -155.885 Z M 100 -138.564 L 170 -98.15 L 170 -17.321 L 100 23.094 L 30 -17.321 L 30 -98.15 Z M 100 -23.094 L 170 17.321 L 170 98.15 L 100 138.564 L 30 98.15 L 30 17.321 Z M 0 34.641 L 70 75.056 L 70 155.885 L 0 196.299 L -70 155.885 L -70 75.056 Z M -100 -23.094 L -30 17.321 L -30 98.15 L -100 138.564 L -170 98.15 L -170 17.321 Z M -100 -138.564 L -30 -98.15 L -30 -17.321 L -100 23.094 L -170 -17.321 L -170 -98.15 Z" />
+  </defs>
+  <use xlink:href="#path-a" class="a bottom white" />
+  <use xlink:href="#path-a" class="a bottom" />
+</svg>
