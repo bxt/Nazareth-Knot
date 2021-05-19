@@ -21,7 +21,7 @@ chains = s.map do |angle|
   chain_a = ring.map{ |p| p.tranlsate2d(mid) }.map(&:to2d_s).join(" L ")
 
   "M #{chain_a} Z"
-end.join(" ")
+end
 
 stroke_dashes = StrokeDash.new(-0.5*r_inner,1.25*r_inner,1.30*r_inner,0.7*r_inner, 99999)
 
@@ -32,18 +32,52 @@ page_intro("Folded Hex" , :black)
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
     <style>
-      /* <%= r_inner %> */
-      /* .bottom { opacity: 0.6; } */
-      .top, .bottom { stroke-width: <%= thickness %>px; fill: none; }
-      .a { stroke: #EAB554; }
-      .white { stroke-width: <%= thickness + 5 %>px; fill: none; stroke: #000; }
-      .a.top { <%= stroke_dashes.css() %> }
-      .a.top.white { <%= stroke_dashes.css(4) %> }
+      @keyframes spin {
+        0% {transform:rotate(0deg);}
+        17% {transform:rotate(60deg);}
+        33% {transform:rotate(120deg);}
+        50% {transform:rotate(180deg);}
+        67% {transform:rotate(240deg);}
+        83% {transform:rotate(300deg);}
+        100% {transform:rotate(360deg);}
+      }
+      path {animation: 12s ease-in-out infinite spin;}
+
+      @keyframes borderani {
+        0% {stroke: #391345; }
+        17% {stroke: #eb076a; }
+        33% {stroke: #391345; }
+        50% {stroke: #391345; }
+        67% {stroke: #9e21cc; }
+        83% {stroke: #391345; }
+        100% {stroke: #391345; }
+      }
+      .color { animation: 12s cubic-bezier(.60,0,.40,1) infinite borderani; }
+      .color { stroke-width: <%= thickness %>px; fill: none; }
+      .a { animation-delay: -2s; }
+      .b { animation-delay: -4s; }
+      .c { animation-delay: -6s; }
+      .d { animation-delay: -8s; }
+      .e { animation-delay: -10s; }
+      .f { animation-delay: -12s; }
+      .ground { stroke-width: <%= thickness + 5 %>px; fill: none; stroke: #000; }
+      .strokes.color { <%= stroke_dashes.css() %> }
+      .strokes.ground { <%= stroke_dashes.css(4) %> }
     </style>
-    <path id="path-a" d="<%= chains %>" />
+    <% chains.each_with_index do |chain, index| %>
+      <path id="path-<%= (index + 97).chr %>" d="<%= chain %>" />
+    <% end %>
   </defs>
-  <use xlink:href="#path-a" class="a bottom white" />
-  <use xlink:href="#path-a" class="a bottom" />
-  <use xlink:href="#path-a" class="a top white" />
-  <use xlink:href="#path-a" class="a top" />
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="ground" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="color <%= (index + 97).chr %>" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="strokes ground" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="strokes color <%= (index + 97).chr %>" />
+  <% end %>
 </svg>
