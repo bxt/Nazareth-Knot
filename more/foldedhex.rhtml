@@ -4,7 +4,7 @@ require_relative '../helpers.rb'
 
 sqrt3 = Math.sqrt(3)
 size = 500
-thickness = 30
+thickness = 25
 thicknessDash = 2 / sqrt3 * thickness
 r = 100
 n = 6
@@ -16,14 +16,14 @@ s_inner = symmetry(n_inner)
 chains = s.map do |angle|
   mid = p(0, -r).rotate2d(angle)
 
-  ring = s_inner.map { |angle| p(0, -r_inner).rotate2d(angle) }
+  ring = s_inner.map { |angle_inner| p(0, -r_inner).rotate2d(angle + angle_inner) }
 
   chain_a = ring.map{ |p| p.tranlsate2d(mid) }.map(&:to2d_s).join(" L ")
 
   "M #{chain_a} Z"
 end.join(" ")
 
-stroke_dashes = StrokeDash.new(1,1)
+stroke_dashes = StrokeDash.new(-0.5*r_inner,1.25*r_inner,1.30*r_inner,0.7*r_inner, 99999)
 
 page_intro("Folded Hex") # , :black)
 
@@ -35,13 +35,15 @@ page_intro("Folded Hex") # , :black)
       /* <%= r_inner %> */
       /* .bottom { opacity: 0.6; } */
       .top, .bottom { stroke-width: <%= thickness - 5 %>px; fill: none; }
-      .a, .b { stroke: #EAB554; }
+      .a { stroke: #EAB554; }
       .white { stroke-width: <%= thickness %>px; fill: none; stroke: #000; }
-      .b.top { <%= stroke_dashes.css %> }
-      .b.top.white { <%= stroke_dashes.css(2) %> }
+      .a.top { <%= stroke_dashes.css() %> }
+      .a.top.white { <%= stroke_dashes.css(4) %> }
     </style>
     <path id="path-a" d="<%= chains %>" />
   </defs>
   <use xlink:href="#path-a" class="a bottom white" />
   <use xlink:href="#path-a" class="a bottom" />
+  <use xlink:href="#path-a" class="a top white" />
+  <use xlink:href="#path-a" class="a top" />
 </svg>
