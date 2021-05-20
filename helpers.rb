@@ -38,8 +38,8 @@ def page_intro(title, theme=:white, date='May 2016', path=nil)
       * { padding: 0; margin: 0; }
       body { background: ##{:white.eql?(theme) ? "fff" : "000"}; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
       body, h1 { font-weight: 100; }
-      a { opacity: 0.7; }
-      #content { position: absolute; bottom: 10px; right: 10px; color: #999; }
+      a { opacity: #{:minimal.eql?(theme) ? "1" : "0.7"}; }
+      #content { position: absolute; bottom: 10px; right: 10px; color: ##{:minimal.eql?(theme) ? "555" : "999"}; }
       svg { max-height: 100%; max-width: 100%; }
     </style>
     <div id="content">
