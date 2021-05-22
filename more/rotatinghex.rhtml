@@ -1,0 +1,76 @@
+<%
+
+require_relative '../helpers.rb'
+
+sqrt3 = Math.sqrt(3)
+size = 500
+thickness = 20
+thicknessDash = 2 / sqrt3 * thickness
+r = 100
+n = 6
+s = symmetry(n)
+r_inner = 2.0/3 * (r - 2*thicknessDash) + 1.5*thicknessDash
+n_inner = 6
+s_inner = symmetry(n_inner)
+
+chains = s.map do |angle|
+  mid = p(0, -r).rotate2d(angle)
+
+  ring = s_inner.map { |angle_inner| p(0, -r_inner).rotate2d(angle + angle_inner) }
+
+  chain_a = ring.map{ |p| p.tranlsate2d(mid) }.map(&:to2d_s).join(" L ")
+
+  "M #{chain_a} Z"
+end
+
+stroke_dashes = StrokeDash.new(-0.5*r_inner,1.25*r_inner,1.30*r_inner,0.7*r_inner, 99999)
+
+page_intro("Rotating Hex" , :minimal, 'May 2021', __FILE__)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      @keyframes spin {
+        <% chains.each_with_index do |_, index| %>
+          <%= (100.0/chains.size*index).round %>% {transform:rotate(<%= (360.0/chains.size*index).round %>deg);}
+        <% end %>
+        100% {transform:rotate(360deg);}
+      }
+      path {animation: 12s ease-in-out infinite spin;}
+
+      @keyframes borderani {
+        0% {stroke: #391345; }
+        17% {stroke: #eb076a; }
+        33% {stroke: #391345; }
+        50% {stroke: #391345; }
+        67% {stroke: #9e21cc; }
+        83% {stroke: #391345; }
+        100% {stroke: #391345; }
+      }
+      .color { animation: 12s cubic-bezier(.60,0,.40,1) infinite borderani; }
+      .color { stroke-width: <%= thickness %>px; fill: none; }
+      <% chains.each_with_index do |_, index| %>
+        .<%= (index + 97).chr %> { animation-delay: -<%= index*2 + 2 %>s; }
+      <% end %>
+      .ground { stroke-width: <%= thickness + 5 %>px; fill: none; stroke: #000; }
+      .strokes.color { <%= stroke_dashes.css() %> }
+      .strokes.ground { <%= stroke_dashes.css(4) %> }
+    </style>
+    <% chains.each_with_index do |chain, index| %>
+      <path id="path-<%= (index + 97).chr %>" d="<%= chain %>" />
+    <% end %>
+  </defs>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="ground" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="color <%= (index + 97).chr %>" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="strokes ground" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="strokes color <%= (index + 97).chr %>" />
+  <% end %>
+</svg>
