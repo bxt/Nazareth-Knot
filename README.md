@@ -63,4 +63,5 @@ And for fun I created even more stuff:
 * [TriAni (orange variation)](http://bxt.github.io/Nazareth-Knot/more/triani_orange.html)
 * [BernAni](http://bxt.github.io/Nazareth-Knot/more/bernani.html)
 * [Office Box](http://bxt.github.io/Nazareth-Knot/more/officebox.html), created after [this box I found in an office](https://github.com/bxt/Nazareth-Knot/blob/gh-pages/2020-02-17%2018.09.42.jpg)
-* [Rotating hex](http://bxt.github.io/Nazareth-Knot/more/rotatinghex.rhtml)
+* [Rotating hex](http://bxt.github.io/Nazareth-Knot/more/rotatinghex.html)
+* [Folded hex](http://bxt.github.io/Nazareth-Knot/more/foldedhex.html)
