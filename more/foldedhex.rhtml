@@ -29,7 +29,23 @@ chains = s.map do |angle|
   "M #{chain_a} Z"
 end
 
-stroke_colors = %w(#9e21cc #3611b1 #a9681b #eb076a #1ba9a7 #521075)
+# Orange color schme
+# stroke_colors = %w(#ece307 #a9681b #712020 #eb076a #712020 #a9681b)
+
+# TØP 6 colors
+# stroke_colors = %w(#f9a4cb #93d1de #f8fffe #f6e518 #dad7cc #718dbc)
+
+# TØP 3 colors
+# stroke_colors = %w(#f3de09 #81c1cb #ee88af #f3de09 #81c1cb #ee88af)
+
+# Original color scheme
+# stroke_colors = %w(#9e21cc #3611b1 #a9681b #eb076a #1ba9a7 #521075)
+
+# Reduced color schme
+stroke_colors = %w(#eb076a #1ba9a7 #521075 #eb076a #1ba9a7 #521075)
+
+# Reduced color schme (other symmetry, use with rotate -30deg
+# stroke_colors = %w(#eb076a #1ba9a7 #521075 #1ba9a7 #eb076a #521075)
 
 stroke_dashes = StrokeDash.new(-0.7*r_inner,1.25*r_inner,1.30*r_inner,0.7*r_inner, 99999)
 
@@ -39,6 +55,7 @@ page_intro("Folded Hex" , :minimal, 'May 2021', __FILE__)
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
     <style>
+      /* path {transform:rotate(-30deg);} */
       .color { stroke-width: <%= thickness %>px; fill: none; }
       <% chains.each_with_index do |_, index| %>
         .<%= (index + 97).chr %> { stroke: <%= stroke_colors[index % stroke_colors.size] %>; }
