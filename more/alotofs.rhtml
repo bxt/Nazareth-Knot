@@ -1,0 +1,44 @@
+<%
+
+require_relative '../helpers.rb'
+
+r_thickness = 20
+r_space = 20
+n = 6
+s = symmetry(n)
+
+rt0, rt1, rt2, rt3, rt4, rt5 = s.map { |angle| p(0, r_thickness).rotate2d(angle + s[1]/2) }
+rs0, rs1, rs2, rs3, rs4, rs5 = s.map { |angle| p(0, r_space).rotate2d(angle + s[1]/2) }
+
+base_chain = [rs1, rs0, rt0, rs0, rs1, rt5, rs4, rs3, rt3, rs3, rs4, rt2].map(&:to2d_s).join(" l ")
+
+offsetTo60 = rt5 + rt4 + rs0 + rs5 + rs4 + rs5
+offsetTo120 = rt4 + rt5 + rs5 + rs0
+
+width = 3 * rt4 + 6 * rs4
+height = rt0 + rt5 + 2 * rs0+ 2 * rs5
+
+offsetDiagonal = rs5 + rs4 + rt4 + rs4 + rs5 + rt5
+
+page_intro("A lot of S", :white,  'May 2021', __FILE__)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
+  <defs>
+    <path id="le-path" d="M <%= base_chain %> Z" style="stroke: black; stroke-width: 6px; fill:white;" />
+    <g id="all-paths">
+      <use xlink:href="#le-path" class="str" transform="rotate(0)" />
+      <use xlink:href="#le-path" class="str " transform="translate(<%= offsetTo60.to2d_s %>) rotate(60)" />
+      <use xlink:href="#le-path" class="str" transform="translate(<%= offsetTo120.to2d_s %>) rotate(120)" />
+    </g>
+    <pattern id="alotofs" x="0" y="0" width="<%= width.x.round %>" height="<%= height.y.round %>" patternUnits="userSpaceOnUse">
+      <use xlink:href="#all-paths" />
+      <use xlink:href="#all-paths" transform="translate(<%= offsetDiagonal.to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= width.to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (offsetDiagonal - height).to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= height.to2d_s %>)" />
+      <use xlink:href="#all-paths" transform="translate(<%= (width + height).to2d_s %>)"/>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#alotofs)"></rect>
+</svg>
