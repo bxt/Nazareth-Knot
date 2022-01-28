@@ -36,10 +36,10 @@ def page_intro(title, theme=:white, date='May 2016', path=nil)
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       * { padding: 0; margin: 0; }
-      body { background: ##{:white.eql?(theme) ? "fff" : "000"}; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;}
+      body { background: ##{:white.eql?(theme) ? "fff" : "000"}; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; text-align: center; }
       body, h1 { font-weight: 100; }
       a { opacity: #{:minimal.eql?(theme) ? "1" : "0.7"}; }
-      #content { position: absolute; bottom: 10px; right: 10px; color: ##{:minimal.eql?(theme) ? "555" : "999"}; }
+      #content { position: absolute; bottom: 10px; right: 10px; color: ##{:minimal.eql?(theme) ? "555" : "999"}; text-align: left; }
       svg { max-height: 100%; max-width: 100%; }
     </style>
     <div id="content">
