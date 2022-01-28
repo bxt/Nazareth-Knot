@@ -9,7 +9,7 @@ end
 task default: :html
 task html: source_files.ext(".html")
 
-rule ".html" => ".rhtml" do |t|
+rule ".html" => [".rhtml", "helpers.rb"] do |t|
   sh "erb #{t.source} &> #{t.name}"
 end
 
