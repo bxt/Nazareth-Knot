@@ -1,0 +1,59 @@
+<%
+
+require_relative '../helpers.rb'
+
+r = 30
+n = 6
+s = symmetry(n)
+
+ring = s.map { |angle| p(0, r).rotate2d(angle) }
+s, sw, nw, n, ne, se = ring
+
+v = s
+h = p(ne.x, 0)
+
+hexagon_chain = ring.map(&:to2d_s).join(" L ")
+
+start = se * 3.5 + s * 0.5
+
+wrapper_chain = [
+  start,
+  sw * 3,
+  s * 3,
+  se * 1.5,
+  s * 2,
+  sw * 2,
+  s * 1,
+  ne * 3,
+  n * 3,
+  nw * 1.5,
+  n * 2,
+  ne * 2,
+].map(&:to2d_s).join(" l ")
+
+page_intro("Shinig carpet", :white,  'Jan 2022', __FILE__)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
+  <defs>
+    <style>
+      .a { fill: #9f0707; }
+      .b { fill: #d56821; }
+    </style>
+    <path id="hexagon" class="a" d="M <%= hexagon_chain %> Z" />
+    <path id="wrapper" class="b" d="M <%= wrapper_chain %> Z" />
+    <pattern id="shiningcarpet" x="0" y="0" width="<%= (h.x * 7).round(3) %>" height="<%= r * 8.5 %>" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="100%" height="100%" fill="#521616"></rect>
+      <use xlink:href="#hexagon" transform="translate(<%= (v * 5.25 + h * 3.5).to2d_s %>)" />
+      <use xlink:href="#hexagon" />
+      <use xlink:href="#hexagon" transform="translate(<%= (v * 8.5).to2d_s %>)" />
+      <use xlink:href="#hexagon" transform="translate(<%= (h * 7).to2d_s %>)" />
+      <use xlink:href="#hexagon" transform="translate(<%= (v * 8.5 + h * 7).to2d_s %>)" />
+      <use xlink:href="#wrapper" />
+      <use xlink:href="#wrapper" transform="translate(<%= (h * 7).to2d_s %>) scale(-1 1)" />
+      <use xlink:href="#wrapper" transform="translate(<%= (v * -8.5).to2d_s %>)" />
+      <use xlink:href="#wrapper" transform="translate(<%= (v * -8.5 + h * 7 ).to2d_s %>) scale(-1 1)" />
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#shiningcarpet)"></rect>
+</svg>

@@ -1,0 +1,40 @@
+<title>Shinig carpet</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #fff; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; text-align: center; }
+  body, h1 { font-weight: 100; }
+  a { opacity: 0.7; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; text-align: left; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>Shinig carpet</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, Jan 2022.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot/blob/gh-pages/more/shiningcarpet.rhtml">GitHub</a>.</p>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
+  <defs>
+    <style>
+      .a { fill: #9f0707; }
+      .b { fill: #d56821; }
+    </style>
+    <path id="hexagon" class="a" d="M 0 30 L -25.981 15 L -25.981 -15 L 0 -30 L 25.981 -15 L 25.981 15 Z" />
+    <path id="wrapper" class="b" d="M 90.933 67.5 l -77.942 45 l 0 90 l 38.971 22.5 l 0 60 l -51.962 30 l 0 30 l 77.942 -45 l 0 -90 l -38.971 -22.5 l 0 -60 l 51.962 -30 Z" />
+    <pattern id="shiningcarpet" x="0" y="0" width="181.865" height="255.0" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="100%" height="100%" fill="#521616"></rect>
+      <use xlink:href="#hexagon" transform="translate(90.933 157.5)" />
+      <use xlink:href="#hexagon" />
+      <use xlink:href="#hexagon" transform="translate(0 255)" />
+      <use xlink:href="#hexagon" transform="translate(181.865 0)" />
+      <use xlink:href="#hexagon" transform="translate(181.865 255)" />
+      <use xlink:href="#wrapper" />
+      <use xlink:href="#wrapper" transform="translate(181.865 0) scale(-1 1)" />
+      <use xlink:href="#wrapper" transform="translate(-0 -255)" />
+      <use xlink:href="#wrapper" transform="translate(181.865 -255) scale(-1 1)" />
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#shiningcarpet)"></rect>
+</svg>
