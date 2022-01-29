@@ -66,3 +66,4 @@ And for fun I created even more stuff:
 * [Rotating hex](http://bxt.github.io/Nazareth-Knot/more/rotatinghex.html)
 * [Folded hex](http://bxt.github.io/Nazareth-Knot/more/foldedhex.html)
 * [A lot of S](http://bxt.github.io/Nazareth-Knot/more/alotofs.html)
+* [Shining carpet](http://bxt.github.io/Nazareth-Knot/more/shiningcarpet.html)
