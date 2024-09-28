@@ -1,0 +1,39 @@
+<title>Bernani2</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+@keyframes rotate {
+  0% { transform: perspective(400px) translateZ(-.5em) rotate3d(1, 0, 0, -80deg) translateZ(.5em); opacity: 0; }
+  1% { opacity: 1; }
+  17%, 33% { transform: perspective(400px) translateZ(-.5em) rotate3d(1, 0, 0, 0) translateZ(.5em); }
+  49% { opacity: 1; }
+  50%, 100% {  transform: perspective(400px) translateZ(-.5em) rotate3d(1, 0, 0, 80deg) translateZ(.5em); opacity: 0; }
+}
+  * { padding: 0; margin: 0; }
+  body { color: #ec0d95; background: #24192d;; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; perspective: 300px; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #999; text-align: left; }
+  h1 { height: 100vh; display: flex; align-items: center; justify-content: center; font-size: min(15vw, 60vh); }
+  #words { position: relative; display: inline-block; }
+  #words > span { display: inline-block; animation-duration: 3s; animation-name: rotate; animation-iteration-count: infinite;  }
+  #work { animation-delay: -0.5s; }
+  #party {  animation-delay: -2.5s; }
+  #bern {  animation-delay: -1.5s; }
+  #work, #party { position: absolute; right: 0; }
+  #work { color: #d7c0ea; }
+  #party > span:nth-child(2) { color: #8b6cd2; }
+  #party > span:nth-child(1) { color: rgb(236, 236, 13); }
+  #party > span:nth-child(3) { color: #0decce; }
+  #party > span:nth-child(4) { color: #ec930d; }
+  #party > span:nth-child(5) { color: #b4ec0d; }
+</style>
+<div id="content">
+<a href="https://github.com/bxt/Nazareth-Knot">Code on GitHub</a>
+</div>
+<h1>
+  <span id="words">
+  <span id="work">Work</span>
+  <span id="party"><span>P</span><span>a</span><span>r</span><span>t</span><span>y</span></span>
+  <span id="bern">Bern</span></span>hard.
+</h1>
