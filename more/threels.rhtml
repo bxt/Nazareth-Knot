@@ -1,0 +1,79 @@
+<%
+
+require_relative '../helpers.rb'
+
+size = 500
+pad = 5
+r = 50
+r_1 = 50
+r_2 = 50
+n = 6
+s = symmetry(n)
+
+rings = [r, r_1, r_2].map do |radius|
+  s.map do |angle|
+    p(0, -radius).rotate2d(angle)
+  end
+end
+
+inner_l = [
+  rings[0][0],
+  rings[1][1],
+  rings[0][2],
+  rings[0][3],
+  rings[1][4],
+  rings[0][0],
+]
+
+outer_l = [
+  rings[0][0].translate2d(rings[1][1]),
+  rings[2][0],
+  rings[0][2].translate2d(rings[2][2]),
+  rings[0][3].translate2d(rings[2][3]),
+  rings[2][5],
+  rings[0][0],
+]
+
+square_1 = [
+  rings[0][0],
+  rings[2][0],
+  rings[1][1],
+  rings[2][3],
+]
+
+square_2 = [
+  rings[0][2],
+  rings[1][1],
+  rings[2][2],
+  rings[1][4],
+]
+
+chains = [inner_l, outer_l, square_1, square_2].map do |chain|
+  chain_a = chain.map(&:to2d_s).join(" l ")
+  "M #{chain_a} Z"
+end
+
+stroke_colors = %w(#eb076a #1ba9a7 #521075 #a91b4a)
+
+page_intro("Three Ls" , :minimal, 'Oct 2025', __FILE__)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>">
+  <defs>
+    <style>
+      <% stroke_colors.each_with_index do |_, index| %>
+        .color-<%= (index + 97).chr %> { fill: <%= stroke_colors[index % stroke_colors.size] %>; }
+      <% end %>
+    </style>
+    <% chains.each_with_index do |chain, index| %>
+      <path id="path-<%= index %>" d="<%= chain %>" />
+    <% end %>
+  </defs>
+  <% { 30 => "cabd", 150 => "cdab", 270 => "cbda" }.each do |angle, colors| %>
+    <g style="transform:rotate(<%= angle %>deg);">
+      <% chains.each_with_index do |chain, index| %>
+        <use xlink:href="#path-<%= index %>" class="color-<%= colors[index] %>" />
+      <% end %>
+    </g>
+  <% end %>
+</svg>
