@@ -12,4 +12,12 @@ do
     <pre style="background:#fdd;">' $OUTFILE
   fi
   echo "done."
+
+osascript <<END
+  tell application "Firefox"
+    activate
+    tell application "System Events" to keystroke "r" using command down
+  end tell
+END
+
 done
