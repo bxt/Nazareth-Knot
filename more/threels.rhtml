@@ -16,37 +16,14 @@ rings = [r, r_1, r_2].map do |radius|
   end
 end
 
-inner_l = [
-  rings[0][0],
-  rings[1][1],
-  rings[0][2],
-  rings[0][3],
-  rings[1][4],
-  rings[0][0],
-]
+(r_00, r_01, r_02, r_03, r_04, r_05),
+(r_10, r_11, r_12, r_13, r_14, r_15),
+(r_20, r_21, r_22, r_23, r_24, r_25) = rings
 
-outer_l = [
-  rings[0][0].translate2d(rings[1][1]),
-  rings[2][0],
-  rings[0][2].translate2d(rings[2][2]),
-  rings[0][3].translate2d(rings[2][3]),
-  rings[2][5],
-  rings[0][0],
-]
-
-square_1 = [
-  rings[0][0],
-  rings[2][0],
-  rings[1][1],
-  rings[2][3],
-]
-
-square_2 = [
-  rings[0][2],
-  rings[1][1],
-  rings[2][2],
-  rings[1][4],
-]
+inner_l = [r_00, r_11, r_02, r_03, r_14, r_00]
+outer_l = [r_00 + r_11, r_20, r_02 + r_22, r_03 + r_23, r_25, r_00]
+square_1 = [r_00, r_20, r_11, r_23]
+square_2 = [r_02, r_11, r_22, r_14]
 
 chains = [inner_l, outer_l, square_1, square_2].map do |chain|
   chain_a = chain.map(&:to2d_s).join(" l ")
