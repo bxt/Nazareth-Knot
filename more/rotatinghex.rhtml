@@ -18,7 +18,7 @@ chains = s.map do |angle|
 
   ring = s_inner.map { |angle_inner| p(0, -r_inner).rotate2d(angle + angle_inner) }
 
-  chain_a = ring.map{ |p| p.tranlsate2d(mid) }.map(&:to2d_s).join(" L ")
+  chain_a = ring.map{ |p| p.translate2d(mid) }.map(&:to2d_s).join(" L ")
 
   "M #{chain_a} Z"
 end

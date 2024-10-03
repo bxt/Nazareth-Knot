@@ -43,7 +43,7 @@ class Triknot
 
   def chain
     s = symmetry(N)
-    ring = s.map { |angle| p(0, -R).rotate2d(angle).tranlsate2d(p(0, Y_OFFSET)) }
+    ring = s.map { |angle| p(0, -R).rotate2d(angle).translate2d(p(0, Y_OFFSET)) }
 
     spreads = (ring + ring.take(1)).each_cons(2).map(&Spread.method(:new))
 

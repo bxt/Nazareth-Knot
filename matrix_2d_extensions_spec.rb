@@ -254,11 +254,11 @@ describe 'Matrix' do
     end
   end
 
-  describe '#tranlsate2d' do
+  describe '#translate2d' do
     it 'basically sums up points' do
-      expect(p(0, 0).tranlsate2d(p(0, 0))).to(be_like_really_close_to(p(0, 0)))
-      expect(p(3, 2).tranlsate2d(p(7, 11))).to(be_like_really_close_to(p(10, 13)))
-      expect(p(-435.905, 543.43).tranlsate2d(p(345.43, -487.456))).to(be_like_really_close_to(p(-90.475, 55.974)))
+      expect(p(0, 0).translate2d(p(0, 0))).to(be_like_really_close_to(p(0, 0)))
+      expect(p(3, 2).translate2d(p(7, 11))).to(be_like_really_close_to(p(10, 13)))
+      expect(p(-435.905, 543.43).translate2d(p(345.43, -487.456))).to(be_like_really_close_to(p(-90.475, 55.974)))
     end
   end
 

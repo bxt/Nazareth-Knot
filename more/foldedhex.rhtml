@@ -21,10 +21,10 @@ chains = s.map do |angle|
   end
 
   ring[0] = ring[0].scale2d(thicknessDash / 2 / ring[0].column(0).magnitude)
-  ring[1] = ring[1].tranlsate2d(ring[0])
-  ring[ring.size - 1] = ring[ring.size - 1].tranlsate2d(ring[0])
+  ring[1] = ring[1].translate2d(ring[0])
+  ring[ring.size - 1] = ring[ring.size - 1].translate2d(ring[0])
 
-  chain_a = ring.map{ |p| p.tranlsate2d(mid) }.map(&:to2d_s).join(" L ")
+  chain_a = ring.map{ |p| p.translate2d(mid) }.map(&:to2d_s).join(" L ")
 
   "M #{chain_a} Z"
 end

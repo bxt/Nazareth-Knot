@@ -19,7 +19,7 @@ ring1 = angles.map{ |r| p(0, radius1).rotate2d(r) }
 
 ring1A, ring1B = minus_plus.map do |sign|
   ring1.zip(angles).map do |(p, r)|
-    p.tranlsate2d(p(sign*thicknessDia/2, 0).rotate2d(r + sign*angle/2))
+    p.translate2d(p(sign*thicknessDia/2, 0).rotate2d(r + sign*angle/2))
   end
 end
 

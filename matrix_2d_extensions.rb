@@ -41,7 +41,7 @@ class Matrix
     Matrix.tranlsation2d(x, y)
   end
 
-  def tranlsate2d(by)
+  def translate2d(by)
     by.to_tranlsation2d*self
   end
 
