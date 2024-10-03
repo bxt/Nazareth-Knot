@@ -75,16 +75,10 @@ page_intro("A lot of L" , :minimal, 'Oct 2025', __FILE__)
       </g>
     <pattern id="lepattern" x="0" y="0" width="<%= size %>" height="<%= size %>" patternUnits="userSpaceOnUse" patternTransform="scale(<%= 1.0/size %>) matrix(<%= x_axis.to2d_s %> <%= y_axis.to2d_s %> 0 0)">
       <g transform="matrix(<%= inverted_x_axis.to2d_s %> <%= inverted_y_axis.to2d_s %> 0 0) translate(<%= pre_shift.rotate2d(s[5]).to2d_s %>)">
-        <path id="x-axis" d="M 0 0 l <%= x_axis.to2d_s %> Z" stroke="red" />
-        <path id="y-axis" d="M 0 0 l <%= y_axis.to2d_s %> Z" stroke="green" />
         <use xlink:href="#all-paths" />
-        <%# Top Left %>
         <use xlink:href="#all-paths" transform="translate(<%= (-x_axis + -y_axis).to2d_s %>)" />
-        <%# Top Right %>
         <use xlink:href="#all-paths" transform="translate(<%= (-y_axis).to2d_s %>)" />
-        <%# Bottom Left %>
         <use xlink:href="#all-paths" transform="translate(<%= y_axis.to2d_s %>)" />
-        <%# Just Left %>
         <use xlink:href="#all-paths" transform="translate(<%= (-x_axis).to2d_s %>)" />
       </g>
     </pattern>
