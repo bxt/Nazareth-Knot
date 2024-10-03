@@ -15,7 +15,7 @@
 <p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, Oct 2025.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot/blob/gh-pages/more/alotofl.rhtml">GitHub</a>.</p>
 </div>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="-250 -250 500 500" id="knot">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
   <defs>
     <style>
       
@@ -25,50 +25,105 @@
       
         .color-c { fill: #521075; }
       
-        .color-d { fill: #a9681b; }
+        .color-d { fill: #a91b4a; }
       
     </style>
-    
-      <path id="path-a" d="M 0 -50 l 43.301 -25 l 43.301 25 l 0 50 l -43.301 25 l 0 -50 Z" />
-    
-      <path id="path-b" d="M 43.301 -75 l 0 -50 l 86.603 50 l 0 100 l -43.301 -25 l 0 -50 Z" />
-    
-      <path id="path-c" d="M 0 -50 l 0 -50 l 43.301 -25 l 0 50 Z" />
-    
-      <path id="path-d" d="M 43.301 25 l 43.301 -25 l 43.301 25 l -43.301 25 Z" />
-    
+      
+        <path id="path-0" d="M 0 -50 l 21.651 -12.5 l 43.301 25 l 0 50 l -21.651 12.5 l 0 -50 Z" />
+      
+        <path id="path-1" d="M 21.651 -62.5 l 0 -25 l 64.952 37.5 l 0 75 l -21.651 -12.5 l 0 -50 Z" />
+      
+        <path id="path-2" d="M 0 -50 l 0 -25 l 21.651 -12.5 l 0 25 Z" />
+      
+        <path id="path-3" d="M 43.301 25 l 21.651 -12.5 l 21.651 12.5 l -21.651 12.5 Z" />
+      
+      <g id="all-paths">
+        
+          <g transform="translate(-21.651 162.5) rotate(60) translate(-86.603 50)">
+            
+              <use xlink:href="#path-0" class="color-c" />
+            
+              <use xlink:href="#path-1" class="color-a" />
+            
+              <use xlink:href="#path-2" class="color-b" />
+            
+              <use xlink:href="#path-3" class="color-d" />
+            
+          </g>
+          <g transform="rotate(60)">
+            
+              <use xlink:href="#path-0" class="color-c" />
+            
+              <use xlink:href="#path-1" class="color-a" />
+            
+              <use xlink:href="#path-2" class="color-b" />
+            
+              <use xlink:href="#path-3" class="color-d" />
+            
+          </g>
+        
+          <g transform="translate(-21.651 162.5) rotate(180) translate(-86.603 50)">
+            
+              <use xlink:href="#path-0" class="color-c" />
+            
+              <use xlink:href="#path-1" class="color-d" />
+            
+              <use xlink:href="#path-2" class="color-a" />
+            
+              <use xlink:href="#path-3" class="color-b" />
+            
+          </g>
+          <g transform="rotate(180)">
+            
+              <use xlink:href="#path-0" class="color-c" />
+            
+              <use xlink:href="#path-1" class="color-d" />
+            
+              <use xlink:href="#path-2" class="color-a" />
+            
+              <use xlink:href="#path-3" class="color-b" />
+            
+          </g>
+        
+          <g transform="translate(-21.651 162.5) rotate(300) translate(-86.603 50)">
+            
+              <use xlink:href="#path-0" class="color-c" />
+            
+              <use xlink:href="#path-1" class="color-b" />
+            
+              <use xlink:href="#path-2" class="color-d" />
+            
+              <use xlink:href="#path-3" class="color-a" />
+            
+          </g>
+          <g transform="rotate(300)">
+            
+              <use xlink:href="#path-0" class="color-c" />
+            
+              <use xlink:href="#path-1" class="color-b" />
+            
+              <use xlink:href="#path-2" class="color-d" />
+            
+              <use xlink:href="#path-3" class="color-a" />
+            
+          </g>
+        
+      </g>
+    <pattern id="lepattern" x="0" y="0" width="500" height="500" patternUnits="userSpaceOnUse" patternTransform="scale(0.002) matrix(281.458 37.5 -173.205 225 0 0)">
+      <g transform="matrix(1.611 -0.269 1.24 2.016 0 0) translate(129.904 100)">
+        <path id="x-axis" d="M 0 0 l 281.458 37.5 Z" stroke="red" />
+        <path id="y-axis" d="M 0 0 l -173.205 225 Z" stroke="green" />
+        <use xlink:href="#all-paths" />
+        
+        <use xlink:href="#all-paths" transform="translate(-108.253 -262.5)" />
+        
+        <use xlink:href="#all-paths" transform="translate(173.205 -225)" />
+        
+        <use xlink:href="#all-paths" transform="translate(-173.205 225)" />
+        
+        <use xlink:href="#all-paths" transform="translate(-281.458 -37.5)" />
+      </g>
+    </pattern>
   </defs>
-  <g style="transform:rotate(60deg);">
-    
-      <use xlink:href="#path-a" class="color-c" />
-    
-      <use xlink:href="#path-b" class="color-a" />
-    
-      <use xlink:href="#path-c" class="color-b" />
-    
-      <use xlink:href="#path-d" class="color-d" />
-    
-  </g>
-  <g style="transform:rotate(180deg);">
-    
-      <use xlink:href="#path-a" class="color-c" />
-    
-      <use xlink:href="#path-b" class="color-d" />
-    
-      <use xlink:href="#path-c" class="color-a" />
-    
-      <use xlink:href="#path-d" class="color-b" />
-    
-  </g>
-  <g style="transform:rotate(300deg);">
-    
-      <use xlink:href="#path-a" class="color-c" />
-    
-      <use xlink:href="#path-b" class="color-b" />
-    
-      <use xlink:href="#path-c" class="color-d" />
-    
-      <use xlink:href="#path-d" class="color-a" />
-    
-  </g>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#lepattern)"></rect>
 </svg>

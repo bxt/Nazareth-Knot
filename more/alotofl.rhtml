@@ -5,8 +5,8 @@ require_relative '../helpers.rb'
 size = 500
 pad = 5
 r = 50
-r_1 = 50
-r_2 = 50
+r_1 = 25
+r_2 = 25
 n = 6
 s = symmetry(n)
 
@@ -16,73 +16,78 @@ rings = [r, r_1, r_2].map do |radius|
   end
 end
 
-inner_l = [
-  rings[0][0],
-  rings[1][1],
-  rings[0][2],
-  rings[0][3],
-  rings[1][4],
-  rings[0][0],
+(r_00, r_01, r_02, r_03, r_04, r_05),
+(r_10, r_11, r_12, r_13, r_14, r_15),
+(r_20, r_21, r_22, r_23, r_24, r_25) = rings
 
-]
-
-outer_l = [
-  rings[0][0].translate2d(rings[1][1]),
-  rings[2][0],
-  rings[0][2].translate2d(rings[2][2]),
-  rings[0][3].translate2d(rings[2][3]),
-  rings[2][5],
-  rings[0][0],
-]
-
-square_1 = [
-  rings[0][0],
-  rings[2][0],
-  rings[1][1],
-  rings[2][3],
-]
-
-square_2 = [
-  rings[0][2],
-  rings[1][1],
-  rings[2][2],
-  rings[1][4],
-]
+inner_l = [r_00, r_11, r_02, r_03, r_14, r_00]
+outer_l = [r_00 + r_11, r_20, r_02 + r_22, r_03 + r_23, r_25, r_00]
+square_1 = [r_00, r_20, r_11, r_23]
+square_2 = [r_02, r_11, r_22, r_14]
 
 chains = [inner_l, outer_l, square_1, square_2].map do |chain|
   chain_a = chain.map(&:to2d_s).join(" l ")
   "M #{chain_a} Z"
 end
 
-stroke_colors = %w(#eb076a #1ba9a7 #521075 #a9681b)
+stroke_colors = %w(#eb076a #1ba9a7 #521075 #a91b4a)
+
+shift = r_04 + r_15 + r_13 + r_23 + r_25
+shift_string = shift.to2d_s.split(" ").map{|x| "#{x}px"}.join(", ")
+
+pre_shift = r_03 + r_23 + r_14 + r_03 + r_23
+pre_shift_string = pre_shift.to2d_s.split(" ").map{|x| "#{x}px"}.join(", ")
+
+x_axis = pre_shift.rotate2d(s[4]) + pre_shift.rotate2d(s[5])
+y_axis = pre_shift + pre_shift.rotate2d(s[1])
+
+matrix = Matrix[ [x_axis.x, y_axis.x], [x_axis.y, y_axis.y] ]
+inverted_matrix = matrix.inverse * size
+inverted_x_axis = p(inverted_matrix[0, 0], inverted_matrix[1, 0])
+inverted_y_axis = p(inverted_matrix[0, 1], inverted_matrix[1, 1])
 
 page_intro("A lot of L" , :minimal, 'Oct 2025', __FILE__)
 
 %>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" width="100%" height="100%">
   <defs>
     <style>
       <% stroke_colors.each_with_index do |_, index| %>
         .color-<%= (index + 97).chr %> { fill: <%= stroke_colors[index % stroke_colors.size] %>; }
       <% end %>
     </style>
-    <% chains.each_with_index do |chain, index| %>
-      <path id="path-<%= (index + 97).chr %>" d="<%= chain %>" />
-    <% end %>
+      <% chains.each_with_index do |chain, index| %>
+        <path id="path-<%= index %>" d="<%= chain %>" />
+      <% end %>
+      <g id="all-paths">
+        <% { 60 => "cabd", 180 => "cdab", 300 => "cbda" }.each do |angle, colors| %>
+          <g transform="translate(<%= pre_shift.to2d_s %>) rotate(<%= angle %>) translate(<%= shift.to2d_s %>)">
+            <% chains.each_with_index do |chain, index| %>
+              <use xlink:href="#path-<%= index %>" class="color-<%= colors[index] %>" />
+            <% end %>
+          </g>
+          <g transform="rotate(<%= angle %>)">
+            <% chains.each_with_index do |chain, index| %>
+              <use xlink:href="#path-<%= index %>" class="color-<%= colors[index] %>" />
+            <% end %>
+          </g>
+        <% end %>
+      </g>
+    <pattern id="lepattern" x="0" y="0" width="<%= size %>" height="<%= size %>" patternUnits="userSpaceOnUse" patternTransform="scale(<%= 1.0/size %>) matrix(<%= x_axis.to2d_s %> <%= y_axis.to2d_s %> 0 0)">
+      <g transform="matrix(<%= inverted_x_axis.to2d_s %> <%= inverted_y_axis.to2d_s %> 0 0) translate(<%= pre_shift.rotate2d(s[5]).to2d_s %>)">
+        <path id="x-axis" d="M 0 0 l <%= x_axis.to2d_s %> Z" stroke="red" />
+        <path id="y-axis" d="M 0 0 l <%= y_axis.to2d_s %> Z" stroke="green" />
+        <use xlink:href="#all-paths" />
+        <%# Top Left %>
+        <use xlink:href="#all-paths" transform="translate(<%= (-x_axis + -y_axis).to2d_s %>)" />
+        <%# Top Right %>
+        <use xlink:href="#all-paths" transform="translate(<%= (-y_axis).to2d_s %>)" />
+        <%# Bottom Left %>
+        <use xlink:href="#all-paths" transform="translate(<%= y_axis.to2d_s %>)" />
+        <%# Just Left %>
+        <use xlink:href="#all-paths" transform="translate(<%= (-x_axis).to2d_s %>)" />
+      </g>
+    </pattern>
   </defs>
-  <g style="transform:rotate(60deg);">
-    <% chains.each_with_index do |chain, index| %>
-      <use xlink:href="#path-<%= (index + 97).chr %>" class="color-<%= "cabd"[index] %>" />
-    <% end %>
-  </g>
-  <g style="transform:rotate(180deg);">
-    <% chains.each_with_index do |chain, index| %>
-      <use xlink:href="#path-<%= (index + 97).chr %>" class="color-<%= "cdab"[index] %>" />
-    <% end %>
-  </g>
-  <g style="transform:rotate(300deg);">
-    <% chains.each_with_index do |chain, index| %>
-      <use xlink:href="#path-<%= (index + 97).chr %>" class="color-<%= "cbda"[index] %>" />
-    <% end %>
-  </g>
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#lepattern)"></rect>
 </svg>
