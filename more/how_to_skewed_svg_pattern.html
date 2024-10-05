@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>How to create a skewed pattern in SVG using linear algebra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body { font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; display: flex; justify-content: center; }
+body > div { padding: 40px; max-width: 600px; }
+h1, h2 { text-align: center; }
+svg { width: 100%; height: 300px; outline: 5px solid #999; }
+</style>
+
+<div>
+
+<h1>How to create a skewed pattern in SVG using linear algebra</h1>
+<p>You might have heard of linear algebra, but you might not know how to use it to create a skewed pattern in SVG. This article will show you how to do that.</p>
+<p>By default, SVG tile patterns in a rectangular way. That works quite well if your pattern repeats horizontally or vertically. This works for the majority of pattern. Also a hexagonal pattern can be made that way by repeating the heaxgons in the rectange first. Using the <code>patternTransform</code> you can also create patterns that consist of rotated or skewed rectangles. However, things get more complicated if you already have a pattern element that should not get skewed, but still repeated in a non-90-degree fashion.</p>
+<p>I recently ran into exactly this problem and found a way to solve it using one of the maybe more intimidating math elements: Matrices. However, we'll start with a simple pattern and make our way to that step by step.</p>
+
+<h2>Simple patterns without using linear algebra</h2>
+
+<p>Let's first build some knowledge about SVG patterns. If you already know about them, you can just skim this section. Otherwise let's dive in with a very simple example:</p>
+
+<svg>
+    <defs>
+        <pattern id="simple" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#simple)" />
+</svg>
+
+<p>Here we just have a hotpink rectangle inside of a square pattern, marked by the black line, which gets repeated across our SVG element, marked by the grey outline.</p>
+
+<p>If you are interested in the details you can probably read the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns">SVG patterns tutorial on MDN</a>. But as a brief explanation, inside of the <code>&lt;defs&gt;</code> section which defines things for later use that don't get shown, we have our  <code>&lt;pattern&gt;</code> element, and define it to have a width of 100 by 100 pixels. We also say the pattern should start at the top left of the target element. Inside we define two <code>&lt;rect&gt;</code>s, a square one with a black stroke (aka border) which has the same dimensions as our pattern, and our hotpink one, a bit smaller. After the <code>&lt;/defs&gt;</code>, back in the visible parts, we have another <code>&lt;rect&gt;</code> which fills our whole picture and gets filled with our pattern.</p>
+    
+<p>That's already the essence of how patterns work. But what if we don not want nicely even side by side suqares? Can we repeat the pattern down at an angle you might ask?</p>
+
+<p>To have our pattern displayed at and angle, we can use the <code>patternTransform</code> with a <code>rotate</code> transform inside, e.g. <code>patternTransform="rotate(12)"</code>. Here's how that can look like:</p>
+
+<svg>
+    <defs>
+        <pattern id="rotated" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#rotated)" />
+</svg>
+
+<p>Now our pattern does not repeat just boring and sideways but at a bit of an angle downwards. Great! However, you might notice our hotpink rectange also rotated along with it! That might not be what you want. To only control the rotation of how our pattern repeats but keep the rectange the same, we have to apply the reverse transformation to the rectange, meaning a <code>transform="rotate(-12)"</code>. Or actually let me do a  <code>transform="rotate(-12 50 50)"</code>, so that it rotates around its center and stays in the middle of our pattern. Here's how that looks like:</p>
+
+<svg>
+    <defs>
+        <pattern id="rotated-and-reversed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" transform="rotate(-12 50 50)" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#rotated-and-reversed)" />
+</svg>
+
+<p>Beautiful! We have a rectangle that is upright and very much 90 degree aligned to our screen, but the pattern repeats at an angle. Now let's try the same with skewing, shall we? Let's use <code>patternTransform="skewX(6)"</code> on our pattern:</p>
+
+<svg>
+    <defs>
+        <pattern id="skewed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="skewX(6)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#skewed)" />
+</svg>
+
+<p>As you can see, this has the effect of shifting the columns a bit to the left. But our rectangle is all skewed as well. Let's use the inverse transform of <code>transform="skewX(-6)"</code> on our hotpink rectangle:</p>
+
+<svg>
+    <defs>
+        <pattern id="skewed-and-reversed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="skewX(6)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" transform="skewX(-6)" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#skewed-and-reversed)" />
+</svg>
+
+<p>That looks better. Now we managed to shift our rectangle ever so slightly per row without affecting the shape of the rectangle itself. Or we could also say we affected the shape but un-affected it again.</p>
+
+<p>Notice we did not apply the reverse transform to our black broder, this is so you can see how the pattern tiles the space. In an actual application you would probably leave it out to see just the nicely repeated hotpink rectangles, or whatever is in your pattern. While rotation left the angles of our black border at 90 degrees, the skewing changed them slightly.</p>
+
+<p>As a final experiment, let's combine the two and do <code>patternTransform="skewX(6) rotate(12)"</code> and <code>transform="skewX(-6) rotate(-12 50 50)"</code>:</p>
+
+<svg>
+    <defs>
+        <pattern id="skewed-and-and-rotated-reversed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="skewX(6) rotate(12)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" transform="skewX(-6) rotate(-12 50 50)" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#skewed-and-and-rotated-reversed)" />
+</svg>
+
+<p>With these tools in hand we can archive almost every tiling!</p>
+
+<p>But sometimes we might find, we don't want to skew and rotate, we just want to move our rectangles or whatever pattern we have at hand by a certain amount of pixels per row and column. For this we need another tool in our belt.</p>
+
+<h2>A matrix is a cool part of linear algebra</h2>
+
+<p>matrix <a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">wikipedia article on matrices</a>. </p>
+
+<p>How much each element of the input influences each output</p>
+
+<p> in fact, you might notice our transformations above...</p>
+
+<h2>How to use a matrix to create any skewed pattern in SVG</h2>
+
+https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#matrix
+
+<pre>
+ A = | 90  22 |
+     | 25  95 |
+
+A ^-1 = | 0.011875   -0.00275 |
+        | -0.003125   0.01125 |
+
+
+A ^-1 * 100 = |  1.1875  -0.275 |
+              | -0.3125   1.125 |
+
+
+</pre>
+
+<svg>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#simple)" />
+    <path d="M 0 0 l 90 25" stroke="red" />
+    <path d="M 0 0 l 22 95" stroke="blue" />
+    <path d="M 22 95 l 90 25" stroke="red" />
+    <path d="M 90 25 l 22 95" stroke="blue" />
+</svg>
+
+<svg>
+    <defs>
+        <pattern id="matrix-transformed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="matrix(.90 .25 .22 .95 0 0)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" />
+        </pattern>
+    </defs>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#matrix-transformed)" />
+</svg>
+
+
+<svg>
+    <defs>
+        <pattern id="matrix-transformed-only-reversed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" transform="matrix(1.1875 -0.3125 -0.275 1.125 0 0)" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#matrix-transformed-only-reversed)" />
+</svg>
+
+<svg>
+    <defs>
+        <pattern id="matrix-transformed-and-reversed" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="matrix(.90 .25 .22 .95 0 0)">
+            <rect x="0" y="0" width="100" height="100" stroke="black" fill="none" />
+            <rect x="20" y="25" width="60" height="50" fill="hotpink" transform="matrix(1.1875 -0.3125 -0.275 1.125 0 0)" />
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#matrix-transformed-and-reversed)" />
+</svg>
+
+
+</div>
+</html>
