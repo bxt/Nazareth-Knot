@@ -9,6 +9,7 @@ thicknessDash = 2 / sqrt3 * thickness
 r = 20
 l1 = 100
 l2 = 86.6 # this leads to a gap ~= l2
+ltri = 17
 n = 6
 s = symmetry(n)
 right_angle = symmetry(4)[1]
@@ -26,11 +27,21 @@ chains = s.map do |angle|
 
   gap = p3.distance2d(p2)
 
-  ring = [mid, p1, p2, p3, p4]
+  ring = [mid, p1, p2, p3, p4, mid]
 
-  chain_a = ring.map{ |p| p.translate2d(mid).rotate2d(angle) }.map(&:to2d_s).join(" L ")
+  ring_chain = ring.map{ |p| p.translate2d(mid).rotate2d(angle) }.map(&:to2d_s).join(" L ")
 
-  "M #{chain_a} Z"
+  triangle_size = p1.distance2d(p4)
+
+  t1 = p1.translate2d(p(0, -triangle_size+ltri).rotate2d(s[1] - right_angle))
+  t2 = p4.translate2d(p(0, -triangle_size+ltri).rotate2d(s[5] + right_angle))
+  ttop = p1.translate2d(p(0, -triangle_size).rotate2d(s[1] - right_angle))
+
+  triangle = [ttop, t1, t2, ttop, t1]
+
+  triangle_chain = triangle.map{ |p| p.translate2d(mid).rotate2d(angle) }.map(&:to2d_s).join(" L ")
+
+  "M #{ring_chain} Z M #{triangle_chain} Z"
 end
 
 stroke_colors = %w(#eb076a #1ba9a7 #521075)
@@ -43,6 +54,7 @@ page_intro("Pentagonal" , :minimal, 'November 2024', __FILE__)
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
   <defs>
     <style>
+      path {transform:scale(0.8);}
       .color { stroke-width: <%= thickness %>px; fill: none; }
       <% chains.each_with_index do |_, index| %>
         .<%= (index + 97).chr %> { stroke: <%= stroke_colors[index % stroke_colors.size] %>; }
