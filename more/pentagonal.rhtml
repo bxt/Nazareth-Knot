@@ -1,0 +1,70 @@
+<%
+
+require_relative '../helpers.rb'
+
+sqrt3 = Math.sqrt(3)
+size = 500
+thickness = 30
+thicknessDash = 2 / sqrt3 * thickness
+r = 20
+l1 = 100
+l2 = 86.6 # this leads to a gap ~= l2
+n = 6
+s = symmetry(n)
+right_angle = symmetry(4)[1]
+
+gap = nil
+
+chains = s.map do |angle|
+  mid = p(0, -r)
+
+  p1 = p(0, -l1).rotate2d(s[1]).translate2d(mid)
+  p2 = p1.translate2d(p(0, -l2).rotate2d(s[1] - right_angle))
+
+  p4 = p(0, -l1).rotate2d(s[5]).translate2d(mid)
+  p3 = p4.translate2d(p(0, -l2).rotate2d(s[5] + right_angle))
+
+  gap = p3.distance2d(p2)
+
+  ring = [mid, p1, p2, p3, p4]
+
+  chain_a = ring.map{ |p| p.translate2d(mid).rotate2d(angle) }.map(&:to2d_s).join(" L ")
+
+  "M #{chain_a} Z"
+end
+
+stroke_colors = %w(#eb076a #1ba9a7 #521075)
+
+stroke_dashes = StrokeDash.new(0, l1*0.8, l1*0.2 + l2*0.8, l2*0.2 + gap + l2 + l1*0.2, 99999)
+
+page_intro("Pentagonal" , :minimal, 'November 2024', __FILE__)
+
+%>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en" viewBox="<%= -size/2 %> <%= -size/2 %> <%= size %> <%= size %>" id="knot">
+  <defs>
+    <style>
+      .color { stroke-width: <%= thickness %>px; fill: none; }
+      <% chains.each_with_index do |_, index| %>
+        .<%= (index + 97).chr %> { stroke: <%= stroke_colors[index % stroke_colors.size] %>; }
+      <% end %>
+      .ground { stroke-width: <%= thickness + 5 %>px; fill: none; stroke: #000; }
+      .strokes.color { <%= stroke_dashes.css() %> }
+      .strokes.ground { <%= stroke_dashes.css(4) %> }
+    </style>
+    <% chains.each_with_index do |chain, index| %>
+      <path id="path-<%= (index + 97).chr %>" d="<%= chain %>" />
+    <% end %>
+  </defs>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="ground" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="color <%= (index + 97).chr %>" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="strokes ground" />
+  <% end %>
+  <% chains.each_with_index do |chain, index| %>
+    <use xlink:href="#path-<%= (index + 97).chr %>" class="strokes color <%= (index + 97).chr %>" />
+  <% end %>
+</svg>
