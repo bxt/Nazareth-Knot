@@ -1,0 +1,162 @@
+<%
+require './helpers.rb'
+page_intro("moonpie" , :minimal, 'July 2026', __FILE__)
+%>
+<style>
+  /* See also: https://gist.github.com/bxt/1ffef09f65097769b9938a4e2239d77b */
+  body {
+    background-color: black;
+    
+    display: flex;
+    flex-direction: column;
+    --moon-size: 42px;
+  }
+
+  #content, .canvas {
+    flex: 0 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #content {
+    position: static;
+    text-align: center;
+    order: 1;
+  }
+
+  @keyframes fillingmoons {
+    from {
+      margin-left: -0;
+    }
+    to {
+      margin-left: calc(-4 * var(--moon-size));
+    }
+  }
+
+  @keyframes cyclemoons {
+    from {
+      margin-left: -0;
+    }
+    to {
+      margin-left: calc(-8 * var(--moon-size));
+    }
+  }
+
+  .cropper {
+    font-size: var(--moon-size);
+    width: var(--moon-size);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+</style>
+<style>
+  .bigmoon {
+    font-size: 160px;
+  }
+</style>
+<div class="canvas bigmoon">🌘</div>
+<style>
+  .fillingmoons > div {
+    margin: 50vh 0;
+    height: 200vh;
+    view-timeline-name: --fillingmoonstl;
+    filter: hue-rotate(90deg);
+  }
+  .fillingmoons > div > div {
+    position: sticky;
+    top: 50%;
+    display: grid;
+    grid-template-columns: repeat(8, max-content);
+    gap: 0 18px;
+  }
+  .fillingmoons .cropper span {
+    animation: 1s steps(4, jump-end) both fillingmoons;
+    animation-timeline: --fillingmoonstl;
+  }
+</style>
+<div class="canvas fillingmoons">
+  <div>
+    <div>
+      <% 7.times.each do |i| %>
+        <div class="cropper">
+          <% step = (100/7.0) %>
+          <span style="animation-range: contain <%= '%g' % (i*step) %>%  contain <%= '%g' % ((i+1)*step) %>%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<style>
+  .cyclemoons > div {
+    display: grid;
+    grid-template-columns: repeat(8, max-content);
+    filter: hue-rotate(42deg);
+  }
+  .cyclemoons .cropper span {
+    animation: 0.5s steps(8) infinite cyclemoons;
+  }
+</style>
+<div class="canvas cyclemoons">
+  <div>
+    <% 48.times.each do |i| %>
+      <div class="cropper"><span style="animation-delay: <%= '%g' % ((48-i)/12.0) %>s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    <% end %>
+  </div>
+</div>
+<style>
+  .fillingmoons2 > div {
+    margin: 50vh 0;
+    height: 70vh;
+    view-timeline-name: --fillingmoonstl2;
+    filter: hue-rotate(90deg);
+  }
+  .fillingmoons2 .cropper span {
+    animation: 1s steps(4, jump-end) both fillingmoons;
+    animation-timeline: --fillingmoonstl2;
+  }
+</style>
+<div class="canvas fillingmoons2">
+  <div>
+    <div>
+      <% 7.times.each do |i| %>
+        <% step = (100/7.0) %>
+        <div class="cropper"><span style="animation-range: contain <%= '%g' % (i*step) %>%  contain <%= '%g' % ((i+1)*step) %>%;">🌑🌘🌗🌖🌕</span></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<style>
+  .crazymoons > div {
+    display: grid;
+    grid-template-columns: repeat(12, max-content);
+    filter: hue-rotate(270deg);
+    --moon-size: 24px;
+  }
+  .crazymoons .cropper {
+    margin-top: -9px;
+  }
+  .crazymoons .banger {
+    grid-area: span 2 / span 2;
+    margin-bottom: -9px;
+    --moon-size: 48px;
+  }
+  .crazymoons .cropper span {
+    animation: 1s steps(8) infinite cyclemoons;
+  }
+</style>
+<div class="canvas crazymoons">
+  <div>
+    <% center = p(5.5, 5.5) %>
+    <% 144.times.each do |i| %>
+      <% pos = p(i % 12, i / 12) %>
+      <% angle = pos.angle2d(center) %>
+      <% distance = pos.distance2d(center) %>
+      <% unless [66, 77, 78].include?(i) %>
+        <div class="cropper<%= if i == 65 then " banger" else "" end %>" style="transform: rotate(<%= '%g' % angle %>rad);"><span style="filter: hue-rotate(<%= '%g' % (distance*100) %>deg); animation-delay: <%= '%g' % (angle/Math::PI/2*3+distance/20.0+1.5) %>s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

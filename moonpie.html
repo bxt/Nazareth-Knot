@@ -1,0 +1,1312 @@
+<title>moonpie</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { padding: 0; margin: 0; }
+  body { background: #000; width: 100%; height: 100%; font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; text-align: center; }
+  body, h1 { font-weight: 100; }
+  a { opacity: 1; }
+  #content { position: absolute; bottom: 10px; right: 10px; color: #555; text-align: left; }
+  svg { max-height: 100%; max-width: 100%; }
+</style>
+<div id="content">
+<h1>moonpie</h1>
+<p>By <a href="http://bernhardhaeussner.de">Bernhard Häussner</a>, July 2026.<br/>Code on <a href="https://github.com/bxt/Nazareth-Knot/blob/gh-pages/moonpie.rhtml">GitHub</a>.</p>
+</div>
+
+<style>
+  /* See also: https://gist.github.com/bxt/1ffef09f65097769b9938a4e2239d77b */
+  body {
+    background-color: black;
+    
+    display: flex;
+    flex-direction: column;
+    --moon-size: 42px;
+  }
+
+  #content, .canvas {
+    flex: 0 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #content {
+    position: static;
+    text-align: center;
+    order: 1;
+  }
+
+  @keyframes fillingmoons {
+    from {
+      margin-left: -0;
+    }
+    to {
+      margin-left: calc(-4 * var(--moon-size));
+    }
+  }
+
+  @keyframes cyclemoons {
+    from {
+      margin-left: -0;
+    }
+    to {
+      margin-left: calc(-8 * var(--moon-size));
+    }
+  }
+
+  .cropper {
+    font-size: var(--moon-size);
+    width: var(--moon-size);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+</style>
+<style>
+  .bigmoon {
+    font-size: 160px;
+  }
+</style>
+<div class="canvas bigmoon">🌘</div>
+<style>
+  .fillingmoons > div {
+    margin: 50vh 0;
+    height: 200vh;
+    view-timeline-name: --fillingmoonstl;
+    filter: hue-rotate(90deg);
+  }
+  .fillingmoons > div > div {
+    position: sticky;
+    top: 50%;
+    display: grid;
+    grid-template-columns: repeat(8, max-content);
+    gap: 0 18px;
+  }
+  .fillingmoons .cropper span {
+    animation: 1s steps(4, jump-end) both fillingmoons;
+    animation-timeline: --fillingmoonstl;
+  }
+</style>
+<div class="canvas fillingmoons">
+  <div>
+    <div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 0%  contain 14.2857%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 14.2857%  contain 28.5714%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 28.5714%  contain 42.8571%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 42.8571%  contain 57.1429%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 57.1429%  contain 71.4286%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 71.4286%  contain 85.7143%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+        <div class="cropper">
+          
+          <span style="animation-range: contain 85.7143%  contain 100%;">🌑🌘🌗🌖🌕</span>
+        </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .cyclemoons > div {
+    display: grid;
+    grid-template-columns: repeat(8, max-content);
+    filter: hue-rotate(42deg);
+  }
+  .cyclemoons .cropper span {
+    animation: 0.5s steps(8) infinite cyclemoons;
+  }
+</style>
+<div class="canvas cyclemoons">
+  <div>
+    
+      <div class="cropper"><span style="animation-delay: 4s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.91667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.83333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.75s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.66667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.58333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.5s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.41667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.33333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.25s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.16667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3.08333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 3s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.91667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.83333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.75s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.66667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.58333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.5s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.41667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.33333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.25s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.16667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2.08333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 2s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.91667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.83333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.75s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.66667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.58333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.5s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.41667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.33333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.25s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.16667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1.08333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 1s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.916667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.833333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.75s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.666667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.583333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.5s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.416667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.333333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.25s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.166667s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+      <div class="cropper"><span style="animation-delay: 0.0833333s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+    
+  </div>
+</div>
+<style>
+  .fillingmoons2 > div {
+    margin: 50vh 0;
+    height: 70vh;
+    view-timeline-name: --fillingmoonstl2;
+    filter: hue-rotate(90deg);
+  }
+  .fillingmoons2 .cropper span {
+    animation: 1s steps(4, jump-end) both fillingmoons;
+    animation-timeline: --fillingmoonstl2;
+  }
+</style>
+<div class="canvas fillingmoons2">
+  <div>
+    <div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 0%  contain 14.2857%;">🌑🌘🌗🌖🌕</span></div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 14.2857%  contain 28.5714%;">🌑🌘🌗🌖🌕</span></div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 28.5714%  contain 42.8571%;">🌑🌘🌗🌖🌕</span></div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 42.8571%  contain 57.1429%;">🌑🌘🌗🌖🌕</span></div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 57.1429%  contain 71.4286%;">🌑🌘🌗🌖🌕</span></div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 71.4286%  contain 85.7143%;">🌑🌘🌗🌖🌕</span></div>
+      
+        
+        <div class="cropper"><span style="animation-range: contain 85.7143%  contain 100%;">🌑🌘🌗🌖🌕</span></div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .crazymoons > div {
+    display: grid;
+    grid-template-columns: repeat(12, max-content);
+    filter: hue-rotate(270deg);
+    --moon-size: 24px;
+  }
+  .crazymoons .cropper {
+    margin-top: -9px;
+  }
+  .crazymoons .banger {
+    grid-area: span 2 / span 2;
+    margin-bottom: -9px;
+    --moon-size: 48px;
+  }
+  .crazymoons .cropper span {
+    animation: 1s steps(8) infinite cyclemoons;
+  }
+</style>
+<div class="canvas crazymoons">
+  <div>
+    
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.785398rad);"><span style="filter: hue-rotate(777.817deg); animation-delay: 2.26391s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.885067rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 2.27791s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.00407rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 2.30537s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.14417rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 2.34838s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.30454rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 2.40792s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.48014rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 2.48285s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.66146rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 2.56942s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.83705rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 2.66217s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.99742rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 2.75578s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.13753rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 2.84655s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.25653rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 2.93273s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.35619rad);"><span style="filter: hue-rotate(777.817deg); animation-delay: 3.01391s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.68573rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 2.18273s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.785398rad);"><span style="filter: hue-rotate(636.396deg); animation-delay: 2.1932s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.909753rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 2.21942s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.0637rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 2.26527s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.24905rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 2.33355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.46014rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 2.42355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.68145rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 2.52922s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.89255rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 2.6408s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.07789rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 2.74951s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.23184rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 2.85067s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.35619rad);"><span style="filter: hue-rotate(636.396deg); animation-delay: 2.9432s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.45586rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 3.02791s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.566729rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 2.09655s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.661043rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 2.10067s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.785398rad);"><span style="filter: hue-rotate(494.975deg); animation-delay: 2.12249s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.950547rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 2.16891s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.1659rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 2.24707s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.4289rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 2.35903s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.71269rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 2.49453s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.97569rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 2.63372s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.19105rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 2.76121s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.35619rad);"><span style="filter: hue-rotate(494.975deg); animation-delay: 2.87249s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.48055rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 2.96942s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.57486rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 3.05537s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.426627rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 2.00578s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.507099rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 1.99951s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.620249rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 2.01121s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.785398rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 2.05178s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.03038rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 2.13774s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.3734rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 2.28323s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.76819rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 2.47172s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.11122rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 2.65381s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.35619rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 2.80178s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.52134rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 2.91891s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.63449rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 3.01527s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.71497rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 3.09838s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.266252rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 1.91217s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.321751rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 1.8908s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.404892rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 1.88372s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.54042rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 1.90381s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.785398rad);"><span style="filter: hue-rotate(212.132deg); animation-delay: 1.98107s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.24905rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 2.17543s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(1.89255rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 2.48268s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.35619rad);"><span style="filter: hue-rotate(212.132deg); animation-delay: 2.73107s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.60117rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 2.88774s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.7367rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 2.99707s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.81984rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 3.08355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.87534rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 3.15792s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.0906599rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 1.81942s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.110657rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 1.77922s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.141897rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 1.74453s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.197396rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 1.72172s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(0.321751rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 1.73268s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper banger" style="transform: rotate(0.785398rad);"><span style="filter: hue-rotate(70.7107deg); animation-delay: 1.91036s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.81984rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 2.92543s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.9442rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 3.03323s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(2.9997rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 3.10903s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(3.03094rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 3.17355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(3.05093rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 3.23285s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.0906599rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 1.73285s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.110657rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 1.67355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.141897rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 1.60903s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.197396rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 1.53323s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.321751rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 1.42543s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.81984rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 0.232682s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.9442rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 0.221725s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.9997rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 0.244528s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-3.03094rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 0.27922s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-3.05093rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 0.319421s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.266252rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 1.65792s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.321751rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 1.58355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.404892rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 1.49707s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.54042rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 1.38774s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.785398rad);"><span style="filter: hue-rotate(212.132deg); animation-delay: 1.23107s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.24905rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 0.982682s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.89255rad);"><span style="filter: hue-rotate(158.114deg); animation-delay: 0.675432s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.35619rad);"><span style="filter: hue-rotate(212.132deg); animation-delay: 0.481066s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.60117rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 0.403805s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.7367rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 0.383716s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.81984rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 0.390795s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.87534rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 0.41217s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.426627rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 1.59838s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.507099rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 1.51527s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.620249rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 1.41891s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.785398rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 1.30178s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.03038rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 1.15381s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.3734rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 0.971725s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.76819rad);"><span style="filter: hue-rotate(254.951deg); animation-delay: 0.783226s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.11122rad);"><span style="filter: hue-rotate(291.548deg); animation-delay: 0.637742s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.35619rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 0.551777s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.52134rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 0.511205s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.63449rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 0.499512s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.71497rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 0.505776s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.566729rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 1.55537s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.661043rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 1.46942s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.785398rad);"><span style="filter: hue-rotate(494.975deg); animation-delay: 1.37249s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.950547rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 1.26121s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.1659rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 1.13372s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.4289rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 0.994528s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.71269rad);"><span style="filter: hue-rotate(353.553deg); animation-delay: 0.859026s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.97569rad);"><span style="filter: hue-rotate(380.789deg); animation-delay: 0.747073s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.19105rad);"><span style="filter: hue-rotate(430.116deg); animation-delay: 0.668911s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.35619rad);"><span style="filter: hue-rotate(494.975deg); animation-delay: 0.622487s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.48055rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 0.600669s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.57486rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 0.596553s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.68573rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 1.52791s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.785398rad);"><span style="filter: hue-rotate(636.396deg); animation-delay: 1.4432s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.909753rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 1.35067s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.0637rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 1.24951s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.24905rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 1.1408s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.46014rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 1.02922s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.68145rad);"><span style="filter: hue-rotate(452.769deg); animation-delay: 0.92355s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.89255rad);"><span style="filter: hue-rotate(474.342deg); animation-delay: 0.833546s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.07789rad);"><span style="filter: hue-rotate(514.782deg); animation-delay: 0.765269s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.23184rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 0.719419s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.35619rad);"><span style="filter: hue-rotate(636.396deg); animation-delay: 0.693198s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.45586rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 0.682728s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.785398rad);"><span style="filter: hue-rotate(777.817deg); animation-delay: 1.51391s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-0.885067rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 1.43273s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.00407rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 1.34655s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.14417rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 1.25578s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.30454rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 1.16217s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.48014rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 1.06942s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.66146rad);"><span style="filter: hue-rotate(552.268deg); animation-delay: 0.982847s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.83705rad);"><span style="filter: hue-rotate(570.088deg); animation-delay: 0.907918s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-1.99742rad);"><span style="filter: hue-rotate(604.152deg); animation-delay: 0.848377s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.13753rad);"><span style="filter: hue-rotate(651.92deg); animation-delay: 0.805367s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.25653rad);"><span style="filter: hue-rotate(710.634deg); animation-delay: 0.777905s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+      
+      
+      
+      
+        <div class="cropper" style="transform: rotate(-2.35619rad);"><span style="filter: hue-rotate(777.817deg); animation-delay: 0.763909s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      
+    
+  </div>
+</div>
