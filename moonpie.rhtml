@@ -131,7 +131,7 @@ page_intro("moonpie" , :minimal, 'July 2026', __FILE__)
 <style>
   .crazymoons > div {
     display: grid;
-    grid-template-columns: repeat(12, max-content);
+    grid-template-columns: repeat(24, max-content);
     filter: hue-rotate(270deg);
     --moon-size: 24px;
   }
@@ -140,7 +140,8 @@ page_intro("moonpie" , :minimal, 'July 2026', __FILE__)
   }
   .crazymoons .banger {
     grid-area: span 2 / span 2;
-    margin-bottom: -9px;
+    margin-top: -10px;
+    margin-bottom: -8px;
     --moon-size: 48px;
   }
   .crazymoons .cropper span {
@@ -149,13 +150,13 @@ page_intro("moonpie" , :minimal, 'July 2026', __FILE__)
 </style>
 <div class="canvas crazymoons">
   <div>
-    <% center = p(5.5, 5.5) %>
-    <% 144.times.each do |i| %>
-      <% pos = p(i % 12, i / 12) %>
+    <% center = p(11.5, 11.5) %>
+    <% 576.times.each do |i| %>
+      <% pos = p(i % 24, i / 24) %>
       <% angle = pos.angle2d(center) %>
       <% distance = pos.distance2d(center) %>
-      <% unless [66, 77, 78].include?(i) %>
-        <div class="cropper<%= if i == 65 then " banger" else "" end %>" style="transform: rotate(<%= '%g' % angle %>rad);"><span style="filter: hue-rotate(<%= '%g' % (distance*100) %>deg); animation-delay: <%= '%g' % (angle/Math::PI/2*3+distance/20.0+1.5) %>s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
+      <% unless [276, 299, 300].include?(i) %>
+        <div class="cropper<%= if i == 275 then " banger" else "" end %>" style="transform: rotate(<%= '%g' % angle %>rad);"><span style="filter: hue-rotate(<%= '%g' % (distance*100) %>deg); animation-delay: <%= '%g' % (angle/Math::PI/2*3+distance/2.0+1.5) %>s">🌑🌒🌓🌔🌕🌖🌗🌘</span></div>
       <% end %>
     <% end %>
   </div>
